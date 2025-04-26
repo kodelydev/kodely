@@ -11,14 +11,14 @@ import { checkExistKey } from "@roo/shared/checkExistApiConfig"
 import { Mode, CustomModePrompts, defaultModeSlug, defaultPrompts, ModeConfig } from "@roo/shared/modes"
 import { CustomSupportPrompts } from "@roo/shared/support-prompt"
 import { experimentDefault, ExperimentId } from "@roo/shared/experiments"
-import { McpMarketplaceCatalog } from "../../../src/shared/kilocode/mcp" // kilocode_change
+import { McpMarketplaceCatalog } from "../../../src/shared/kodely/mcp" // kodely_change
 
 export interface ExtensionStateContextType extends ExtensionState {
 	didHydrateState: boolean
 	showWelcome: boolean
 	theme: any
 	mcpServers: McpServer[]
-	mcpMarketplaceCatalog: McpMarketplaceCatalog // kilocode_change
+	mcpMarketplaceCatalog: McpMarketplaceCatalog // kodely_change
 	hasSystemPromptOverride?: boolean
 	currentCheckpoint?: string
 	filePaths: string[]
@@ -36,7 +36,7 @@ export interface ExtensionStateContextType extends ExtensionState {
 	setAlwaysAllowSubtasks: (value: boolean) => void
 	setBrowserToolEnabled: (value: boolean) => void
 	setShowRooIgnoredFiles: (value: boolean) => void
-	setShowAutoApproveMenu: (value: boolean) => void // kilocode_change
+	setShowAutoApproveMenu: (value: boolean) => void // kodely_change
 	setShowAnnouncement: (value: boolean) => void
 	setAllowedCommands: (value: string[]) => void
 	setSoundEnabled: (value: boolean) => void
@@ -131,7 +131,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		allowedCommands: [],
 		apiConfiguration: {
 			// TODO: Fix types to require this default:
-			apiProvider: "kilocode",
+			apiProvider: "kodely",
 		},
 		alwaysAllowReadOnly: true,
 		alwaysAllowWrite: true,
@@ -166,7 +166,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		cwd: "",
 		browserToolEnabled: true,
 		showRooIgnoredFiles: true, // Default to showing .rooignore'd files with lock symbol (current behavior).
-		showAutoApproveMenu: false, // kilocode_change
+		showAutoApproveMenu: false, // kodely_change
 		renderContext: "sidebar",
 		maxReadFileLine: 500, // Default max read file line limit
 		pinnedApiConfigs: {}, // Empty object for pinned API configs
@@ -182,7 +182,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 	const [filePaths, setFilePaths] = useState<string[]>([])
 	const [openedTabs, setOpenedTabs] = useState<Array<{ label: string; isActive: boolean; path?: string }>>([])
 	const [mcpServers, setMcpServers] = useState<McpServer[]>([])
-	const [mcpMarketplaceCatalog, setMcpMarketplaceCatalog] = useState<McpMarketplaceCatalog>({ items: [] }) // kilocode_change
+	const [mcpMarketplaceCatalog, setMcpMarketplaceCatalog] = useState<McpMarketplaceCatalog>({ items: [] }) // kodely_change
 	const [currentCheckpoint, setCurrentCheckpoint] = useState<string>()
 
 	const setListApiConfigMeta = useCallback(
@@ -232,14 +232,14 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 					setMcpServers(message.mcpServers ?? [])
 					break
 				}
-				// kilocode_change
+				// kodely_change
 				case "mcpMarketplaceCatalog": {
 					if (message.mcpMarketplaceCatalog) {
 						setMcpMarketplaceCatalog(message.mcpMarketplaceCatalog)
 					}
 					break
 				}
-				// end kilocode_change
+				// end kodely_change
 				case "currentCheckpointUpdated": {
 					setCurrentCheckpoint(message.text)
 					break
@@ -265,7 +265,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		showWelcome,
 		theme,
 		mcpServers,
-		mcpMarketplaceCatalog, // kilocode_change
+		mcpMarketplaceCatalog, // kodely_change
 		currentCheckpoint,
 		filePaths,
 		openedTabs,
@@ -332,7 +332,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		setMaxWorkspaceFiles: (value) => setState((prevState) => ({ ...prevState, maxWorkspaceFiles: value })),
 		setBrowserToolEnabled: (value) => setState((prevState) => ({ ...prevState, browserToolEnabled: value })),
 		setShowRooIgnoredFiles: (value) => setState((prevState) => ({ ...prevState, showRooIgnoredFiles: value })),
-		setShowAutoApproveMenu: (value) => setState((prevState) => ({ ...prevState, showAutoApproveMenu: value })), // kilocode_Change
+		setShowAutoApproveMenu: (value) => setState((prevState) => ({ ...prevState, showAutoApproveMenu: value })), // kodely_Change
 		setRemoteBrowserEnabled: (value) => setState((prevState) => ({ ...prevState, remoteBrowserEnabled: value })),
 		setAwsUsePromptCache: (value) => setState((prevState) => ({ ...prevState, awsUsePromptCache: value })),
 		setMaxReadFileLine: (value) => setState((prevState) => ({ ...prevState, maxReadFileLine: value })),

@@ -33,9 +33,9 @@ export const About = ({ version, className, ...props }: AboutProps) => {
 					<Trans
 						i18nKey="settings:footer.feedback"
 						components={{
-							githubLink: <VSCodeLink href="https://github.com/Kilo-Org/kilocode" />,
-							redditLink: <VSCodeLink href="https://reddit.com/r/kilocode" />,
-							discordLink: <VSCodeLink href="https://kilocode.ai/discord" />,
+							githubLink: <VSCodeLink href="https://github.com/KodelyDev/KodelyApp" />,
+							redditLink: <VSCodeLink href="https://reddit.com/r/kodely" />,
+							discordLink: <VSCodeLink href="https://discord.gg/C2g3XjU56S" />,
 						}}
 					/>
 				</div>

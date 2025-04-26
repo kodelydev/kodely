@@ -29,7 +29,7 @@ import { validateCommand } from "@src/utils/command-validation"
 import { useAppTranslation } from "@src/i18n/TranslationContext"
 
 import HistoryPreview from "../history/HistoryPreview"
-// import RooHero from "../welcome/RooHero" // kilocode_change
+// import RooHero from "../welcome/RooHero" // kodely_change
 
 import Announcement from "./Announcement"
 import BrowserSessionRow from "./BrowserSessionRow"
@@ -37,9 +37,9 @@ import ChatRow from "./ChatRow"
 import ChatTextArea from "./ChatTextArea"
 import TaskHeader from "./TaskHeader"
 import AutoApproveMenu from "./AutoApproveMenu"
-import BottomControls from "./BottomControls" // kilocode_change
+import BottomControls from "./BottomControls" // kodely_change
 import SystemPromptWarning from "./SystemPromptWarning"
-import { showSystemNotification } from "@/kilocode/helpers" // kilocode_change
+import { showSystemNotification } from "@/kodely/helpers" // kodely_change
 
 interface ChatViewProps {
 	isHidden: boolean
@@ -50,7 +50,7 @@ interface ChatViewProps {
 
 export interface ChatViewRef {
 	acceptInput: () => void
-	focusInput: () => void // kilocode_change
+	focusInput: () => void // kodely_change
 }
 
 export const MAX_IMAGES_PER_MESSAGE = 20 // Anthropic limits to 20 images
@@ -82,7 +82,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		setMode,
 		autoApprovalEnabled,
 		alwaysAllowModeSwitch,
-		showAutoApproveMenu, // kilocode_change
+		showAutoApproveMenu, // kodely_change
 		alwaysAllowSubtasks,
 		customModes,
 		hasSystemPromptOverride,
@@ -167,7 +167,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 						case "tool":
 							if (!isAutoApproved(lastMessage)) {
 								playSound("notification")
-								showSystemNotification(t("chat:notifications.toolRequest")) // kilocode_change
+								showSystemNotification(t("chat:notifications.toolRequest")) // kodely_change
 							}
 							setTextAreaDisabled(isPartial)
 							setClineAsk("tool")
@@ -194,7 +194,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 						case "browser_action_launch":
 							if (!isAutoApproved(lastMessage)) {
 								playSound("notification")
-								showSystemNotification(t("chat:notifications.browserAction")) // kilocode_change
+								showSystemNotification(t("chat:notifications.browserAction")) // kodely_change
 							}
 							setTextAreaDisabled(isPartial)
 							setClineAsk("browser_action_launch")
@@ -205,7 +205,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 						case "command":
 							if (!isAutoApproved(lastMessage)) {
 								playSound("notification")
-								showSystemNotification(t("chat:notifications.command")) // kilocode_change
+								showSystemNotification(t("chat:notifications.command")) // kodely_change
 							}
 							setTextAreaDisabled(isPartial)
 							setClineAsk("command")
@@ -1198,13 +1198,13 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 				handleSendMessage(inputValue, selectedImages)
 			}
 		},
-		// kilocode_change start
+		// kodely_change start
 		focusInput: () => {
 			if (textAreaRef.current) {
 				textAreaRef.current.focus()
 			}
 		},
-		// kilocode_change end
+		// kodely_change end
 	}))
 
 	return (
@@ -1259,7 +1259,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 					}}>
 					{showAnnouncement && <Announcement version={version} hideAnnouncement={hideAnnouncement} />}
 
-					{/* <RooHero /> kilocode_change: disable */}
+					{/* <RooHero /> kodely_change: disable */}
 					{taskHistory.length > 0 && <HistoryPreview showHistoryView={showHistoryView} />}
 				</div>
 			)}
@@ -1279,7 +1279,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 			//    This ensures it takes its natural height when there's space
 			//    but becomes scrollable when the viewport is too small
 			*/}
-			{/* kilocode_change: added settings toggle for this */}
+			{/* kodely_change: added settings toggle for this */}
 			{!task && showAutoApproveMenu && (
 				<AutoApproveMenu
 					style={{
@@ -1319,7 +1319,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 							initialTopMostItemIndex={groupedMessages.length - 1}
 						/>
 					</div>
-					{/* kilocode_change: added settings toggle for this */}
+					{/* kodely_change: added settings toggle for this */}
 					{showAutoApproveMenu && <AutoApproveMenu />}
 					{showScrollToBottom ? (
 						<div

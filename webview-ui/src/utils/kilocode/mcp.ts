@@ -1,5 +1,5 @@
-// kilocode_change: imported from Cline
-import { McpMarketplaceCatalog } from "../../../../src/shared/kilocode/mcp"
+// kodely_change: imported from Cline
+import { McpMarketplaceCatalog } from "../../../../src/shared/kodely/mcp"
 
 /**
  * Attempts to convert an MCP server name to its display name using the marketplace catalog

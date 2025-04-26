@@ -410,8 +410,8 @@ export class McpHub {
 		}
 
 		const workspaceFolder = vscode.workspace.workspaceFolders[0]
-		// kilocode_change
-		const projectMcpDir = path.join(workspaceFolder.uri.fsPath, ".kilocode")
+		// kodely_change
+		const projectMcpDir = path.join(workspaceFolder.uri.fsPath, ".kodely")
 		const projectMcpPath = path.join(projectMcpDir, "mcp.json")
 
 		try {
@@ -438,7 +438,7 @@ export class McpHub {
 		try {
 			const client = new Client(
 				{
-					name: "Kilo Code",
+					name: "Kodely",
 					version: this.providerRef.deref()?.context.extension?.packageJSON?.version ?? "1.0.0",
 				},
 				{

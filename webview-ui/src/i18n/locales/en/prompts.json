@@ -6,8 +6,8 @@
 		"createNewMode": "Create new mode",
 		"editModesConfig": "Edit modes configuration",
 		"editGlobalModes": "Edit Global Modes",
-		"editProjectModes": "Edit Project Modes (.kilocodemodes)",
-		"createModeHelpText": "Hit the + to create a new custom mode, or just ask Kilo Code in chat to create one for you!"
+		"editProjectModes": "Edit Project Modes (.kodelymodes)",
+		"createModeHelpText": "Hit the + to create a new custom mode, or just ask Kodely in chat to create one for you!"
 	},
 	"apiConfiguration": {
 		"title": "API Configuration",
@@ -30,18 +30,18 @@
 	"roleDefinition": {
 		"title": "Role Definition",
 		"resetToDefault": "Reset to default",
-		"description": "Define Kilo Code's expertise and personality for this mode. This description shapes how Kilo Code presents itself and approaches tasks."
+		"description": "Define Kodely's expertise and personality for this mode. This description shapes how Kodely presents itself and approaches tasks."
 	},
 	"customInstructions": {
 		"title": "Mode-specific Custom Instructions (optional)",
 		"resetToDefault": "Reset to default",
 		"description": "Add behavioral guidelines specific to {{modeName}} mode.",
-		"loadFromFile": "Custom instructions specific to {{mode}} mode can also be loaded from the <span>.kilocode/rules/</span> folder in your workspace (.kilocoderules-{{slug}} is deprecated and will stop working soon)."
+		"loadFromFile": "Custom instructions specific to {{mode}} mode can also be loaded from the <span>.kodely/rules/</span> folder in your workspace (.kodelyrules-{{slug}} is deprecated and will stop working soon)."
 	},
 	"globalCustomInstructions": {
 		"title": "Custom Instructions for All Modes",
-		"description": "These instructions apply to all modes. They provide a base set of behaviors that can be enhanced by mode-specific instructions below.\nIf you would like Kilo Code to think and speak in a different language than your editor display language ({{language}}), you can specify it here.",
-		"loadFromFile": "Instructions can also be loaded from the <span>.kilocode/rules/</span> folder in your workspace (.kilocoderules is deprecated and will stop working soon)."
+		"description": "These instructions apply to all modes. They provide a base set of behaviors that can be enhanced by mode-specific instructions below.\nIf you would like Kodely to think and speak in a different language than your editor display language ({{language}}), you can specify it here.",
+		"loadFromFile": "Instructions can also be loaded from the <span>.kodely/rules/</span> folder in your workspace (.kodelyrules is deprecated and will stop working soon)."
 	},
 	"systemPrompt": {
 		"preview": "Preview System Prompt",
@@ -62,7 +62,7 @@
 		"types": {
 			"ENHANCE": {
 				"label": "Enhance Prompt",
-				"description": "Use prompt enhancement to get tailored suggestions or improvements for your inputs. This ensures Kilo Code understands your intent and provides the best possible responses. Available via the ✨ icon in chat."
+				"description": "Use prompt enhancement to get tailored suggestions or improvements for your inputs. This ensures Kodely understands your intent and provides the best possible responses. Available via the ✨ icon in chat."
 			},
 			"EXPLAIN": {
 				"label": "Explain Code",
@@ -100,7 +100,7 @@
 	},
 	"advancedSystemPrompt": {
 		"title": "Advanced: Override System Prompt",
-		"description": "You can completely replace the system prompt for this mode (aside from the role definition and custom instructions) by creating a file at <span>.kilocode/system-prompt-{{slug}}</span> in your workspace. This is a very advanced feature that bypasses built-in safeguards and consistency checks (especially around tool usage), so be careful!"
+		"description": "You can completely replace the system prompt for this mode (aside from the role definition and custom instructions) by creating a file at <span>.kodely/system-prompt-{{slug}}</span> in your workspace. This is a very advanced feature that bypasses built-in safeguards and consistency checks (especially around tool usage), so be careful!"
 	},
 	"createModeDialog": {
 		"title": "Create New Mode",
@@ -121,13 +121,13 @@
 				"description": "Available in all workspaces"
 			},
 			"project": {
-				"label": "Project-specific (.kilocodemodes)",
+				"label": "Project-specific (.kodelymodes)",
 				"description": "Only available in this workspace, takes precedence over global"
 			}
 		},
 		"roleDefinition": {
 			"label": "Role Definition",
-			"description": "Define Kilo Code's expertise and personality for this mode."
+			"description": "Define Kodely's expertise and personality for this mode."
 		},
 		"tools": {
 			"label": "Available Tools",

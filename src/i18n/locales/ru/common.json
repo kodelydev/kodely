@@ -1,6 +1,6 @@
 {
 	"extension": {
-		"name": "Kilo Code",
+		"name": "Kodely",
 		"description": "Целая команда ИИ-разработчиков в вашем редакторе."
 	},
 	"number_format": {
@@ -51,7 +51,7 @@
 		"delete_api_config": "Не удалось удалить конфигурацию API",
 		"list_api_config": "Не удалось получить список конфигураций API",
 		"update_server_timeout": "Не удалось обновить таймаут сервера",
-		"create_mcp_json": "Не удалось создать или открыть .kilocode/mcp.json: {{error}}",
+		"create_mcp_json": "Не удалось создать или открыть .kodely/mcp.json: {{error}}",
 		"hmr_not_running": "Локальный сервер разработки не запущен, HMR не будет работать. Пожалуйста, запустите 'npm run dev' перед запуском расширения для включения HMR.",
 		"retrieve_current_mode": "Ошибка: не удалось получить текущий режим из состояния.",
 		"failed_delete_repo": "Не удалось удалить связанный теневой репозиторий или ветку: {{error}}",
@@ -89,12 +89,12 @@
 	},
 	"storage": {
 		"prompt_custom_path": "Введите пользовательский путь хранения истории разговоров, оставьте пустым для использования расположения по умолчанию",
-		"path_placeholder": "D:\\KiloCodeStorage",
+		"path_placeholder": "D:\\KodelyStorage",
 		"enter_absolute_path": "Пожалуйста, введите абсолютный путь (например, D:\\RooCodeStorage или /home/user/storage)",
 		"enter_valid_path": "Пожалуйста, введите корректный путь"
 	},
 	"input": {
-		"task_prompt": "Что должен сделать Kilo Code?",
+		"task_prompt": "Что должен сделать Kodely?",
 		"task_placeholder": "Введите вашу задачу здесь"
 	}
 }

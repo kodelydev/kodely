@@ -1,5 +1,5 @@
 {
-	"greeting": "What can Kilo Code do for you?",
+	"greeting": "What can Kodely do for you?",
 	"task": {
 		"title": "Task",
 		"seeMore": "See more",
@@ -68,7 +68,7 @@
 		"tooltip": "Cancel the current operation"
 	},
 	"scrollToBottom": "Scroll to bottom of chat",
-	"onboarding": "<strong>Your task list in this workspace is empty.</strong> Start by typing in a task below. Not sure how to begin? Read more about what Kilo Code can do for you in <DocsLink>the docs</DocsLink>.",
+	"onboarding": "<strong>Your task list in this workspace is empty.</strong> Start by typing in a task below. Not sure how to begin? Read more about what Kodely can do for you in <DocsLink>the docs</DocsLink>.",
 	"selectMode": "Select mode for interaction",
 	"selectApiConfig": "Select API configuration",
 	"enhancePrompt": "Enhance prompt with additional context",
@@ -110,47 +110,47 @@
 		"current": "Current"
 	},
 	"instructions": {
-		"wantsToFetch": "Kilo Code wants to fetch detailed instructions to assist with the current task"
+		"wantsToFetch": "Kodely wants to fetch detailed instructions to assist with the current task"
 	},
 	"fileOperations": {
-		"wantsToRead": "Kilo Code wants to read this file:",
-		"wantsToReadOutsideWorkspace": "Kilo Code wants to read this file outside of the workspace:",
-		"didRead": "Kilo Code read this file:",
-		"wantsToEdit": "Kilo Code wants to edit this file:",
-		"wantsToEditOutsideWorkspace": "Kilo Code wants to edit this file outside of the workspace:",
-		"wantsToCreate": "Kilo Code wants to create a new file:",
-		"wantsToSearchReplace": "Kilo Code wants to search and replace in this file:",
-		"didSearchReplace": "Kilo Code performed search and replace on this file:",
-		"wantsToInsert": "Kilo Code wants to insert content into this file:",
-		"wantsToInsertWithLineNumber": "Kilo Code wants to insert content into this file at line {{lineNumber}}:",
-		"wantsToInsertAtEnd": "Kilo Code wants to append content to the end of this file:"
+		"wantsToRead": "Kodely wants to read this file:",
+		"wantsToReadOutsideWorkspace": "Kodely wants to read this file outside of the workspace:",
+		"didRead": "Kodely read this file:",
+		"wantsToEdit": "Kodely wants to edit this file:",
+		"wantsToEditOutsideWorkspace": "Kodely wants to edit this file outside of the workspace:",
+		"wantsToCreate": "Kodely wants to create a new file:",
+		"wantsToSearchReplace": "Kodely wants to search and replace in this file:",
+		"didSearchReplace": "Kodely performed search and replace on this file:",
+		"wantsToInsert": "Kodely wants to insert content into this file:",
+		"wantsToInsertWithLineNumber": "Kodely wants to insert content into this file at line {{lineNumber}}:",
+		"wantsToInsertAtEnd": "Kodely wants to append content to the end of this file:"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Kilo Code wants to view the top level files in this directory:",
-		"didViewTopLevel": "Kilo Code viewed the top level files in this directory:",
-		"wantsToViewRecursive": "Kilo Code wants to recursively view all files in this directory:",
-		"didViewRecursive": "Kilo Code recursively viewed all files in this directory:",
-		"wantsToViewDefinitions": "Kilo Code wants to view source code definition names used in this directory:",
-		"didViewDefinitions": "Kilo Code viewed source code definition names used in this directory:",
-		"wantsToSearch": "Kilo Code wants to search this directory for <code>{{regex}}</code>:",
-		"didSearch": "Kilo Code searched this directory for <code>{{regex}}</code>:"
+		"wantsToViewTopLevel": "Kodely wants to view the top level files in this directory:",
+		"didViewTopLevel": "Kodely viewed the top level files in this directory:",
+		"wantsToViewRecursive": "Kodely wants to recursively view all files in this directory:",
+		"didViewRecursive": "Kodely recursively viewed all files in this directory:",
+		"wantsToViewDefinitions": "Kodely wants to view source code definition names used in this directory:",
+		"didViewDefinitions": "Kodely viewed source code definition names used in this directory:",
+		"wantsToSearch": "Kodely wants to search this directory for <code>{{regex}}</code>:",
+		"didSearch": "Kodely searched this directory for <code>{{regex}}</code>:"
 	},
 	"commandOutput": "Command Output",
 	"response": "Response",
 	"arguments": "Arguments",
 	"mcp": {
-		"wantsToUseTool": "Kilo Code wants to use a tool on the {{serverName}} MCP server:",
-		"wantsToAccessResource": "Kilo Code wants to access a resource on the {{serverName}} MCP server:"
+		"wantsToUseTool": "Kodely wants to use a tool on the {{serverName}} MCP server:",
+		"wantsToAccessResource": "Kodely wants to access a resource on the {{serverName}} MCP server:"
 	},
 	"modes": {
-		"wantsToSwitch": "Kilo Code wants to switch to {{mode}} mode",
-		"wantsToSwitchWithReason": "Kilo Code wants to switch to {{mode}} mode because: {{reason}}",
-		"didSwitch": "Kilo Code switched to {{mode}} mode",
-		"didSwitchWithReason": "Kilo Code switched to {{mode}} mode because: {{reason}}"
+		"wantsToSwitch": "Kodely wants to switch to {{mode}} mode",
+		"wantsToSwitchWithReason": "Kodely wants to switch to {{mode}} mode because: {{reason}}",
+		"didSwitch": "Kodely switched to {{mode}} mode",
+		"didSwitchWithReason": "Kodely switched to {{mode}} mode because: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Kilo Code wants to create a new subtask in {{mode}} mode:",
-		"wantsToFinish": "Kilo Code wants to finish this subtask",
+		"wantsToCreate": "Kodely wants to create a new subtask in {{mode}} mode:",
+		"wantsToFinish": "Kodely wants to finish this subtask",
 		"newTaskContent": "Subtask Instructions",
 		"completionContent": "Subtask Completed",
 		"resultContent": "Subtask Results",
@@ -158,14 +158,14 @@
 		"completionInstructions": "Subtask completed! You can review the results and suggest any corrections or next steps. If everything looks good, confirm to return the result to the parent task."
 	},
 	"questions": {
-		"hasQuestion": "Kilo Code has a question:"
+		"hasQuestion": "Kodely has a question:"
 	},
 	"taskCompleted": "Task Completed",
 	"error": "Error",
 	"diffError": {
 		"title": "Edit Unsuccessful"
 	},
-	"troubleMessage": "Kilo Code is having trouble...",
+	"troubleMessage": "Kodely is having trouble...",
 	"shellIntegration": {
 		"unavailable": "Shell Integration Unavailable",
 		"troubleshooting": "Still having trouble? Click here for shell integration documentation.",
@@ -179,7 +179,7 @@
 	"autoApprove": {
 		"title": "Auto-approve:",
 		"none": "None",
-		"description": "Auto-approve allows Kilo Code to perform actions without asking for permission. Only enable for actions you fully trust. More detailed configuration available in <settingsLink>Settings</settingsLink>."
+		"description": "Auto-approve allows Kodely to perform actions without asking for permission. Only enable for actions you fully trust. More detailed configuration available in <settingsLink>Settings</settingsLink>."
 	},
 	"announcement": {
 		"title": "🎉 Roo Code 3.14 Released",
@@ -199,7 +199,7 @@
 		"copyToInput": "Copy to input (same as shift + click)"
 	},
 	"browser": {
-		"rooWantsToUse": "Kilo Code wants to use the browser:",
+		"rooWantsToUse": "Kodely wants to use the browser:",
 		"consoleLogs": "Console Logs",
 		"noNewLogs": "(No new logs)",
 		"screenshot": "Browser screenshot",

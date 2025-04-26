@@ -1,5 +1,5 @@
 {
-	"extension.displayName": "Kilo Code",
+	"extension.displayName": "Kodely",
 	"extension.description": "Un equip complet de desenvolupament d'agents d'IA al teu editor.",
 	"command.newTask.title": "Nova Tasca",
 	"command.explainCode.title": "Explicar Codi",
@@ -15,19 +15,19 @@
 	"command.terminal.fixCommandInCurrentTask.title": "Corregir Aquesta Ordre (Tasca Actual)",
 	"command.terminal.explainCommandInCurrentTask.title": "Explicar Aquesta Ordre (Tasca Actual)",
 	"command.acceptInput.title": "Acceptar Entrada/Suggeriment",
-	"views.activitybar.title": "Kilo Code",
-	"views.contextMenu.label": "Kilo Code",
-	"views.terminalMenu.label": "Kilo Code",
+	"views.activitybar.title": "Kodely",
+	"views.contextMenu.label": "Kodely",
+	"views.terminalMenu.label": "Kodely",
 	"command.mcpServers.title": "Servidors MCP",
 	"command.prompts.title": "Indicacions",
 	"command.history.title": "Historial",
 	"command.openInEditor.title": "Obrir a l'Editor",
 	"command.settings.title": "Configuració",
 	"command.documentation.title": "Documentació",
-	"configuration.title": "Kilo Code",
+	"configuration.title": "Kodely",
 	"commands.allowedCommands.description": "Ordres que es poden executar automàticament quan 'Aprova sempre les operacions d'execució' està activat",
 	"settings.vsCodeLmModelSelector.description": "Configuració per a l'API del model de llenguatge VSCode",
 	"settings.vsCodeLmModelSelector.vendor.description": "El proveïdor del model de llenguatge (p. ex. copilot)",
 	"settings.vsCodeLmModelSelector.family.description": "La família del model de llenguatge (p. ex. gpt-4)",
-	"settings.customStoragePath.description": "Ruta d'emmagatzematge personalitzada. Deixeu-la buida per utilitzar la ubicació predeterminada. Admet rutes absolutes (p. ex. 'D:\\KiloCodeStorage')"
+	"settings.customStoragePath.description": "Ruta d'emmagatzematge personalitzada. Deixeu-la buida per utilitzar la ubicació predeterminada. Admet rutes absolutes (p. ex. 'D:\\KodelyStorage')"
 }

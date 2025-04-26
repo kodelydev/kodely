@@ -2,15 +2,15 @@ import * as vscode from "vscode"
 import delay from "delay"
 
 import { ClineProvider } from "../core/webview/ClineProvider"
-import { t } from "../i18n" // kilocode_change
-import { importSettings, exportSettings } from "../core/config/importExport" // kilocode_change
+import { t } from "../i18n" // kodely_change
+import { importSettings, exportSettings } from "../core/config/importExport" // kodely_change
 /**
  * Helper to get the visible ClineProvider instance or log if not found.
  */
 export function getVisibleProviderOrLog(outputChannel: vscode.OutputChannel): ClineProvider | undefined {
 	const visibleProvider = ClineProvider.getVisibleInstance()
 	if (!visibleProvider) {
-		outputChannel.appendLine("Cannot find any visible Kilo Code instances.")
+		outputChannel.appendLine("Cannot find any visible Kodely instances.")
 		return undefined
 	}
 	return visibleProvider
@@ -63,40 +63,40 @@ export const registerCommands = (options: RegisterCommandOptions) => {
 
 const getCommandsMap = ({ context, outputChannel, provider }: RegisterCommandOptions) => {
 	return {
-		"kilo-code.activationCompleted": () => {},
-		"kilo-code.plusButtonClicked": async () => {
+		"kodely.activationCompleted": () => {},
+		"kodely.plusButtonClicked": async () => {
 			const visibleProvider = getVisibleProviderOrLog(outputChannel)
 			if (!visibleProvider) return
 			await visibleProvider.removeClineFromStack()
 			await visibleProvider.postStateToWebview()
 			await visibleProvider.postMessageToWebview({ type: "action", action: "chatButtonClicked" })
 		},
-		"kilo-code.mcpButtonClicked": () => {
+		"kodely.mcpButtonClicked": () => {
 			const visibleProvider = getVisibleProviderOrLog(outputChannel)
 			if (!visibleProvider) return
 			visibleProvider.postMessageToWebview({ type: "action", action: "mcpButtonClicked" })
 		},
-		"kilo-code.promptsButtonClicked": () => {
+		"kodely.promptsButtonClicked": () => {
 			const visibleProvider = getVisibleProviderOrLog(outputChannel)
 			if (!visibleProvider) return
 			visibleProvider.postMessageToWebview({ type: "action", action: "promptsButtonClicked" })
 		},
-		"kilo-code.popoutButtonClicked": () => openClineInNewTab({ context, outputChannel }),
-		"kilo-code.openInNewTab": () => openClineInNewTab({ context, outputChannel }),
-		"kilo-code.settingsButtonClicked": () => {
+		"kodely.popoutButtonClicked": () => openClineInNewTab({ context, outputChannel }),
+		"kodely.openInNewTab": () => openClineInNewTab({ context, outputChannel }),
+		"kodely.settingsButtonClicked": () => {
 			const visibleProvider = getVisibleProviderOrLog(outputChannel)
 			if (!visibleProvider) return
 			visibleProvider.postMessageToWebview({ type: "action", action: "settingsButtonClicked" })
 		},
-		"kilo-code.historyButtonClicked": () => {
+		"kodely.historyButtonClicked": () => {
 			const visibleProvider = getVisibleProviderOrLog(outputChannel)
 			if (!visibleProvider) return
 			visibleProvider.postMessageToWebview({ type: "action", action: "historyButtonClicked" })
 		},
-		"kilo-code.helpButtonClicked": () => {
-			vscode.env.openExternal(vscode.Uri.parse("https://kilocode.ai"))
+		"kodely.helpButtonClicked": () => {
+			vscode.env.openExternal(vscode.Uri.parse("https://kodely.dev"))
 		},
-		"kilo-code.showHumanRelayDialog": (params: { requestId: string; promptText: string }) => {
+		"kodely.showHumanRelayDialog": (params: { requestId: string; promptText: string }) => {
 			const panel = getPanel()
 
 			if (panel) {
@@ -107,18 +107,18 @@ const getCommandsMap = ({ context, outputChannel, provider }: RegisterCommandOpt
 				})
 			}
 		},
-		"kilo-code.registerHumanRelayCallback": registerHumanRelayCallback,
-		"kilo-code.unregisterHumanRelayCallback": unregisterHumanRelayCallback,
-		"kilo-code.handleHumanRelayResponse": handleHumanRelayResponse,
-		"kilo-code.newTask": handleNewTask,
-		"kilo-code.setCustomStoragePath": async () => {
+		"kodely.registerHumanRelayCallback": registerHumanRelayCallback,
+		"kodely.unregisterHumanRelayCallback": unregisterHumanRelayCallback,
+		"kodely.handleHumanRelayResponse": handleHumanRelayResponse,
+		"kodely.newTask": handleNewTask,
+		"kodely.setCustomStoragePath": async () => {
 			const { promptForCustomStoragePath } = await import("../shared/storagePathManager")
 			await promptForCustomStoragePath()
 		},
-		// kilocode_change begin
-		"kilo-code.focusChatInput": async () => {
+		// kodely_change begin
+		"kodely.focusChatInput": async () => {
 			try {
-				await vscode.commands.executeCommand("kilo-code.SidebarProvider.focus")
+				await vscode.commands.executeCommand("kodely.SidebarProvider.focus")
 				await delay(100)
 
 				let visibleProvider = getVisibleProviderOrLog(outputChannel)
@@ -138,14 +138,14 @@ const getCommandsMap = ({ context, outputChannel, provider }: RegisterCommandOpt
 				outputChannel.appendLine(`Error in focusChatInput: ${error}`)
 			}
 		},
-		// kilocode_change end
-		"kilo-code.acceptInput": () => {
+		// kodely_change end
+		"kodely.acceptInput": () => {
 			const visibleProvider = getVisibleProviderOrLog(outputChannel)
 			if (!visibleProvider) return
 			visibleProvider.postMessageToWebview({ type: "acceptInput" })
 		},
-		// kilocode_change start
-		"kilo-code.importSettings": async () => {
+		// kodely_change start
+		"kodely.importSettings": async () => {
 			const visibleProvider = getVisibleProviderOrLog(outputChannel)
 			if (!visibleProvider) return
 
@@ -157,10 +157,10 @@ const getCommandsMap = ({ context, outputChannel, provider }: RegisterCommandOpt
 			if (success) {
 				visibleProvider.settingsImportedAt = Date.now()
 				await visibleProvider.postStateToWebview()
-				await vscode.window.showInformationMessage(t("kilocode:info.settings_imported"))
+				await vscode.window.showInformationMessage(t("kodely:info.settings_imported"))
 			}
 		},
-		"kilo-code.exportSettings": async () => {
+		"kodely.exportSettings": async () => {
 			const visibleProvider = getVisibleProviderOrLog(outputChannel)
 			if (!visibleProvider) return
 
@@ -169,7 +169,7 @@ const getCommandsMap = ({ context, outputChannel, provider }: RegisterCommandOpt
 				contextProxy: visibleProvider.contextProxy,
 			})
 		},
-		// kilocode_change end
+		// kodely_change end
 	}
 }
 
@@ -191,7 +191,7 @@ export const openClineInNewTab = async ({ context, outputChannel }: Omit<Registe
 
 	const targetCol = hasVisibleEditors ? Math.max(lastCol + 1, 1) : vscode.ViewColumn.Two
 
-	const newPanel = vscode.window.createWebviewPanel(ClineProvider.tabPanelId, "Kilo Code", targetCol, {
+	const newPanel = vscode.window.createWebviewPanel(ClineProvider.tabPanelId, "Kodely", targetCol, {
 		enableScripts: true,
 		retainContextWhenHidden: true,
 		localResourceRoots: [context.extensionUri],
@@ -203,8 +203,8 @@ export const openClineInNewTab = async ({ context, outputChannel }: Omit<Registe
 	// TODO: Use better svg icon with light and dark variants (see
 	// https://stackoverflow.com/questions/58365687/vscode-extension-iconpath).
 	newPanel.iconPath = {
-		light: vscode.Uri.joinPath(context.extensionUri, "assets", "icons", "kilo.png"),
-		dark: vscode.Uri.joinPath(context.extensionUri, "assets", "icons", "kilo.png"),
+		light: vscode.Uri.joinPath(context.extensionUri, "assets", "icons", "kodely.png"),
+		dark: vscode.Uri.joinPath(context.extensionUri, "assets", "icons", "kodely.png"),
 	}
 
 	await tabProvider.resolveWebviewView(newPanel)

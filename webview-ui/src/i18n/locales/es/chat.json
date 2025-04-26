@@ -1,5 +1,5 @@
 {
-	"greeting": "¿Qué puede hacer Kilo Code por ti?",
+	"greeting": "¿Qué puede hacer Kodely por ti?",
 	"task": {
 		"title": "Tarea",
 		"seeMore": "Ver más",
@@ -68,7 +68,7 @@
 		"tooltip": "Cancelar la operación actual"
 	},
 	"scrollToBottom": "Desplazarse al final del chat",
-	"onboarding": "<strong>Tu lista de tareas en este espacio de trabajo está vacía.</strong> Comienza escribiendo una tarea abajo. ¿No estás seguro cómo empezar? Lee más sobre lo que Kilo Code puede hacer por ti en <DocsLink>la documentación</DocsLink>.",
+	"onboarding": "<strong>Tu lista de tareas en este espacio de trabajo está vacía.</strong> Comienza escribiendo una tarea abajo. ¿No estás seguro cómo empezar? Lee más sobre lo que Kodely puede hacer por ti en <DocsLink>la documentación</DocsLink>.",
 	"selectMode": "Seleccionar modo de interacción",
 	"selectApiConfig": "Seleccionar configuración de API",
 	"enhancePrompt": "Mejorar el mensaje con contexto adicional",
@@ -89,7 +89,7 @@
 	"diffError": {
 		"title": "Edición fallida"
 	},
-	"troubleMessage": "Kilo Code está teniendo problemas...",
+	"troubleMessage": "Kodely está teniendo problemas...",
 	"apiRequest": {
 		"title": "Solicitud API",
 		"failed": "Solicitud API falló",
@@ -115,47 +115,47 @@
 		"current": "Actual"
 	},
 	"instructions": {
-		"wantsToFetch": "Kilo Code quiere obtener instrucciones detalladas para ayudar con la tarea actual"
+		"wantsToFetch": "Kodely quiere obtener instrucciones detalladas para ayudar con la tarea actual"
 	},
 	"fileOperations": {
-		"wantsToRead": "Kilo Code quiere leer este archivo:",
-		"wantsToReadOutsideWorkspace": "Kilo Code quiere leer este archivo fuera del espacio de trabajo:",
-		"didRead": "Kilo Code leyó este archivo:",
-		"wantsToEdit": "Kilo Code quiere editar este archivo:",
-		"wantsToEditOutsideWorkspace": "Kilo Code quiere editar este archivo fuera del espacio de trabajo:",
-		"wantsToCreate": "Kilo Code quiere crear un nuevo archivo:",
-		"wantsToSearchReplace": "Kilo Code quiere realizar búsqueda y reemplazo en este archivo:",
-		"didSearchReplace": "Kilo Code realizó búsqueda y reemplazo en este archivo:",
-		"wantsToInsert": "Kilo Code quiere insertar contenido en este archivo:",
-		"wantsToInsertWithLineNumber": "Kilo Code quiere insertar contenido en este archivo en la línea {{lineNumber}}:",
-		"wantsToInsertAtEnd": "Kilo Code quiere añadir contenido al final de este archivo:"
+		"wantsToRead": "Kodely quiere leer este archivo:",
+		"wantsToReadOutsideWorkspace": "Kodely quiere leer este archivo fuera del espacio de trabajo:",
+		"didRead": "Kodely leyó este archivo:",
+		"wantsToEdit": "Kodely quiere editar este archivo:",
+		"wantsToEditOutsideWorkspace": "Kodely quiere editar este archivo fuera del espacio de trabajo:",
+		"wantsToCreate": "Kodely quiere crear un nuevo archivo:",
+		"wantsToSearchReplace": "Kodely quiere realizar búsqueda y reemplazo en este archivo:",
+		"didSearchReplace": "Kodely realizó búsqueda y reemplazo en este archivo:",
+		"wantsToInsert": "Kodely quiere insertar contenido en este archivo:",
+		"wantsToInsertWithLineNumber": "Kodely quiere insertar contenido en este archivo en la línea {{lineNumber}}:",
+		"wantsToInsertAtEnd": "Kodely quiere añadir contenido al final de este archivo:"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Kilo Code quiere ver los archivos de nivel superior en este directorio:",
-		"didViewTopLevel": "Kilo Code vio los archivos de nivel superior en este directorio:",
-		"wantsToViewRecursive": "Kilo Code quiere ver recursivamente todos los archivos en este directorio:",
-		"didViewRecursive": "Kilo Code vio recursivamente todos los archivos en este directorio:",
-		"wantsToViewDefinitions": "Kilo Code quiere ver nombres de definiciones de código fuente utilizados en este directorio:",
-		"didViewDefinitions": "Kilo Code vio nombres de definiciones de código fuente utilizados en este directorio:",
-		"wantsToSearch": "Kilo Code quiere buscar en este directorio <code>{{regex}}</code>:",
-		"didSearch": "Kilo Code buscó en este directorio <code>{{regex}}</code>:"
+		"wantsToViewTopLevel": "Kodely quiere ver los archivos de nivel superior en este directorio:",
+		"didViewTopLevel": "Kodely vio los archivos de nivel superior en este directorio:",
+		"wantsToViewRecursive": "Kodely quiere ver recursivamente todos los archivos en este directorio:",
+		"didViewRecursive": "Kodely vio recursivamente todos los archivos en este directorio:",
+		"wantsToViewDefinitions": "Kodely quiere ver nombres de definiciones de código fuente utilizados en este directorio:",
+		"didViewDefinitions": "Kodely vio nombres de definiciones de código fuente utilizados en este directorio:",
+		"wantsToSearch": "Kodely quiere buscar en este directorio <code>{{regex}}</code>:",
+		"didSearch": "Kodely buscó en este directorio <code>{{regex}}</code>:"
 	},
 	"commandOutput": "Salida del comando",
 	"response": "Respuesta",
 	"arguments": "Argumentos",
 	"mcp": {
-		"wantsToUseTool": "Kilo Code quiere usar una herramienta en el servidor MCP {{serverName}}:",
-		"wantsToAccessResource": "Kilo Code quiere acceder a un recurso en el servidor MCP {{serverName}}:"
+		"wantsToUseTool": "Kodely quiere usar una herramienta en el servidor MCP {{serverName}}:",
+		"wantsToAccessResource": "Kodely quiere acceder a un recurso en el servidor MCP {{serverName}}:"
 	},
 	"modes": {
-		"wantsToSwitch": "Kilo Code quiere cambiar a modo <code>{{mode}}</code>",
-		"wantsToSwitchWithReason": "Kilo Code quiere cambiar a modo <code>{{mode}}</code> porque: {{reason}}",
-		"didSwitch": "Kilo Code cambió a modo <code>{{mode}}</code>",
-		"didSwitchWithReason": "Kilo Code cambió a modo <code>{{mode}}</code> porque: {{reason}}"
+		"wantsToSwitch": "Kodely quiere cambiar a modo <code>{{mode}}</code>",
+		"wantsToSwitchWithReason": "Kodely quiere cambiar a modo <code>{{mode}}</code> porque: {{reason}}",
+		"didSwitch": "Kodely cambió a modo <code>{{mode}}</code>",
+		"didSwitchWithReason": "Kodely cambió a modo <code>{{mode}}</code> porque: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Kilo Code quiere crear una nueva subtarea en modo <code>{{mode}}</code>:",
-		"wantsToFinish": "Kilo Code quiere finalizar esta subtarea",
+		"wantsToCreate": "Kodely quiere crear una nueva subtarea en modo <code>{{mode}}</code>:",
+		"wantsToFinish": "Kodely quiere finalizar esta subtarea",
 		"newTaskContent": "Instrucciones de la subtarea",
 		"completionContent": "Subtarea completada",
 		"resultContent": "Resultados de la subtarea",
@@ -163,7 +163,7 @@
 		"completionInstructions": "¡Subtarea completada! Puedes revisar los resultados y sugerir correcciones o próximos pasos. Si todo se ve bien, confirma para devolver el resultado a la tarea principal."
 	},
 	"questions": {
-		"hasQuestion": "Kilo Code tiene una pregunta:"
+		"hasQuestion": "Kodely tiene una pregunta:"
 	},
 	"taskCompleted": "Tarea completada",
 	"shellIntegration": {
@@ -179,7 +179,7 @@
 	"autoApprove": {
 		"title": "Auto-aprobar:",
 		"none": "Ninguno",
-		"description": "Auto-aprobar permite a Kilo Code realizar acciones sin pedir permiso. Habilita solo para acciones en las que confíes plenamente. Configuración más detallada disponible en <settingsLink>Configuración</settingsLink>."
+		"description": "Auto-aprobar permite a Kodely realizar acciones sin pedir permiso. Habilita solo para acciones en las que confíes plenamente. Configuración más detallada disponible en <settingsLink>Configuración</settingsLink>."
 	},
 	"reasoning": {
 		"thinking": "Pensando",
@@ -199,7 +199,7 @@
 		"detailsDiscussLinks": "Obtén más detalles y participa en <discordLink>Discord</discordLink> y <redditLink>Reddit</redditLink> 🚀"
 	},
 	"browser": {
-		"rooWantsToUse": "Kilo Code quiere usar el navegador:",
+		"rooWantsToUse": "Kodely quiere usar el navegador:",
 		"consoleLogs": "Registros de la consola",
 		"noNewLogs": "(No hay nuevos registros)",
 		"screenshot": "Captura de pantalla del navegador",

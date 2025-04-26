@@ -32,7 +32,7 @@ export async function writeToFileTool(
 		return
 	}
 
-	const accessAllowed = cline.rooIgnoreController?.validateAccess(relPath)
+	const accessAllowed = cline.KodelyIgnoreController?.validateAccess(relPath)
 
 	if (!accessAllowed) {
 		await cline.say("rooignore_error", relPath)

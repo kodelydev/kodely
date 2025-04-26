@@ -1,14 +1,14 @@
-# Run Kilo Code Evals
+# Run Kodely Evals
 
 ## Get Started
 
 NOTE: This is MacOS only for now!
 
-Clone the Kilo Code repo:
+Clone the Kodely repo:
 
 ```sh
-git clone https://github.com/Kilo-Org/kilocode.git
-cd kilocode
+git clone https://github.com/KodelyDev/KodelyApp.git
+cd kodely
 ```
 
 Run the setup script:

@@ -1,5 +1,5 @@
 {
-	"greeting": "Què pot fer Kilo Code per tu?",
+	"greeting": "Què pot fer Kodely per tu?",
 	"task": {
 		"title": "Tasca",
 		"seeMore": "Veure més",
@@ -68,7 +68,7 @@
 		"tooltip": "Cancel·la l'operació actual"
 	},
 	"scrollToBottom": "Desplaça't al final del xat",
-	"onboarding": "<strong>La vostra llista de tasques en aquest espai de treball està buida.</strong> Comença escrivint una tasca a continuació. No esteu segur per on començar? Més informació sobre què pot fer Kilo Code per tu a <DocsLink>la documentació</DocsLink>.",
+	"onboarding": "<strong>La vostra llista de tasques en aquest espai de treball està buida.</strong> Comença escrivint una tasca a continuació. No esteu segur per on començar? Més informació sobre què pot fer Kodely per tu a <DocsLink>la documentació</DocsLink>.",
 	"selectMode": "Selecciona el mode d'interacció",
 	"selectApiConfig": "Selecciona la configuració de l'API",
 	"enhancePrompt": "Millora la sol·licitud amb context addicional",
@@ -89,7 +89,7 @@
 	"diffError": {
 		"title": "Edició fallida"
 	},
-	"troubleMessage": "Kilo Code està tenint problemes...",
+	"troubleMessage": "Kodely està tenint problemes...",
 	"apiRequest": {
 		"title": "Sol·licitud API",
 		"failed": "Sol·licitud API ha fallat",
@@ -115,47 +115,47 @@
 		"current": "Actual"
 	},
 	"instructions": {
-		"wantsToFetch": "Kilo Code vol obtenir instruccions detallades per ajudar amb la tasca actual."
+		"wantsToFetch": "Kodely vol obtenir instruccions detallades per ajudar amb la tasca actual."
 	},
 	"fileOperations": {
-		"wantsToRead": "Kilo Code vol llegir aquest fitxer:",
-		"wantsToReadOutsideWorkspace": "Kilo Code vol llegir aquest fitxer fora de l'espai de treball:",
-		"didRead": "Kilo Code ha llegit aquest fitxer:",
-		"wantsToEdit": "Kilo Code vol editar aquest fitxer:",
-		"wantsToEditOutsideWorkspace": "Kilo Code vol editar aquest fitxer fora de l'espai de treball:",
-		"wantsToCreate": "Kilo Code vol crear un nou fitxer:",
-		"wantsToSearchReplace": "Kilo Code vol realitzar cerca i substitució en aquest fitxer:",
-		"didSearchReplace": "Kilo Code ha realitzat cerca i substitució en aquest fitxer:",
-		"wantsToInsert": "Kilo Code vol inserir contingut en aquest fitxer:",
-		"wantsToInsertWithLineNumber": "Kilo Code vol inserir contingut a la línia {{lineNumber}} d'aquest fitxer:",
-		"wantsToInsertAtEnd": "Kilo Code vol afegir contingut al final d'aquest fitxer:"
+		"wantsToRead": "Kodely vol llegir aquest fitxer:",
+		"wantsToReadOutsideWorkspace": "Kodely vol llegir aquest fitxer fora de l'espai de treball:",
+		"didRead": "Kodely ha llegit aquest fitxer:",
+		"wantsToEdit": "Kodely vol editar aquest fitxer:",
+		"wantsToEditOutsideWorkspace": "Kodely vol editar aquest fitxer fora de l'espai de treball:",
+		"wantsToCreate": "Kodely vol crear un nou fitxer:",
+		"wantsToSearchReplace": "Kodely vol realitzar cerca i substitució en aquest fitxer:",
+		"didSearchReplace": "Kodely ha realitzat cerca i substitució en aquest fitxer:",
+		"wantsToInsert": "Kodely vol inserir contingut en aquest fitxer:",
+		"wantsToInsertWithLineNumber": "Kodely vol inserir contingut a la línia {{lineNumber}} d'aquest fitxer:",
+		"wantsToInsertAtEnd": "Kodely vol afegir contingut al final d'aquest fitxer:"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Kilo Code vol veure els fitxers de nivell superior en aquest directori:",
-		"didViewTopLevel": "Kilo Code ha vist els fitxers de nivell superior en aquest directori:",
-		"wantsToViewRecursive": "Kilo Code vol veure recursivament tots els fitxers en aquest directori:",
-		"didViewRecursive": "Kilo Code ha vist recursivament tots els fitxers en aquest directori:",
-		"wantsToViewDefinitions": "Kilo Code vol veure noms de definicions de codi font utilitzats en aquest directori:",
-		"didViewDefinitions": "Kilo Code ha vist noms de definicions de codi font utilitzats en aquest directori:",
-		"wantsToSearch": "Kilo Code vol cercar en aquest directori <code>{{regex}}</code>:",
-		"didSearch": "Kilo Code ha cercat en aquest directori <code>{{regex}}</code>:"
+		"wantsToViewTopLevel": "Kodely vol veure els fitxers de nivell superior en aquest directori:",
+		"didViewTopLevel": "Kodely ha vist els fitxers de nivell superior en aquest directori:",
+		"wantsToViewRecursive": "Kodely vol veure recursivament tots els fitxers en aquest directori:",
+		"didViewRecursive": "Kodely ha vist recursivament tots els fitxers en aquest directori:",
+		"wantsToViewDefinitions": "Kodely vol veure noms de definicions de codi font utilitzats en aquest directori:",
+		"didViewDefinitions": "Kodely ha vist noms de definicions de codi font utilitzats en aquest directori:",
+		"wantsToSearch": "Kodely vol cercar en aquest directori <code>{{regex}}</code>:",
+		"didSearch": "Kodely ha cercat en aquest directori <code>{{regex}}</code>:"
 	},
 	"commandOutput": "Sortida de l'ordre",
 	"response": "Resposta",
 	"arguments": "Arguments",
 	"mcp": {
-		"wantsToUseTool": "Kilo Code vol utilitzar una eina al servidor MCP {{serverName}}:",
-		"wantsToAccessResource": "Kilo Code vol accedir a un recurs al servidor MCP {{serverName}}:"
+		"wantsToUseTool": "Kodely vol utilitzar una eina al servidor MCP {{serverName}}:",
+		"wantsToAccessResource": "Kodely vol accedir a un recurs al servidor MCP {{serverName}}:"
 	},
 	"modes": {
-		"wantsToSwitch": "Kilo Code vol canviar a mode <code>{{mode}}</code>",
-		"wantsToSwitchWithReason": "Kilo Code vol canviar a mode <code>{{mode}}</code> perquè: {{reason}}",
-		"didSwitch": "Kilo Code ha canviat a mode <code>{{mode}}</code>",
-		"didSwitchWithReason": "Kilo Code ha canviat a mode <code>{{mode}}</code> perquè: {{reason}}"
+		"wantsToSwitch": "Kodely vol canviar a mode <code>{{mode}}</code>",
+		"wantsToSwitchWithReason": "Kodely vol canviar a mode <code>{{mode}}</code> perquè: {{reason}}",
+		"didSwitch": "Kodely ha canviat a mode <code>{{mode}}</code>",
+		"didSwitchWithReason": "Kodely ha canviat a mode <code>{{mode}}</code> perquè: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Kilo Code vol crear una nova subtasca en mode <code>{{mode}}</code>:",
-		"wantsToFinish": "Kilo Code vol finalitzar aquesta subtasca",
+		"wantsToCreate": "Kodely vol crear una nova subtasca en mode <code>{{mode}}</code>:",
+		"wantsToFinish": "Kodely vol finalitzar aquesta subtasca",
 		"newTaskContent": "Instruccions de la subtasca",
 		"completionContent": "Subtasca completada",
 		"resultContent": "Resultats de la subtasca",
@@ -163,7 +163,7 @@
 		"completionInstructions": "Subtasca completada! Pots revisar els resultats i suggerir correccions o següents passos. Si tot sembla correcte, confirma per tornar el resultat a la tasca principal."
 	},
 	"questions": {
-		"hasQuestion": "Kilo Code té una pregunta:"
+		"hasQuestion": "Kodely té una pregunta:"
 	},
 	"taskCompleted": "Tasca completada",
 	"shellIntegration": {
@@ -179,7 +179,7 @@
 	"autoApprove": {
 		"title": "Aprovació automàtica:",
 		"none": "Cap",
-		"description": "L'aprovació automàtica permet a Kilo Code realitzar accions sense demanar permís. Activa-la només per a accions en les que confies plenament. Configuració més detallada disponible a la <settingsLink>Configuració</settingsLink>."
+		"description": "L'aprovació automàtica permet a Kodely realitzar accions sense demanar permís. Activa-la només per a accions en les que confies plenament. Configuració més detallada disponible a la <settingsLink>Configuració</settingsLink>."
 	},
 	"reasoning": {
 		"thinking": "Pensant",
@@ -199,7 +199,7 @@
 		"detailsDiscussLinks": "Obtingues més detalls i participa a <discordLink>Discord</discordLink> i <redditLink>Reddit</redditLink> 🚀"
 	},
 	"browser": {
-		"rooWantsToUse": "Kilo Code vol utilitzar el navegador:",
+		"rooWantsToUse": "Kodely vol utilitzar el navegador:",
 		"consoleLogs": "Registres de consola",
 		"noNewLogs": "(Cap registre nou)",
 		"screenshot": "Captura de pantalla del navegador",

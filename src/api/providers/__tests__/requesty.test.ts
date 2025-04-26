@@ -94,8 +94,8 @@ describe("RequestyHandler", () => {
 				baseURL: "https://router.requesty.ai/v1",
 				apiKey: defaultOptions.requestyApiKey,
 				defaultHeaders: {
-					"HTTP-Referer": "https://kilocode.ai",
-					"X-Title": "Kilo Code",
+					"HTTP-Referer": "https://kodely.dev",
+					"X-Title": "Kodely",
 				},
 			})
 		})

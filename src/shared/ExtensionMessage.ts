@@ -12,7 +12,7 @@ import {
 	ClineMessage,
 } from "../schemas"
 import { McpServer } from "./mcp"
-import { McpMarketplaceCatalog, McpDownloadResponse } from "./kilocode/mcp"
+import { McpMarketplaceCatalog, McpDownloadResponse } from "./kodely/mcp"
 import { GitCommit } from "../utils/git"
 import { Mode } from "./modes"
 
@@ -68,8 +68,8 @@ export interface ExtensionMessage {
 		| "maxReadFileLine"
 		| "fileSearchResults"
 		| "toggleApiConfigPin"
-		| "mcpMarketplaceCatalog" // kilocode_change
-		| "mcpDownloadDetails" // kilocode_change
+		| "mcpMarketplaceCatalog" // kodely_change
+		| "mcpDownloadDetails" // kodely_change
 		| "acceptInput"
 	text?: string
 	action?:
@@ -79,7 +79,7 @@ export interface ExtensionMessage {
 		| "historyButtonClicked"
 		| "promptsButtonClicked"
 		| "didBecomeVisible"
-		| "focusChatInput" // kilocode_change
+		| "focusChatInput" // kodely_change
 	invoke?: "newChat" | "sendMessage" | "primaryButtonClick" | "secondaryButtonClick" | "setChatBoxMessage"
 	state?: ExtensionState
 	images?: string[]
@@ -114,8 +114,8 @@ export interface ExtensionMessage {
 		label?: string
 	}>
 	error?: string
-	mcpMarketplaceCatalog?: McpMarketplaceCatalog // kilocode_change
-	mcpDownloadDetails?: McpDownloadResponse // kilocode_change
+	mcpMarketplaceCatalog?: McpMarketplaceCatalog // kodely_change
+	mcpDownloadDetails?: McpDownloadResponse // kodely_change
 }
 
 export type ExtensionState = Pick<
@@ -142,7 +142,7 @@ export type ExtensionState = Pick<
 	| "allowedCommands"
 	| "browserToolEnabled"
 	| "browserViewportSize"
-	| "showAutoApproveMenu" // kilocode_change
+	| "showAutoApproveMenu" // kodely_change
 	| "screenshotQuality"
 	| "remoteBrowserEnabled"
 	| "remoteBrowserHost"
@@ -193,9 +193,9 @@ export type ExtensionState = Pick<
 	enableCheckpoints: boolean
 	maxOpenTabsContext: number // Maximum number of VSCode open tabs to include in context (0-500)
 	maxWorkspaceFiles: number // Maximum number of files to include in current working directory details (0-500)
-	showRooIgnoredFiles: boolean // Whether to show .kilocodeignore'd files in listings
+	showRooIgnoredFiles: boolean // Whether to show .kodelyignore'd files in listings
 	maxReadFileLine: number // Maximum number of lines to read from a file before truncating
-	showAutoApproveMenu: boolean // kilocode_change: Whether to show the auto-approve menu in the chat view
+	showAutoApproveMenu: boolean // kodely_change: Whether to show the auto-approve menu in the chat view
 
 	experiments: Record<ExperimentId, boolean> // Map of experiment IDs to their enabled state
 

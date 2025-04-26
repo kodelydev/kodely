@@ -96,7 +96,7 @@ function generateTestData(size: number, complexity: "simple" | "medium" | "compl
 
 // Generate a test with extremely long single lines
 function generateLongLineTestData(lineLengthKB: number, updateCount: number): string {
-	// Create a base string that's lineLengthKB kilobytes
+	// Create a base string that's lineLengthKB kodelybytes
 	const baseLength = lineLengthKB * 1024
 	let baseString = ""
 

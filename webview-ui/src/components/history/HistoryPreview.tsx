@@ -39,7 +39,7 @@ const HistoryPreview = ({ showHistoryView }: HistoryPreviewProps) => {
 								components={{
 									DocsLink: (
 										<a
-											href="https://kilocode.ai/docs/getting-started/your-first-task"
+											href="https://kodely.dev/docs/getting-started/your-first-task"
 											target="_blank"
 											rel="noopener noreferrer">
 											the docs

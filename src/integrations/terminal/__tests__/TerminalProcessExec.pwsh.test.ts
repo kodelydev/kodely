@@ -79,7 +79,7 @@ async function testPowerShellCommand(
 			executeCommand: jest.fn(),
 			cwd: vscode.Uri.file("/test/path"),
 		},
-		name: "Kilo Code",
+		name: "Kodely",
 		processId: Promise.resolve(123),
 		creationOptions: {},
 		exitStatus: undefined,

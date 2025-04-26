@@ -304,7 +304,7 @@ export function NewRun() {
 										<div className="flex items-center gap-1 p-2 border-b">
 											<CircleCheck className="size-4 text-ring" />
 											<div className="text-sm">
-												Imported valid Kilo Code settings. Showing differences from default
+												Imported valid Kodely settings. Showing differences from default
 												settings.
 											</div>
 										</div>

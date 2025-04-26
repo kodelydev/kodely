@@ -236,7 +236,7 @@ export class OpenRouterHandler extends BaseProvider implements SingleCompletionH
 	}
 }
 
-// kilocode_change start
+// kodely_change start
 function makeOpenRouterErrorReadable(error: any) {
 	if (error?.code === 429) {
 		let retryAfter
@@ -251,4 +251,4 @@ function makeOpenRouterErrorReadable(error: any) {
 	}
 	return `OpenRouter API Error: ${error?.message || error}`
 }
-// kilocode_change end
+// kodely_change end

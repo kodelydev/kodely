@@ -12,8 +12,8 @@ import { ClineProvider } from "../webview/ClineProvider"
 import { ApiConfiguration, ModelInfo } from "../../shared/api"
 import { ApiStreamChunk } from "../../api/transform/stream"
 
-// Mock RooIgnoreController
-jest.mock("../ignore/RooIgnoreController")
+// Mock KodelyIgnoreController
+jest.mock("../ignore/KodelyIgnoreController")
 
 // Mock storagePathManager to prevent dynamic import issues
 jest.mock("../../shared/storagePathManager", () => ({

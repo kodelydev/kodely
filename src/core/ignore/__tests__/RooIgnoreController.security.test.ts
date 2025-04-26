@@ -1,6 +1,6 @@
-// npx jest src/core/ignore/__tests__/RooIgnoreController.security.test.ts
+// npx jest src/core/ignore/__tests__/KodelyIgnoreController.security.test.ts
 
-import { RooIgnoreController } from "../RooIgnoreController"
+import { KodelyIgnoreController } from "../KodelyIgnoreController"
 import * as path from "path"
 import * as fs from "fs/promises"
 import { fileExistsAtPath } from "../../../utils/fs"
@@ -28,9 +28,9 @@ jest.mock("vscode", () => {
 	}
 })
 
-describe("RooIgnoreController Security Tests", () => {
+describe("KodelyIgnoreController Security Tests", () => {
 	const TEST_CWD = "/test/path"
-	let controller: RooIgnoreController
+	let controller: KodelyIgnoreController
 	let mockFileExists: jest.MockedFunction<typeof fileExistsAtPath>
 	let mockReadFile: jest.MockedFunction<typeof fs.readFile>
 
@@ -42,12 +42,12 @@ describe("RooIgnoreController Security Tests", () => {
 		mockFileExists = fileExistsAtPath as jest.MockedFunction<typeof fileExistsAtPath>
 		mockReadFile = fs.readFile as jest.MockedFunction<typeof fs.readFile>
 
-		// By default, setup .kilocodeignore to exist with some patterns
+		// By default, setup .kodelyignore to exist with some patterns
 		mockFileExists.mockResolvedValue(true)
 		mockReadFile.mockResolvedValue("node_modules\n.git\nsecrets/**\n*.log\nprivate/")
 
 		// Create and initialize controller
-		controller = new RooIgnoreController(TEST_CWD)
+		controller = new KodelyIgnoreController(TEST_CWD)
 		await controller.initialize()
 	})
 

@@ -1,5 +1,5 @@
 {
-	"greeting": "Kilo Code 能为您做什么？",
+	"greeting": "Kodely 能为您做什么？",
 	"task": {
 		"title": "任务",
 		"seeMore": "展开",
@@ -68,7 +68,7 @@
 		"tooltip": "取消当前操作"
 	},
 	"scrollToBottom": "滚动到聊天底部",
-	"onboarding": "<strong>此工作区中的任务列表为空。</strong> 请在下方输入任务开始。 不确定如何开始？ 在 <DocsLink>文档</DocsLink> 中阅读更多关于 Kilo Code 可以为您做什么的信息。",
+	"onboarding": "<strong>此工作区中的任务列表为空。</strong> 请在下方输入任务开始。 不确定如何开始？ 在 <DocsLink>文档</DocsLink> 中阅读更多关于 Kodely 可以为您做什么的信息。",
 	"selectMode": "选择交互模式",
 	"selectApiConfig": "选择API配置",
 	"enhancePrompt": "增强提示词",
@@ -89,7 +89,7 @@
 	"diffError": {
 		"title": "编辑失败"
 	},
-	"troubleMessage": "Kilo Code遇到问题...",
+	"troubleMessage": "Kodely遇到问题...",
 	"apiRequest": {
 		"title": "API请求",
 		"failed": "API请求失败",
@@ -115,7 +115,7 @@
 		"current": "当前"
 	},
 	"instructions": {
-		"wantsToFetch": "Kilo Code 想要获取详细指示以协助当前任务"
+		"wantsToFetch": "Kodely 想要获取详细指示以协助当前任务"
 	},
 	"fileOperations": {
 		"wantsToRead": "需要读取文件:",
@@ -135,8 +135,8 @@
 		"didViewTopLevel": "已查看目录文件列表:",
 		"wantsToViewRecursive": "需要查看目录所有文件:",
 		"didViewRecursive": "已查看目录所有文件:",
-		"wantsToViewDefinitions": "Kilo Code想查看此目录中使用的源代码定义名称:",
-		"didViewDefinitions": "Kilo Code已查看此目录中使用的源代码定义名称:",
+		"wantsToViewDefinitions": "Kodely想查看此目录中使用的源代码定义名称:",
+		"didViewDefinitions": "Kodely已查看此目录中使用的源代码定义名称:",
 		"wantsToSearch": "需要搜索内容: {{regex}}",
 		"didSearch": "已完成内容搜索: {{regex}}"
 	},
@@ -144,8 +144,8 @@
 	"response": "响应",
 	"arguments": "参数",
 	"mcp": {
-		"wantsToUseTool": "Kilo Code想在{{serverName}} MCP上使用工具:",
-		"wantsToAccessResource": "Kilo Code想访问{{serverName}} MCP服务上的资源:"
+		"wantsToUseTool": "Kodely想在{{serverName}} MCP上使用工具:",
+		"wantsToAccessResource": "Kodely想访问{{serverName}} MCP服务上的资源:"
 	},
 	"modes": {
 		"wantsToSwitch": "即将切换至{{mode}}模式",
@@ -154,8 +154,8 @@
 		"didSwitchWithReason": "已切换至{{mode}}模式（原因：{{reason}}）"
 	},
 	"subtasks": {
-		"wantsToCreate": "Kilo Code想在<code>{{mode}}</code>模式下创建新子任务:",
-		"wantsToFinish": "Kilo Code想完成此子任务",
+		"wantsToCreate": "Kodely想在<code>{{mode}}</code>模式下创建新子任务:",
+		"wantsToFinish": "Kodely想完成此子任务",
 		"newTaskContent": "子任务说明",
 		"completionContent": "子任务已完成",
 		"resultContent": "子任务结果",
@@ -163,7 +163,7 @@
 		"completionInstructions": "子任务已完成！您可以查看结果并提出修改或下一步建议。如果一切正常，请确认以将结果返回给主任务。"
 	},
 	"questions": {
-		"hasQuestion": "Kilo Code有一个问题:"
+		"hasQuestion": "Kodely有一个问题:"
 	},
 	"taskCompleted": "任务完成",
 	"shellIntegration": {
@@ -199,7 +199,7 @@
 		"detailsDiscussLinks": "在 <discordLink>Discord</discordLink> 和 <redditLink>Reddit</redditLink> 获取更多详情并参与讨论 🚀"
 	},
 	"browser": {
-		"rooWantsToUse": "Kilo Code想使用浏览器:",
+		"rooWantsToUse": "Kodely想使用浏览器:",
 		"consoleLogs": "控制台日志",
 		"noNewLogs": "(没有新日志)",
 		"screenshot": "浏览器截图",

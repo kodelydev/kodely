@@ -1,5 +1,5 @@
 {
-	"extension.displayName": "Kilo Code",
+	"extension.displayName": "Kodely",
 	"extension.description": "Một đội ngũ phát triển các tác nhân AI hoàn chỉnh trong trình soạn thảo của bạn.",
 	"command.newTask.title": "Tác Vụ Mới",
 	"command.explainCode.title": "Giải Thích Mã",
@@ -15,19 +15,19 @@
 	"command.terminal.fixCommandInCurrentTask.title": "Sửa Lệnh Này (Tác Vụ Hiện Tại)",
 	"command.terminal.explainCommandInCurrentTask.title": "Giải Thích Lệnh Này (Tác Vụ Hiện Tại)",
 	"command.acceptInput.title": "Chấp Nhận Đầu Vào/Gợi Ý",
-	"views.activitybar.title": "Kilo Code",
-	"views.contextMenu.label": "Kilo Code",
-	"views.terminalMenu.label": "Kilo Code",
+	"views.activitybar.title": "Kodely",
+	"views.contextMenu.label": "Kodely",
+	"views.terminalMenu.label": "Kodely",
 	"command.mcpServers.title": "Máy Chủ MCP",
 	"command.prompts.title": "Lời Nhắc",
 	"command.history.title": "Lịch Sử",
 	"command.openInEditor.title": "Mở trong Trình Soạn Thảo",
 	"command.settings.title": "Cài Đặt",
 	"command.documentation.title": "Tài Liệu",
-	"configuration.title": "Kilo Code",
+	"configuration.title": "Kodely",
 	"commands.allowedCommands.description": "Các lệnh có thể được thực thi tự động khi 'Luôn phê duyệt các thao tác thực thi' được bật",
 	"settings.vsCodeLmModelSelector.description": "Cài đặt cho API mô hình ngôn ngữ VSCode",
 	"settings.vsCodeLmModelSelector.vendor.description": "Nhà cung cấp mô hình ngôn ngữ (ví dụ: copilot)",
 	"settings.vsCodeLmModelSelector.family.description": "Họ mô hình ngôn ngữ (ví dụ: gpt-4)",
-	"settings.customStoragePath.description": "Đường dẫn lưu trữ tùy chỉnh. Để trống để sử dụng vị trí mặc định. Hỗ trợ đường dẫn tuyệt đối (ví dụ: 'D:\\KiloCodeStorage')"
+	"settings.customStoragePath.description": "Đường dẫn lưu trữ tùy chỉnh. Để trống để sử dụng vị trí mặc định. Hỗ trợ đường dẫn tuyệt đối (ví dụ: 'D:\\KodelyStorage')"
 }

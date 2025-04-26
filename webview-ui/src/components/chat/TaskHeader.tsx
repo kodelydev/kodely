@@ -45,7 +45,7 @@ const TaskHeader = ({
 	const { t } = useTranslation()
 	const { apiConfiguration, currentTaskItem } = useExtensionState()
 	const { selectedModelInfo } = useMemo(() => normalizeApiConfiguration(apiConfiguration), [apiConfiguration])
-	const [isTaskExpanded, setIsTaskExpanded] = useState(false) // kilocode_change: Do not expand by default
+	const [isTaskExpanded, setIsTaskExpanded] = useState(false) // kodely_change: Do not expand by default
 
 	const textContainerRef = useRef<HTMLDivElement>(null)
 	const textRef = useRef<HTMLDivElement>(null)

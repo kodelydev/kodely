@@ -6,8 +6,8 @@
 		"createNewMode": "新建模式",
 		"editModesConfig": "模式设置",
 		"editGlobalModes": "修改全局模式",
-		"editProjectModes": "编辑项目模式 (.kilocodemodes)",
-		"createModeHelpText": "点击 + 创建模式，或在对话时让Kilo Code创建一个新模式。"
+		"editProjectModes": "编辑项目模式 (.kodelymodes)",
+		"createModeHelpText": "点击 + 创建模式，或在对话时让Kodely创建一个新模式。"
 	},
 	"apiConfiguration": {
 		"title": "API配置",
@@ -36,12 +36,12 @@
 		"title": "模式专属规则（可选）",
 		"resetToDefault": "重置为默认值",
 		"description": "{{modeName}}模式的专属规则",
-		"loadFromFile": "支持从<span>.kilocode/rules/</span>目录读取配置（.kilocoderules-{{slug}}已弃用并将很快停止工作）。"
+		"loadFromFile": "支持从<span>.kodely/rules/</span>目录读取配置（.kodelyrules-{{slug}}已弃用并将很快停止工作）。"
 	},
 	"globalCustomInstructions": {
 		"title": "所有模式的自定义指令",
 		"description": "所有模式通用规则\n当前语言：{{language}}",
-		"loadFromFile": "支持从<span>.kilocode/rules/</span>目录读取全局配置（.kilocoderules已弃用并将很快停止工作）。"
+		"loadFromFile": "支持从<span>.kodely/rules/</span>目录读取全局配置（.kodelyrules已弃用并将很快停止工作）。"
 	},
 	"systemPrompt": {
 		"preview": "预览系统提示词",
@@ -100,7 +100,7 @@
 	},
 	"advancedSystemPrompt": {
 		"title": "高级：覆盖系统提示词",
-		"description": "您可以通过在工作区创建文件 <span>.kilocode/system-prompt-{{slug}}</span>，完全替换此模式的系统提示（角色定义和自定义指令除外）。这是一个非常高级的功能，会绕过内置的安全措施和一致性检查（尤其是与工具使用相关的部分），请谨慎操作！"
+		"description": "您可以通过在工作区创建文件 <span>.kodely/system-prompt-{{slug}}</span>，完全替换此模式的系统提示（角色定义和自定义指令除外）。这是一个非常高级的功能，会绕过内置的安全措施和一致性检查（尤其是与工具使用相关的部分），请谨慎操作！"
 	},
 	"createModeDialog": {
 		"title": "创建新模式",
@@ -121,7 +121,7 @@
 				"description": "全局可用"
 			},
 			"project": {
-				"label": "项目特定 (.kilocodemodes)",
+				"label": "项目特定 (.kodelymodes)",
 				"description": "仅当前项目有效"
 			}
 		},

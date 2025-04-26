@@ -1,5 +1,5 @@
 {
-	"greeting": "Que peut faire Kilo Code pour vous ?",
+	"greeting": "Que peut faire Kodely pour vous ?",
 	"task": {
 		"title": "Tâche",
 		"seeMore": "Voir plus",
@@ -68,7 +68,7 @@
 		"tooltip": "Annuler l'opération actuelle"
 	},
 	"scrollToBottom": "Défiler jusqu'au bas du chat",
-	"onboarding": "<strong>Votre liste de tâches dans cet espace de travail est vide.</strong> Commencez par saisir une tâche ci-dessous. Vous ne savez pas par où commencer ? En savoir plus sur ce que Kilo Code peut faire pour vous dans <DocsLink>la documentation</DocsLink>.",
+	"onboarding": "<strong>Votre liste de tâches dans cet espace de travail est vide.</strong> Commencez par saisir une tâche ci-dessous. Vous ne savez pas par où commencer ? En savoir plus sur ce que Kodely peut faire pour vous dans <DocsLink>la documentation</DocsLink>.",
 	"selectMode": "Sélectionner le mode d'interaction",
 	"selectApiConfig": "Sélectionner la configuration API",
 	"enhancePrompt": "Améliorer la requête avec un contexte supplémentaire",
@@ -89,7 +89,7 @@
 	"diffError": {
 		"title": "Modification échouée"
 	},
-	"troubleMessage": "Kilo Code rencontre des difficultés...",
+	"troubleMessage": "Kodely rencontre des difficultés...",
 	"apiRequest": {
 		"title": "Requête API",
 		"failed": "Échec de la requête API",
@@ -115,47 +115,47 @@
 		"current": "Actuel"
 	},
 	"fileOperations": {
-		"wantsToRead": "Kilo Code veut lire ce fichier :",
-		"wantsToReadOutsideWorkspace": "Kilo Code veut lire ce fichier en dehors de l'espace de travail :",
-		"didRead": "Kilo Code a lu ce fichier :",
-		"wantsToEdit": "Kilo Code veut éditer ce fichier :",
-		"wantsToEditOutsideWorkspace": "Kilo Code veut éditer ce fichier en dehors de l'espace de travail :",
-		"wantsToCreate": "Kilo Code veut créer un nouveau fichier :",
-		"wantsToSearchReplace": "Kilo Code veut effectuer une recherche et remplacement sur ce fichier :",
-		"didSearchReplace": "Kilo Code a effectué une recherche et remplacement sur ce fichier :",
-		"wantsToInsert": "Kilo Code veut insérer du contenu dans ce fichier :",
-		"wantsToInsertWithLineNumber": "Kilo Code veut insérer du contenu dans ce fichier à la ligne {{lineNumber}} :",
-		"wantsToInsertAtEnd": "Kilo Code veut ajouter du contenu à la fin de ce fichier :"
+		"wantsToRead": "Kodely veut lire ce fichier :",
+		"wantsToReadOutsideWorkspace": "Kodely veut lire ce fichier en dehors de l'espace de travail :",
+		"didRead": "Kodely a lu ce fichier :",
+		"wantsToEdit": "Kodely veut éditer ce fichier :",
+		"wantsToEditOutsideWorkspace": "Kodely veut éditer ce fichier en dehors de l'espace de travail :",
+		"wantsToCreate": "Kodely veut créer un nouveau fichier :",
+		"wantsToSearchReplace": "Kodely veut effectuer une recherche et remplacement sur ce fichier :",
+		"didSearchReplace": "Kodely a effectué une recherche et remplacement sur ce fichier :",
+		"wantsToInsert": "Kodely veut insérer du contenu dans ce fichier :",
+		"wantsToInsertWithLineNumber": "Kodely veut insérer du contenu dans ce fichier à la ligne {{lineNumber}} :",
+		"wantsToInsertAtEnd": "Kodely veut ajouter du contenu à la fin de ce fichier :"
 	},
 	"instructions": {
-		"wantsToFetch": "Kilo Code veut récupérer des instructions détaillées pour aider à la tâche actuelle"
+		"wantsToFetch": "Kodely veut récupérer des instructions détaillées pour aider à la tâche actuelle"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Kilo Code veut voir les fichiers de premier niveau dans ce répertoire :",
-		"didViewTopLevel": "Kilo Code a vu les fichiers de premier niveau dans ce répertoire :",
-		"wantsToViewRecursive": "Kilo Code veut voir récursivement tous les fichiers dans ce répertoire :",
-		"didViewRecursive": "Kilo Code a vu récursivement tous les fichiers dans ce répertoire :",
-		"wantsToViewDefinitions": "Kilo Code veut voir les noms de définitions de code source utilisés dans ce répertoire :",
-		"didViewDefinitions": "Kilo Code a vu les noms de définitions de code source utilisés dans ce répertoire :",
-		"wantsToSearch": "Kilo Code veut rechercher dans ce répertoire <code>{{regex}}</code> :",
-		"didSearch": "Kilo Code a recherché dans ce répertoire <code>{{regex}}</code> :"
+		"wantsToViewTopLevel": "Kodely veut voir les fichiers de premier niveau dans ce répertoire :",
+		"didViewTopLevel": "Kodely a vu les fichiers de premier niveau dans ce répertoire :",
+		"wantsToViewRecursive": "Kodely veut voir récursivement tous les fichiers dans ce répertoire :",
+		"didViewRecursive": "Kodely a vu récursivement tous les fichiers dans ce répertoire :",
+		"wantsToViewDefinitions": "Kodely veut voir les noms de définitions de code source utilisés dans ce répertoire :",
+		"didViewDefinitions": "Kodely a vu les noms de définitions de code source utilisés dans ce répertoire :",
+		"wantsToSearch": "Kodely veut rechercher dans ce répertoire <code>{{regex}}</code> :",
+		"didSearch": "Kodely a recherché dans ce répertoire <code>{{regex}}</code> :"
 	},
 	"commandOutput": "Sortie de commande",
 	"response": "Réponse",
 	"arguments": "Arguments",
 	"mcp": {
-		"wantsToUseTool": "Kilo Code veut utiliser un outil sur le serveur MCP {{serverName}} :",
-		"wantsToAccessResource": "Kilo Code veut accéder à une ressource sur le serveur MCP {{serverName}} :"
+		"wantsToUseTool": "Kodely veut utiliser un outil sur le serveur MCP {{serverName}} :",
+		"wantsToAccessResource": "Kodely veut accéder à une ressource sur le serveur MCP {{serverName}} :"
 	},
 	"modes": {
-		"wantsToSwitch": "Kilo Code veut passer au mode <code>{{mode}}</code>",
-		"wantsToSwitchWithReason": "Kilo Code veut passer au mode <code>{{mode}}</code> car : {{reason}}",
-		"didSwitch": "Kilo Code est passé au mode <code>{{mode}}</code>",
-		"didSwitchWithReason": "Kilo Code est passé au mode <code>{{mode}}</code> car : {{reason}}"
+		"wantsToSwitch": "Kodely veut passer au mode <code>{{mode}}</code>",
+		"wantsToSwitchWithReason": "Kodely veut passer au mode <code>{{mode}}</code> car : {{reason}}",
+		"didSwitch": "Kodely est passé au mode <code>{{mode}}</code>",
+		"didSwitchWithReason": "Kodely est passé au mode <code>{{mode}}</code> car : {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Kilo Code veut créer une nouvelle sous-tâche en mode <code>{{mode}}</code> :",
-		"wantsToFinish": "Kilo Code veut terminer cette sous-tâche",
+		"wantsToCreate": "Kodely veut créer une nouvelle sous-tâche en mode <code>{{mode}}</code> :",
+		"wantsToFinish": "Kodely veut terminer cette sous-tâche",
 		"newTaskContent": "Instructions de la sous-tâche",
 		"completionContent": "Sous-tâche terminée",
 		"resultContent": "Résultats de la sous-tâche",
@@ -163,7 +163,7 @@
 		"completionInstructions": "Sous-tâche terminée ! Vous pouvez examiner les résultats et suggérer des corrections ou les prochaines étapes. Si tout semble bon, confirmez pour retourner le résultat à la tâche parente."
 	},
 	"questions": {
-		"hasQuestion": "Kilo Code a une question :"
+		"hasQuestion": "Kodely a une question :"
 	},
 	"taskCompleted": "Tâche terminée",
 	"shellIntegration": {
@@ -179,7 +179,7 @@
 	"autoApprove": {
 		"title": "Auto-approbation :",
 		"none": "Aucune",
-		"description": "L'auto-approbation permet à Kilo Code d'effectuer des actions sans demander d'autorisation. Activez-la uniquement pour les actions auxquelles vous faites entièrement confiance. Configuration plus détaillée disponible dans les <settingsLink>Paramètres</settingsLink>."
+		"description": "L'auto-approbation permet à Kodely d'effectuer des actions sans demander d'autorisation. Activez-la uniquement pour les actions auxquelles vous faites entièrement confiance. Configuration plus détaillée disponible dans les <settingsLink>Paramètres</settingsLink>."
 	},
 	"reasoning": {
 		"thinking": "Réflexion",
@@ -199,7 +199,7 @@
 		"detailsDiscussLinks": "Obtenez plus de détails et participez aux discussions sur <discordLink>Discord</discordLink> et <redditLink>Reddit</redditLink> 🚀"
 	},
 	"browser": {
-		"rooWantsToUse": "Kilo Code veut utiliser le navigateur :",
+		"rooWantsToUse": "Kodely veut utiliser le navigateur :",
 		"consoleLogs": "Journaux de console",
 		"noNewLogs": "(Pas de nouveaux journaux)",
 		"screenshot": "Capture d'écran du navigateur",

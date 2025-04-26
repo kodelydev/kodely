@@ -1,5 +1,5 @@
 {
-	"greeting": "Cosa può fare Kilo Code per te?",
+	"greeting": "Cosa può fare Kodely per te?",
 	"task": {
 		"title": "Attività",
 		"seeMore": "Vedi altro",
@@ -68,7 +68,7 @@
 		"tooltip": "Annulla l'operazione corrente"
 	},
 	"scrollToBottom": "Scorri fino alla fine della chat",
-	"onboarding": "<strong>La tua lista di attività in questo spazio di lavoro è vuota.</strong> Inizia digitando un'attività qui sotto. Non sei sicuro di come iniziare? Scopri di più su cosa può fare Kilo Code per te nella <DocsLink>documentazione</DocsLink>.",
+	"onboarding": "<strong>La tua lista di attività in questo spazio di lavoro è vuota.</strong> Inizia digitando un'attività qui sotto. Non sei sicuro di come iniziare? Scopri di più su cosa può fare Kodely per te nella <DocsLink>documentazione</DocsLink>.",
 	"selectMode": "Seleziona modalità di interazione",
 	"selectApiConfig": "Seleziona configurazione API",
 	"enhancePrompt": "Migliora prompt con contesto aggiuntivo",
@@ -86,13 +86,13 @@
 	"edit": "Modifica...",
 	"forNextMode": "per la prossima modalità",
 	"instructions": {
-		"wantsToFetch": "Kilo Code vuole recuperare istruzioni dettagliate per aiutare con l'attività corrente"
+		"wantsToFetch": "Kodely vuole recuperare istruzioni dettagliate per aiutare con l'attività corrente"
 	},
 	"error": "Errore",
 	"diffError": {
 		"title": "Modifica non riuscita"
 	},
-	"troubleMessage": "Kilo Code sta avendo problemi...",
+	"troubleMessage": "Kodely sta avendo problemi...",
 	"apiRequest": {
 		"title": "Richiesta API",
 		"failed": "Richiesta API fallita",
@@ -118,44 +118,44 @@
 		"current": "Corrente"
 	},
 	"fileOperations": {
-		"wantsToRead": "Kilo Code vuole leggere questo file:",
-		"wantsToReadOutsideWorkspace": "Kilo Code vuole leggere questo file al di fuori dell'area di lavoro:",
-		"didRead": "Kilo Code ha letto questo file:",
-		"wantsToEdit": "Kilo Code vuole modificare questo file:",
-		"wantsToEditOutsideWorkspace": "Kilo Code vuole modificare questo file al di fuori dell'area di lavoro:",
-		"wantsToCreate": "Kilo Code vuole creare un nuovo file:",
-		"wantsToSearchReplace": "Kilo Code vuole eseguire ricerca e sostituzione in questo file:",
-		"didSearchReplace": "Kilo Code ha eseguito ricerca e sostituzione in questo file:",
-		"wantsToInsert": "Kilo Code vuole inserire contenuto in questo file:",
-		"wantsToInsertWithLineNumber": "Kilo Code vuole inserire contenuto in questo file alla riga {{lineNumber}}:",
-		"wantsToInsertAtEnd": "Kilo Code vuole aggiungere contenuto alla fine di questo file:"
+		"wantsToRead": "Kodely vuole leggere questo file:",
+		"wantsToReadOutsideWorkspace": "Kodely vuole leggere questo file al di fuori dell'area di lavoro:",
+		"didRead": "Kodely ha letto questo file:",
+		"wantsToEdit": "Kodely vuole modificare questo file:",
+		"wantsToEditOutsideWorkspace": "Kodely vuole modificare questo file al di fuori dell'area di lavoro:",
+		"wantsToCreate": "Kodely vuole creare un nuovo file:",
+		"wantsToSearchReplace": "Kodely vuole eseguire ricerca e sostituzione in questo file:",
+		"didSearchReplace": "Kodely ha eseguito ricerca e sostituzione in questo file:",
+		"wantsToInsert": "Kodely vuole inserire contenuto in questo file:",
+		"wantsToInsertWithLineNumber": "Kodely vuole inserire contenuto in questo file alla riga {{lineNumber}}:",
+		"wantsToInsertAtEnd": "Kodely vuole aggiungere contenuto alla fine di questo file:"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Kilo Code vuole visualizzare i file di primo livello in questa directory:",
-		"didViewTopLevel": "Kilo Code ha visualizzato i file di primo livello in questa directory:",
-		"wantsToViewRecursive": "Kilo Code vuole visualizzare ricorsivamente tutti i file in questa directory:",
-		"didViewRecursive": "Kilo Code ha visualizzato ricorsivamente tutti i file in questa directory:",
-		"wantsToViewDefinitions": "Kilo Code vuole visualizzare i nomi delle definizioni di codice sorgente utilizzate in questa directory:",
-		"didViewDefinitions": "Kilo Code ha visualizzato i nomi delle definizioni di codice sorgente utilizzate in questa directory:",
-		"wantsToSearch": "Kilo Code vuole cercare in questa directory <code>{{regex}}</code>:",
-		"didSearch": "Kilo Code ha cercato in questa directory <code>{{regex}}</code>:"
+		"wantsToViewTopLevel": "Kodely vuole visualizzare i file di primo livello in questa directory:",
+		"didViewTopLevel": "Kodely ha visualizzato i file di primo livello in questa directory:",
+		"wantsToViewRecursive": "Kodely vuole visualizzare ricorsivamente tutti i file in questa directory:",
+		"didViewRecursive": "Kodely ha visualizzato ricorsivamente tutti i file in questa directory:",
+		"wantsToViewDefinitions": "Kodely vuole visualizzare i nomi delle definizioni di codice sorgente utilizzate in questa directory:",
+		"didViewDefinitions": "Kodely ha visualizzato i nomi delle definizioni di codice sorgente utilizzate in questa directory:",
+		"wantsToSearch": "Kodely vuole cercare in questa directory <code>{{regex}}</code>:",
+		"didSearch": "Kodely ha cercato in questa directory <code>{{regex}}</code>:"
 	},
 	"commandOutput": "Output del comando",
 	"response": "Risposta",
 	"arguments": "Argomenti",
 	"mcp": {
-		"wantsToUseTool": "Kilo Code vuole utilizzare uno strumento sul server MCP {{serverName}}:",
-		"wantsToAccessResource": "Kilo Code vuole accedere a una risorsa sul server MCP {{serverName}}:"
+		"wantsToUseTool": "Kodely vuole utilizzare uno strumento sul server MCP {{serverName}}:",
+		"wantsToAccessResource": "Kodely vuole accedere a una risorsa sul server MCP {{serverName}}:"
 	},
 	"modes": {
-		"wantsToSwitch": "Kilo Code vuole passare alla modalità <code>{{mode}}</code>",
-		"wantsToSwitchWithReason": "Kilo Code vuole passare alla modalità <code>{{mode}}</code> perché: {{reason}}",
-		"didSwitch": "Kilo Code è passato alla modalità <code>{{mode}}</code>",
-		"didSwitchWithReason": "Kilo Code è passato alla modalità <code>{{mode}}</code> perché: {{reason}}"
+		"wantsToSwitch": "Kodely vuole passare alla modalità <code>{{mode}}</code>",
+		"wantsToSwitchWithReason": "Kodely vuole passare alla modalità <code>{{mode}}</code> perché: {{reason}}",
+		"didSwitch": "Kodely è passato alla modalità <code>{{mode}}</code>",
+		"didSwitchWithReason": "Kodely è passato alla modalità <code>{{mode}}</code> perché: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Kilo Code vuole creare una nuova sottoattività in modalità <code>{{mode}}</code>:",
-		"wantsToFinish": "Kilo Code vuole completare questa sottoattività",
+		"wantsToCreate": "Kodely vuole creare una nuova sottoattività in modalità <code>{{mode}}</code>:",
+		"wantsToFinish": "Kodely vuole completare questa sottoattività",
 		"newTaskContent": "Istruzioni sottoattività",
 		"completionContent": "Sottoattività completata",
 		"resultContent": "Risultati sottoattività",
@@ -163,7 +163,7 @@
 		"completionInstructions": "Sottoattività completata! Puoi rivedere i risultati e suggerire correzioni o prossimi passi. Se tutto sembra a posto, conferma per restituire il risultato all'attività principale."
 	},
 	"questions": {
-		"hasQuestion": "Kilo Code ha una domanda:"
+		"hasQuestion": "Kodely ha una domanda:"
 	},
 	"taskCompleted": "Attività completata",
 	"shellIntegration": {
@@ -179,7 +179,7 @@
 	"autoApprove": {
 		"title": "Auto-approvazione:",
 		"none": "Nessuna",
-		"description": "L'auto-approvazione permette a Kilo Code di eseguire azioni senza chiedere permesso. Abilita solo per azioni di cui ti fidi completamente. Configurazione più dettagliata disponibile nelle <settingsLink>Impostazioni</settingsLink>."
+		"description": "L'auto-approvazione permette a Kodely di eseguire azioni senza chiedere permesso. Abilita solo per azioni di cui ti fidi completamente. Configurazione più dettagliata disponibile nelle <settingsLink>Impostazioni</settingsLink>."
 	},
 	"reasoning": {
 		"thinking": "Sto pensando",
@@ -199,7 +199,7 @@
 		"detailsDiscussLinks": "Ottieni maggiori dettagli e partecipa alle discussioni su <discordLink>Discord</discordLink> e <redditLink>Reddit</redditLink> 🚀"
 	},
 	"browser": {
-		"rooWantsToUse": "Kilo Code vuole utilizzare il browser:",
+		"rooWantsToUse": "Kodely vuole utilizzare il browser:",
 		"consoleLogs": "Log della console",
 		"noNewLogs": "(Nessun nuovo log)",
 		"screenshot": "Screenshot del browser",

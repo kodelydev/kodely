@@ -8,7 +8,7 @@ import { Tab, TabContent } from "../common/Tab"
 import { Trans } from "react-i18next"
 import { useAppTranslation } from "@src/i18n/TranslationContext"
 import { getRequestyAuthUrl, getOpenRouterAuthUrl } from "@src/oauth/urls"
-import RooHero from "./RooHero"
+import KodelyHero from "./KodelyHero"
 import knuthShuffle from "knuth-shuffle-seeded"
 
 const WelcomeView = () => {
@@ -37,7 +37,7 @@ const WelcomeView = () => {
 	return (
 		<Tab>
 			<TabContent className="flex flex-col gap-5">
-				<RooHero />
+				<KodelyHero />
 
 				<div className="outline rounded p-4">
 					<Trans i18nKey="welcome:introduction" />
@@ -113,7 +113,7 @@ const WelcomeView = () => {
 			</TabContent>
 			<div className="sticky bottom-0 bg-vscode-sideBar-background p-5">
 				<div className="flex flex-col gap-1">
-					{!apiConfiguration?.apiProvider || apiConfiguration?.apiProvider === "kilocode" ? null : (
+					{!apiConfiguration?.apiProvider || apiConfiguration?.apiProvider === "kodely" ? null : (
 						<VSCodeButton onClick={handleSubmit} appearance="primary">
 							{t("welcome:start")}
 						</VSCodeButton>

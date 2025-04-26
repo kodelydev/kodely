@@ -31,8 +31,8 @@ const addLineNumbersSpy = jest.requireMock("../../integrations/misc/extract-text
 
 jest.mock("../../services/tree-sitter")
 jest.mock("isbinaryfile")
-jest.mock("../ignore/RooIgnoreController", () => ({
-	RooIgnoreController: class {
+jest.mock("../ignore/KodelyIgnoreController", () => ({
+	KodelyIgnoreController: class {
 		initialize() {
 			return Promise.resolve()
 		}
@@ -118,7 +118,7 @@ describe("read_file tool with maxReadFileLine setting", () => {
 		mockCline.cwd = "/"
 		mockCline.task = "Test"
 		mockCline.providerRef = mockProvider
-		mockCline.rooIgnoreController = {
+		mockCline.KodelyIgnoreController = {
 			validateAccess: jest.fn().mockReturnValue(true),
 		}
 		mockCline.say = jest.fn().mockResolvedValue(undefined)
@@ -262,7 +262,7 @@ describe("read_file tool with maxReadFileLine setting", () => {
 			expect(mockedReadLines).not.toHaveBeenCalled() // Per implementation line 141
 			expect(mockedParseSourceCodeDefinitionsForFile).toHaveBeenCalledWith(
 				absoluteFilePath,
-				mockCline.rooIgnoreController,
+				mockCline.KodelyIgnoreController,
 			)
 
 			// Verify XML structure
@@ -291,7 +291,7 @@ describe("read_file tool with maxReadFileLine setting", () => {
 			expect(mockedReadLines).toHaveBeenCalled()
 			expect(mockedParseSourceCodeDefinitionsForFile).toHaveBeenCalledWith(
 				absoluteFilePath,
-				mockCline.rooIgnoreController,
+				mockCline.KodelyIgnoreController,
 			)
 
 			// Verify XML structure

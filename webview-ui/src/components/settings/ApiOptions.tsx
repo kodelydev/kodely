@@ -7,7 +7,7 @@ import { LanguageModelChatSelector } from "vscode"
 import { Checkbox } from "vscrui"
 import { VSCodeLink, VSCodeRadio, VSCodeRadioGroup, VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
 import { ExternalLinkIcon } from "@radix-ui/react-icons"
-import { getKiloCodeBackendAuthUrl } from "../kilocode/helpers" // kilocode_change
+import { getKodelyBackendAuthUrl } from "../kodely/helpers" // kodely_change
 
 import {
 	ApiConfiguration,
@@ -68,7 +68,7 @@ interface ApiOptionsProps {
 	fromWelcomeView?: boolean
 	errorMessage: string | undefined
 	setErrorMessage: React.Dispatch<React.SetStateAction<string | undefined>>
-	hideKiloCodeButton?: boolean // kilocode_change
+	hideKodelyButton?: boolean // kodely_change
 }
 
 const ApiOptions = ({
@@ -78,7 +78,7 @@ const ApiOptions = ({
 	fromWelcomeView,
 	errorMessage,
 	setErrorMessage,
-	hideKiloCodeButton = false,
+	hideKodelyButton = false,
 }: ApiOptionsProps) => {
 	const { t } = useAppTranslation()
 
@@ -262,7 +262,7 @@ const ApiOptions = ({
 	)
 
 	// Base URL for provider documentation
-	const DOC_BASE_URL = "https://kilocode.ai/docs/providers"
+	const DOC_BASE_URL = "https://kodely.dev/docs/providers"
 
 	// Custom URL path mappings for providers with different slugs
 	const providerUrlSlugs: Record<string, string> = {
@@ -293,15 +293,15 @@ const ApiOptions = ({
 		}
 	}
 
-	// kilocode_change start
-	const kilocodeDescriptions = {
+	// kodely_change start
+	const kodelyDescriptions = {
 		claude37: "Claude 3.7 Sonnet is Anthropic's most capable model for reasoning, coding, and multimodal tasks.",
 		gemini25: "Gemini 2.5 Pro is Google's most capable model for reasoning, coding, and multimodal tasks.",
 		gpt41: "GPT-4.1 is OpenAI's most capable model for reasoning, coding, and multimodal tasks.",
 		gemini25flashpreview:
 			"Gemini 2.5 Flash Preview is Google's most capable model for reasoning, coding, and multimodal tasks.",
 	}
-	// kilocode_change end
+	// kodely_change end
 
 	const onApiProviderChange = useCallback(
 		(value: ApiProvider) => {
@@ -352,7 +352,7 @@ const ApiOptions = ({
 				<div className="flex justify-between items-center">
 					<label className="block font-medium mb-1">{t("settings:providers.apiProvider")}</label>
 					{getSelectedProviderDocUrl() && (
-						// kilocode_change do not display until we have our own docs
+						// kodely_change do not display until we have our own docs
 						<div className="hidden ext-xs text-vscode-descriptionForeground">
 							<VSCodeLink
 								href={getSelectedProviderDocUrl()!.url}
@@ -375,7 +375,7 @@ const ApiOptions = ({
 								<SelectItem key={value} value={value}>
 									{label}
 								</SelectItem>
-								{/*  kilocode_change */}
+								{/*  kodely_change */}
 								{i === 0 ? <SelectSeparator /> : null}
 							</>
 						))}
@@ -385,7 +385,7 @@ const ApiOptions = ({
 
 			{errorMessage && <ApiErrorMessage errorMessage={errorMessage} />}
 
-			{selectedProvider === "kilocode" && (
+			{selectedProvider === "kodely" && (
 				<>
 					<div style={{ marginTop: "0px" }} className="text-sm text-vscode-descriptionForeground -mt-2">
 						You get $20 for free. Choose between Claude and Gemini 2.5 models.
@@ -394,9 +394,9 @@ const ApiOptions = ({
 					<div>
 						<label className="block font-medium mb-1">Provider Type</label>
 						<Select
-							value={apiConfiguration?.kilocodeModel || "claude37"}
+							value={apiConfiguration?.kodelyModel || "claude37"}
 							onValueChange={(value) =>
-								setApiConfigurationField("kilocodeModel", value as "claude37" | "gemini25" | "gpt41")
+								setApiConfigurationField("kodelyModel", value as "claude37" | "gemini25" | "gpt41")
 							}>
 							<SelectTrigger className="w-full">
 								<SelectValue placeholder="Select provider" />
@@ -409,36 +409,36 @@ const ApiOptions = ({
 							</SelectContent>
 						</Select>
 						<div className="text-sm text-vscode-descriptionForeground mt-1">
-							{kilocodeDescriptions[apiConfiguration?.kilocodeModel ?? "claude37"]}
+							{kodelyDescriptions[apiConfiguration?.kodelyModel ?? "claude37"]}
 						</div>
 					</div>
 
-					{/* kilocode_change start */}
-					{!hideKiloCodeButton &&
-						(apiConfiguration.kilocodeToken ? (
+					{/* kodely_change start */}
+					{!hideKodelyButton &&
+						(apiConfiguration.kodelyToken ? (
 							<div>
 								<Button
 									variant="secondary"
 									onClick={async () => {
-										setApiConfigurationField("kilocodeToken", "")
+										setApiConfigurationField("kodelyToken", "")
 
 										vscode.postMessage({
 											type: "upsertApiConfiguration",
 											apiConfiguration: {
 												...apiConfiguration,
-												kilocodeToken: "",
+												kodelyToken: "",
 											},
 										})
 									}}>
-									Log out from Kilo Code
+									Log out from Kodely
 								</Button>
 							</div>
 						) : (
-							<VSCodeButtonLink variant="secondary" href={getKiloCodeBackendAuthUrl(uriScheme)}>
-								Log in at Kilo Code
+							<VSCodeButtonLink variant="secondary" href={getKodelyBackendAuthUrl(uriScheme)}>
+								Log in at Kodely
 							</VSCodeButtonLink>
 						))}
-					{/* kilocode_change end */}
+					{/* kodely_change end */}
 				</>
 			)}
 
@@ -1856,7 +1856,7 @@ const ApiOptions = ({
 			)}
 
 			{selectedModelInfo.supportsPromptCache &&
-				"isPromptCacheOptional" in selectedModelInfo && // kilocode_change
+				"isPromptCacheOptional" in selectedModelInfo && // kodely_change
 				selectedModelInfo.isPromptCacheOptional && (
 					<PromptCachingControl
 						apiConfiguration={apiConfiguration}

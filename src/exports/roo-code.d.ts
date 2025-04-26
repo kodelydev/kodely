@@ -3,7 +3,7 @@ import { EventEmitter } from "events"
 type ProviderSettings = {
 	apiProvider?:
 		| (
-				| "kilocode"
+				| "kodely"
 				| "fireworks"
 				| "anthropic"
 				| "glama"
@@ -245,8 +245,8 @@ type ProviderSettings = {
 	modelTemperature?: (number | null) | undefined
 	rateLimitSeconds?: number | undefined
 	fakeAi?: unknown | undefined
-	kilocodeToken?: string | undefined
-	kilocodeModel?: ("claude37" | "gemini25" | "gpt41" | "gemini25flashpreview") | undefined
+	kodelyToken?: string | undefined
+	kodelyModel?: ("claude37" | "gemini25" | "gpt41" | "gemini25flashpreview") | undefined
 	fireworksModelId?: string | undefined
 	fireworksApiKey?: string | undefined
 }
@@ -259,7 +259,7 @@ type GlobalSettings = {
 				name: string
 				apiProvider?:
 					| (
-							| "kilocode"
+							| "kodely"
 							| "fireworks"
 							| "anthropic"
 							| "glama"

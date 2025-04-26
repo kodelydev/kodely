@@ -20,6 +20,7 @@ import { Tab, TabContent, TabHeader } from "../common/Tab"
 import McpToolRow from "./McpToolRow"
 import McpResourceRow from "./McpResourceRow"
 import McpEnabledToggle from "./McpEnabledToggle"
+import McpMarketplaceView from "./marketplace/McpMarketplaceView"
 
 type McpViewProps = {
 	onDone: () => void
@@ -34,6 +35,8 @@ const McpView = ({ onDone }: McpViewProps) => {
 		setEnableMcpServerCreation,
 	} = useExtensionState()
 	const { t } = useAppTranslation()
+
+	const [activeTab, setActiveTab] = useState<"servers" | "marketplace">("servers")
 
 	return (
 		<Tab>
@@ -66,59 +69,96 @@ const McpView = ({ onDone }: McpViewProps) => {
 
 				{mcpEnabled && (
 					<>
-						<div style={{ marginBottom: 15 }}>
-							<VSCodeCheckbox
-								checked={enableMcpServerCreation}
-								onChange={(e: any) => {
-									setEnableMcpServerCreation(e.target.checked)
-									vscode.postMessage({ type: "enableMcpServerCreation", bool: e.target.checked })
-								}}>
-								<span style={{ fontWeight: "500" }}>{t("mcp:enableServerCreation.title")}</span>
-							</VSCodeCheckbox>
-							<p
-								style={{
-									fontSize: "12px",
-									marginTop: "5px",
-									color: "var(--vscode-descriptionForeground)",
-								}}>
-								{t("mcp:enableServerCreation.description")}
-							</p>
+						{/* Tab Navigation */}
+						<div style={{ marginBottom: "15px", display: "flex", gap: "10px" }}>
+							<Button
+								variant={activeTab === "servers" ? "default" : "secondary"}
+								onClick={() => setActiveTab("servers")}>
+								Servers
+							</Button>
+							<Button
+								variant={activeTab === "marketplace" ? "default" : "secondary"}
+								onClick={() => setActiveTab("marketplace")}>
+								Marketplace
+							</Button>
 						</div>
 
-						{/* Server List */}
-						{servers.length > 0 && (
-							<div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-								{servers.map((server) => (
-									<ServerRow
-										key={`${server.name}-${server.source || "global"}`}
-										server={server}
-										alwaysAllowMcp={alwaysAllowMcp}
-									/>
-								))}
-							</div>
+						{activeTab === "servers" && (
+							<>
+								<div style={{ marginBottom: 15 }}>
+									<VSCodeCheckbox
+										checked={enableMcpServerCreation}
+										onChange={(e: any) => {
+											setEnableMcpServerCreation(e.target.checked)
+											vscode.postMessage({ type: "enableMcpServerCreation", bool: e.target.checked })
+										}}>
+										<span style={{ fontWeight: "500" }}>{t("mcp:enableServerCreation.title")}</span>
+									</VSCodeCheckbox>
+									<p
+										style={{
+											fontSize: "12px",
+											marginTop: "5px",
+											color: "var(--vscode-descriptionForeground)",
+										}}>
+										{t("mcp:enableServerCreation.description")}
+									</p>
+								</div>
+
+								{/* Server List */}
+								{servers.length > 0 && (
+									<div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+										{servers.map((server) => (
+											<ServerRow
+												key={`${server.name}-${server.source || "global"}`}
+												server={server}
+												alwaysAllowMcp={alwaysAllowMcp}
+											/>
+										))}
+									</div>
+								)}
+
+								{/* Edit Settings Buttons */}
+								<div style={{ marginTop: "10px", width: "100%", display: "flex", gap: "10px" }}>
+									<Button
+										variant="secondary"
+										style={{ flex: 1 }}
+										onClick={() => {
+											vscode.postMessage({ type: "openMcpSettings" })
+										}}>
+										<span className="codicon codicon-edit" style={{ marginRight: "6px" }}></span>
+										{t("mcp:editGlobalMCP")}
+									</Button>
+									<Button
+										variant="secondary"
+										style={{ flex: 1 }}
+										onClick={() => {
+											vscode.postMessage({ type: "openProjectMcpSettings" })
+										}}>
+										<span className="codicon codicon-edit" style={{ marginRight: "6px" }}></span>
+										{t("mcp:editProjectMCP")}
+									</Button>
+								</div>
+							</>
 						)}
 
-						{/* Edit Settings Buttons */}
-						<div style={{ marginTop: "10px", width: "100%", display: "flex", gap: "10px" }}>
-							<Button
-								variant="secondary"
-								style={{ flex: 1 }}
-								onClick={() => {
-									vscode.postMessage({ type: "openMcpSettings" })
-								}}>
-								<span className="codicon codicon-edit" style={{ marginRight: "6px" }}></span>
-								{t("mcp:editGlobalMCP")}
-							</Button>
-							<Button
-								variant="secondary"
-								style={{ flex: 1 }}
-								onClick={() => {
-									vscode.postMessage({ type: "openProjectMcpSettings" })
-								}}>
-								<span className="codicon codicon-edit" style={{ marginRight: "6px" }}></span>
-								{t("mcp:editProjectMCP")}
-							</Button>
-						</div>
+						{activeTab === "marketplace" && (
+							<>
+								{/* Marketplace Refresh Button */}
+								<div style={{ marginBottom: 15 }}>
+									<Button
+										variant="secondary"
+										onClick={() => {
+											vscode.postMessage({ type: "fetchMcpMarketplace" })
+										}}>
+										<span className="codicon codicon-refresh" style={{ marginRight: "6px" }}></span>
+										Refresh MCP Marketplace
+									</Button>
+								</div>
+
+								{/* Marketplace View - Add key to prevent remounting */}
+								<McpMarketplaceView key="mcp-marketplace-view" />
+							</>
+						)}
 					</>
 				)}
 			</TabContent>

@@ -5,15 +5,15 @@
 import { z } from "zod"
 
 import { Equals, Keys, AssertEqual } from "../utils/type-fu"
-import { McpState } from "../shared/kilocode/mcp"
+import { McpState } from "../shared/kodely/mcp"
 
 /**
  * ProviderName
  */
 
 export const providerNames = [
-	// kilocode_change
-	"kilocode",
+	// kodely_change
+	"kodely",
 	"fireworks",
 	"anthropic",
 	"glama",
@@ -412,9 +412,9 @@ export const providerSettingsSchema = z.object({
 	rateLimitSeconds: z.number().optional(),
 	// Fake AI
 	fakeAi: z.unknown().optional(),
-	// kilocode_change
-	kilocodeToken: z.string().optional(),
-	kilocodeModel: z.enum(["claude37", "gemini25", "gpt41", "gemini25flashpreview"]).optional(),
+	// kodely_change
+	kodelyToken: z.string().optional(),
+	kodelyModel: z.enum(["claude37", "gemini25", "gpt41", "gemini25flashpreview"]).optional(),
 	fireworksModelId: z.string().optional(),
 	fireworksApiKey: z.string().optional(),
 })
@@ -509,12 +509,12 @@ const providerSettingsRecord: ProviderSettingsRecord = {
 	rateLimitSeconds: undefined,
 	// Fake AI
 	fakeAi: undefined,
-	// kilocode_change start
-	kilocodeToken: undefined,
-	kilocodeModel: undefined,
+	// kodely_change start
+	kodelyToken: undefined,
+	kodelyModel: undefined,
 	fireworksModelId: undefined,
 	fireworksApiKey: undefined,
-	// kilocode_change end
+	// kodely_change end
 	// X.AI (Grok)
 	xaiApiKey: undefined,
 }
@@ -551,7 +551,7 @@ export const globalSettingsSchema = z.object({
 
 	browserToolEnabled: z.boolean().optional(),
 	browserViewportSize: z.string().optional(),
-	showAutoApproveMenu: z.boolean().optional(), // kilocode_change
+	showAutoApproveMenu: z.boolean().optional(), // kodely_change
 	screenshotQuality: z.number().optional(),
 	remoteBrowserEnabled: z.boolean().optional(),
 	remoteBrowserHost: z.string().optional(),
@@ -629,7 +629,7 @@ const globalSettingsRecord: GlobalSettingsRecord = {
 
 	browserToolEnabled: undefined,
 	browserViewportSize: undefined,
-	showAutoApproveMenu: undefined, // kilocode_change
+	showAutoApproveMenu: undefined, // kodely_change
 	screenshotQuality: undefined,
 	remoteBrowserEnabled: undefined,
 	remoteBrowserHost: undefined,
@@ -685,7 +685,7 @@ export const GLOBAL_SETTINGS_KEYS = Object.keys(globalSettingsRecord) as Keys<Gl
 
 export const rooCodeSettingsSchema = providerSettingsSchema.merge(globalSettingsSchema)
 
-export type RooCodeSettings = GlobalSettings & ProviderSettings & McpState // kilocode_change: add McpState
+export type RooCodeSettings = GlobalSettings & ProviderSettings & McpState // kodely_change: add McpState
 
 /**
  * SecretState
@@ -706,8 +706,8 @@ export type SecretState = Pick<
 	| "mistralApiKey"
 	| "unboundApiKey"
 	| "requestyApiKey"
-	| "kilocodeToken" // kilocode_change
-	| "fireworksApiKey" // kilocode_change
+	| "kodelyToken" // kodely_change
+	| "fireworksApiKey" // kodely_change
 	| "xaiApiKey"
 >
 
@@ -727,8 +727,8 @@ const secretStateRecord: SecretStateRecord = {
 	mistralApiKey: undefined,
 	unboundApiKey: undefined,
 	requestyApiKey: undefined,
-	kilocodeToken: undefined, // kilocode_change
-	fireworksApiKey: undefined, // kilocode_change
+	kodelyToken: undefined, // kodely_change
+	fireworksApiKey: undefined, // kodely_change
 	xaiApiKey: undefined,
 }
 

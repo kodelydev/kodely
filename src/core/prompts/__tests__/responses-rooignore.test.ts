@@ -1,7 +1,7 @@
 // npx jest src/core/prompts/__tests__/responses-rooignore.test.ts
 
 import { formatResponse } from "../responses"
-import { RooIgnoreController, LOCK_TEXT_SYMBOL } from "../../ignore/RooIgnoreController"
+import { KodelyIgnoreController, LOCK_TEXT_SYMBOL } from "../../ignore/KodelyIgnoreController"
 import { fileExistsAtPath } from "../../../utils/fs"
 import * as fs from "fs/promises"
 import { toPosix } from "./utils"
@@ -51,10 +51,10 @@ describe("RooIgnore Response Formatting", () => {
 
 			// Verify error message format
 			expect(errorMessage).toContain(
-				"Access to secrets/api-keys.json is blocked by the .kilocodeignore file settings",
+				"Access to secrets/api-keys.json is blocked by the .kodelyignore file settings",
 			)
 			expect(errorMessage).toContain("continue in the task without using this file")
-			expect(errorMessage).toContain("ask the user to update the .kilocodeignore file")
+			expect(errorMessage).toContain("ask the user to update the .kodelyignore file")
 		})
 
 		/**
@@ -71,13 +71,13 @@ describe("RooIgnore Response Formatting", () => {
 		})
 	})
 
-	describe("formatResponse.formatFilesList with RooIgnoreController", () => {
+	describe("formatResponse.formatFilesList with KodelyIgnoreController", () => {
 		/**
 		 * Tests file listing with rooignore controller
 		 */
 		it("should format files list with lock symbols for ignored files", async () => {
 			// Create controller
-			const controller = new RooIgnoreController(TEST_CWD)
+			const controller = new KodelyIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Mock validateAccess to control which files are ignored
@@ -121,7 +121,7 @@ describe("RooIgnore Response Formatting", () => {
 		 */
 		it("should hide ignored files when showRooIgnoredFiles is false", async () => {
 			// Create controller
-			const controller = new RooIgnoreController(TEST_CWD)
+			const controller = new KodelyIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Mock validateAccess to control which files are ignored
@@ -168,11 +168,11 @@ describe("RooIgnore Response Formatting", () => {
 		})
 
 		/**
-		 * Tests formatFilesList handles truncation correctly with RooIgnoreController
+		 * Tests formatFilesList handles truncation correctly with KodelyIgnoreController
 		 */
-		it("should handle truncation with RooIgnoreController", async () => {
+		it("should handle truncation with KodelyIgnoreController", async () => {
 			// Create controller
-			const controller = new RooIgnoreController(TEST_CWD)
+			const controller = new KodelyIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Format with controller and truncation flag
@@ -192,9 +192,9 @@ describe("RooIgnore Response Formatting", () => {
 		/**
 		 * Tests formatFilesList handles empty results
 		 */
-		it("should handle empty file list with RooIgnoreController", async () => {
+		it("should handle empty file list with KodelyIgnoreController", async () => {
 			// Create controller
-			const controller = new RooIgnoreController(TEST_CWD)
+			const controller = new KodelyIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Format with empty files array
@@ -209,16 +209,16 @@ describe("RooIgnore Response Formatting", () => {
 		/**
 		 * Tests the instructions format
 		 */
-		it("should format .kilocodeignore instructions for the LLM", async () => {
+		it("should format .kodelyignore instructions for the LLM", async () => {
 			// Create controller
-			const controller = new RooIgnoreController(TEST_CWD)
+			const controller = new KodelyIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Get instructions
 			const instructions = controller.getInstructions()
 
 			// Verify format and content
-			expect(instructions).toContain("# .kilocodeignore")
+			expect(instructions).toContain("# .kodelyignore")
 			expect(instructions).toContain(LOCK_TEXT_SYMBOL)
 			expect(instructions).toContain("node_modules")
 			expect(instructions).toContain(".git")
@@ -233,12 +233,12 @@ describe("RooIgnore Response Formatting", () => {
 		/**
 		 * Tests null/undefined case
 		 */
-		it("should return undefined when no .kilocodeignore exists", async () => {
-			// Set up no .kilocodeignore
+		it("should return undefined when no .kodelyignore exists", async () => {
+			// Set up no .kodelyignore
 			mockFileExists.mockResolvedValue(false)
 
-			// Create controller without .kilocodeignore
-			const controller = new RooIgnoreController(TEST_CWD)
+			// Create controller without .kodelyignore
+			const controller = new KodelyIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Should return undefined

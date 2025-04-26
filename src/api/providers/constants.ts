@@ -1,6 +1,6 @@
 export const DEFAULT_HEADERS = {
-	"HTTP-Referer": "https://kilocode.ai",
-	"X-Title": "Kilo Code",
+	"HTTP-Referer": "https://kodely.dev",
+	"X-Title": "Kodely",
 }
 
 export const ANTHROPIC_DEFAULT_MAX_TOKENS = 8192

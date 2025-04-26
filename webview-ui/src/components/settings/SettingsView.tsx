@@ -16,7 +16,7 @@ import {
 	LucideIcon,
 } from "lucide-react"
 import { CaretSortIcon } from "@radix-ui/react-icons"
-// kilocode_change
+// kodely_change
 import { ensureBodyPointerEventsRestored } from "@/utils/fixPointerEvents"
 
 import { ExperimentId } from "@roo/shared/experiments"
@@ -97,7 +97,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, o
 
 	const [cachedState, setCachedState] = useState(extensionState)
 
-	// kilocode_change begin
+	// kodely_change begin
 	useEffect(() => {
 		ensureBodyPointerEventsRestored()
 	}, [isDiscardDialogShow])
@@ -106,7 +106,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, o
 		setChangeDetected(JSON.stringify(cachedState) !== JSON.stringify(extensionState))
 	}, [cachedState, extensionState])
 
-	// kilocode_change end
+	// kodely_change end
 
 	const {
 		alwaysAllowReadOnly,
@@ -149,7 +149,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, o
 		showRooIgnoredFiles,
 		remoteBrowserEnabled,
 		maxReadFileLine,
-		showAutoApproveMenu, // kilocode_change
+		showAutoApproveMenu, // kodely_change
 		terminalCompressProgressBar,
 	} = cachedState
 
@@ -168,7 +168,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, o
 		setChangeDetected(false)
 	}, [currentApiConfigName, extensionState, isChangeDetected])
 
-	// kilocode_change start
+	// kodely_change start
 	// Temporary way of making sure that the Settings view updates its local state properly when receiving
 	// api keys from providers that support url callbacks. This whole Settings View needs proper with this local state thing later
 	useEffect(() => {
@@ -176,7 +176,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, o
 		setChangeDetected(false)
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [
-		extensionState.apiConfiguration?.kilocodeToken,
+		extensionState.apiConfiguration?.kodelyToken,
 		extensionState.apiConfiguration?.openRouterApiKey,
 		extensionState.apiConfiguration?.glamaApiKey,
 		extensionState.apiConfiguration?.requestyApiKey,
@@ -189,7 +189,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, o
 			setCachedState(extensionState)
 		}
 	}, [extensionState, isChangeDetected])
-	// kilocode_change end
+	// kodely_change end
 
 	// Bust the cache when settings are imported.
 	useEffect(() => {
@@ -280,7 +280,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, o
 			vscode.postMessage({ type: "maxWorkspaceFiles", value: maxWorkspaceFiles ?? 200 })
 			vscode.postMessage({ type: "showRooIgnoredFiles", bool: showRooIgnoredFiles })
 			vscode.postMessage({ type: "maxReadFileLine", value: maxReadFileLine ?? 500 })
-			vscode.postMessage({ type: "showAutoApproveMenu", bool: showAutoApproveMenu }) // kilocode_change
+			vscode.postMessage({ type: "showAutoApproveMenu", bool: showAutoApproveMenu }) // kodely_change
 			vscode.postMessage({ type: "currentApiConfigName", text: currentApiConfigName })
 			vscode.postMessage({ type: "updateExperimental", values: experiments })
 			vscode.postMessage({ type: "alwaysAllowModeSwitch", bool: alwaysAllowModeSwitch })
@@ -307,7 +307,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, o
 
 	useImperativeHandle(ref, () => ({ checkUnsaveChanges }), [checkUnsaveChanges])
 
-	// kilocode_change start
+	// kodely_change start
 	const onConfirmDialogResult = useCallback(
 		(confirm: boolean) => {
 			if (confirm) {
@@ -318,7 +318,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, o
 		},
 		[setCachedState, setChangeDetected, extensionState],
 	)
-	// kilocode_change end
+	// kodely_change end
 
 	const providersRef = useRef<HTMLDivElement>(null)
 	const autoApproveRef = useRef<HTMLDivElement>(null)
@@ -471,7 +471,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, o
 
 				<div ref={autoApproveRef}>
 					<AutoApproveSettings
-						showAutoApproveMenu={showAutoApproveMenu} // kilocode_change
+						showAutoApproveMenu={showAutoApproveMenu} // kodely_change
 						alwaysAllowReadOnly={alwaysAllowReadOnly}
 						alwaysAllowReadOnlyOutsideWorkspace={alwaysAllowReadOnlyOutsideWorkspace}
 						alwaysAllowWrite={alwaysAllowWrite}

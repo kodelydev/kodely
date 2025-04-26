@@ -20,7 +20,7 @@ import {
 } from "@src/utils/context-mentions"
 import { convertToMentionPath } from "@/utils/path-mentions"
 import { SelectDropdown, DropdownOptionType, Button } from "@/components/ui"
-import { normalizeApiConfiguration } from "@/utils/normalizeApiConfiguration" // kilocode_change
+import { normalizeApiConfiguration } from "@/utils/normalizeApiConfiguration" // kodely_change
 
 import Thumbnails from "../common/Thumbnails"
 import { MAX_IMAGES_PER_MESSAGE } from "./ChatView"
@@ -76,7 +76,7 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 			cwd,
 			pinnedApiConfigs,
 			togglePinnedApiConfig,
-			apiConfiguration, // kilocode_change
+			apiConfiguration, // kodely_change
 		} = useExtensionState()
 
 		// Find the ID and display text for the currently selected API configuration
@@ -88,18 +88,18 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 			}
 		}, [listApiConfigMeta, currentApiConfigName])
 
-		// kilocode_change start
+		// kodely_change start
 		const { selectedModelId, selectedProvider } = useMemo(() => {
 			const { selectedModelId, selectedProvider } = normalizeApiConfiguration(apiConfiguration)
 			return { selectedModelId, selectedProvider }
 		}, [apiConfiguration])
-		// kilocode_change end
+		// kodely_change end
 
 		const [gitCommits, setGitCommits] = useState<any[]>([])
 		const [showDropdown, setShowDropdown] = useState(false)
 		const [fileSearchResults, setFileSearchResults] = useState<SearchResult[]>([])
 
-		// kilocode_change begin: remove button from chat when it gets to small
+		// kodely_change begin: remove button from chat when it gets to small
 		const [containerWidth, setContainerWidth] = useState<number>(300) // Default to a value larger than our threshold
 
 		const containerRef = useRef<HTMLDivElement>(null)
@@ -124,7 +124,7 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 				resizeObserver.disconnect()
 			}
 		}, [])
-		// kilocode_change end
+		// kodely_change end
 
 		const [searchLoading, setSearchLoading] = useState(false)
 		const [searchRequestId, setSearchRequestId] = useState<string>("")
@@ -760,7 +760,7 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 			}
 		})
 
-		// kilocode_change
+		// kodely_change
 		// const placeholderBottomText = `\n(${t("chat:addContext")}${shouldDisableImages ? `, ${t("chat:dragFiles")}` : `, ${t("chat:dragFilesImages")}`})`
 
 		return (
@@ -960,17 +960,17 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 										"ease-in-out",
 										textAreaDisabled ? "opacity-35" : "opacity-70",
 									)}>
-									{/* kilocode_change {placeholderBottomText} */}
+									{/* kodely_change {placeholderBottomText} */}
 								</div>
 							)}
 						</div>
 					</div>
 				</div>
 
-				{/* kilocode_change move thumbnails to bottom */}
+				{/* kodely_change move thumbnails to bottom */}
 
 				<div
-					// kilocode_change start
+					// kodely_change start
 					style={{
 						marginTop: "-44px",
 						zIndex: 2,
@@ -978,7 +978,7 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 						paddingRight: "10px",
 					}}
 					ref={containerRef}
-					// kilocode_change end
+					// kodely_change end
 					className={cn("flex", "justify-between", "items-center", "mt-auto", "pt-0.5")}>
 					<div className={cn("flex", "items-center", "gap-1", "min-w-0")}>
 						{/* Mode selector - fixed width */}
@@ -1019,7 +1019,7 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 							/>
 						</div>
 
-						{/* kilocode_change: fixed width */}
+						{/* kodely_change: fixed width */}
 						{/* API configuration selector - fixed width */}
 						<div className={cn("shrink-0", "w-[70px]")}>
 							<SelectDropdown
@@ -1129,7 +1129,7 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 							/>
 						</div>
 
-						{/* kilocode_change begin: Model display */}
+						{/* kodely_change begin: Model display */}
 						<div
 							className="flex items-center mx-2 overflow-hidden"
 							title={`${selectedProvider}:${selectedModelId}`}>
@@ -1137,13 +1137,13 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 								{selectedProvider}:{selectedModelId}
 							</span>
 						</div>
-						{/* kilocode_change end */}
+						{/* kodely_change end */}
 					</div>
 
 					{/* Right side - action buttons */}
 					<div
 						className={cn("flex", "items-center", "gap-0.5", "shrink-0", { hidden: containerWidth < 235 })}
-						// kilocode_change: add ref
+						// kodely_change: add ref
 						ref={actionButtonsRef}>
 						<IconButton
 							iconClass={isEnhancingPrompt ? "codicon-loading" : "codicon-sparkle"}
@@ -1170,7 +1170,7 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 							}}
 						/>
 						<IconButton
-							className="hidden" // kilocode_change
+							className="hidden" // kodely_change
 							iconClass="codicon-device-camera"
 							title={t("chat:addImages")}
 							disabled={shouldDisableImages}
@@ -1192,7 +1192,7 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 						style={{
 							left: "16px",
 							zIndex: 2,
-							marginTop: "14px", // kilocode_change
+							marginTop: "14px", // kodely_change
 							marginBottom: 0,
 						}}
 					/>

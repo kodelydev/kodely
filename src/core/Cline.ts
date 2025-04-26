@@ -83,7 +83,7 @@ import { SYSTEM_PROMPT } from "./prompts/system"
 // ... everything else
 import { parseMentions } from "./mentions"
 import { FileContextTracker } from "./context-tracking/FileContextTracker"
-import { RooIgnoreController } from "./ignore/RooIgnoreController"
+import { KodelyIgnoreController } from "./ignore/KodelyIgnoreController"
 import { type AssistantMessageContent, parseAssistantMessage } from "./assistant-message"
 import { truncateConversationIfNeeded } from "./sliding-window"
 import { ClineProvider } from "./webview/ClineProvider"
@@ -142,7 +142,7 @@ export class Cline extends EventEmitter<ClineEvents> {
 	api: ApiHandler
 	private promptCacheKey: string
 
-	rooIgnoreController?: RooIgnoreController
+	KodelyIgnoreController?: KodelyIgnoreController
 	private fileContextTracker: FileContextTracker
 	private urlContentFetcher: UrlContentFetcher
 	browserSession: BrowserSession
@@ -224,11 +224,11 @@ export class Cline extends EventEmitter<ClineEvents> {
 		this.instanceId = crypto.randomUUID().slice(0, 8)
 		this.taskNumber = -1
 
-		this.rooIgnoreController = new RooIgnoreController(this.cwd)
+		this.KodelyIgnoreController = new KodelyIgnoreController(this.cwd)
 		this.fileContextTracker = new FileContextTracker(provider, this.taskId)
 
-		this.rooIgnoreController.initialize().catch((error) => {
-			console.error("Failed to initialize RooIgnoreController:", error)
+		this.KodelyIgnoreController.initialize().catch((error) => {
+			console.error("Failed to initialize KodelyIgnoreController:", error)
 		})
 
 		this.apiConfiguration = apiConfiguration
@@ -282,7 +282,7 @@ export class Cline extends EventEmitter<ClineEvents> {
 	}
 
 	get cwd() {
-		return getWorkspacePath(path.join(os.homedir(), "Documents")) // kilocode_change: use Documents instead of Desktop as default
+		return getWorkspacePath(path.join(os.homedir(), "Documents")) // kodely_change: use Documents instead of Desktop as default
 	}
 
 	// Storing task to disk for history
@@ -483,7 +483,7 @@ export class Cline extends EventEmitter<ClineEvents> {
 		progressStatus?: ToolProgressStatus,
 	): Promise<undefined> {
 		if (this.abort) {
-			throw new Error(`[Kilo Codeine#say] task ${this.taskId}.${this.instanceId} aborted`)
+			throw new Error(`[Kodelyine#say] task ${this.taskId}.${this.instanceId} aborted`)
 		}
 
 		if (partial !== undefined) {
@@ -538,7 +538,7 @@ export class Cline extends EventEmitter<ClineEvents> {
 	async sayAndCreateMissingParamError(toolName: ToolName, paramName: string, relPath?: string) {
 		await this.say(
 			"error",
-			`Kilo Code tried to use ${toolName}${
+			`Kodely tried to use ${toolName}${
 				relPath ? ` for '${relPath.toPosix()}'` : ""
 			} without value for required parameter '${paramName}'. Retrying...`,
 		)
@@ -890,7 +890,7 @@ export class Cline extends EventEmitter<ClineEvents> {
 
 		this.urlContentFetcher.closeBrowser()
 		this.browserSession.closeBrowser()
-		this.rooIgnoreController?.dispose()
+		this.KodelyIgnoreController?.dispose()
 		this.fileContextTracker.dispose()
 
 		// If we're not streaming then `abortStream` (which reverts the diff
@@ -951,7 +951,7 @@ export class Cline extends EventEmitter<ClineEvents> {
 			})
 		}
 
-		const rooIgnoreInstructions = this.rooIgnoreController?.getInstructions()
+		const rooIgnoreInstructions = this.KodelyIgnoreController?.getInstructions()
 
 		const {
 			browserViewportSize,
@@ -1565,7 +1565,7 @@ export class Cline extends EventEmitter<ClineEvents> {
 				"mistake_limit_reached",
 				this.api.getModel().id.includes("claude")
 					? `This may indicate a failure in his thought process or inability to use a tool properly, which can be mitigated with some user guidance (e.g. "Try breaking down the task into smaller steps").`
-					: "Kilo Code uses complex prompts and iterative task execution that may be challenging for less capable models. For best results, it's recommended to use Claude 3.7 Sonnet for its advanced agentic coding capabilities.",
+					: "Kodely uses complex prompts and iterative task execution that may be challenging for less capable models. For best results, it's recommended to use Claude 3.7 Sonnet for its advanced agentic coding capabilities.",
 			)
 
 			if (response === "messageResponse") {
@@ -1967,9 +1967,9 @@ export class Cline extends EventEmitter<ClineEvents> {
 			.map((absolutePath) => path.relative(this.cwd, absolutePath))
 			.slice(0, maxWorkspaceFiles)
 
-		// Filter paths through rooIgnoreController
-		const allowedVisibleFiles = this.rooIgnoreController
-			? this.rooIgnoreController.filterPaths(visibleFilePaths)
+		// Filter paths through KodelyIgnoreController
+		const allowedVisibleFiles = this.KodelyIgnoreController
+			? this.KodelyIgnoreController.filterPaths(visibleFilePaths)
 			: visibleFilePaths.map((p) => p.toPosix()).join("\n")
 
 		if (allowedVisibleFiles) {
@@ -1988,9 +1988,9 @@ export class Cline extends EventEmitter<ClineEvents> {
 			.map((absolutePath) => path.relative(this.cwd, absolutePath).toPosix())
 			.slice(0, maxTabs)
 
-		// Filter paths through rooIgnoreController
-		const allowedOpenTabs = this.rooIgnoreController
-			? this.rooIgnoreController.filterPaths(openTabPaths)
+		// Filter paths through KodelyIgnoreController
+		const allowedOpenTabs = this.KodelyIgnoreController
+			? this.KodelyIgnoreController.filterPaths(openTabPaths)
 			: openTabPaths.map((p) => p.toPosix()).join("\n")
 
 		if (allowedOpenTabs) {
@@ -2194,7 +2194,7 @@ export class Cline extends EventEmitter<ClineEvents> {
 					this.cwd,
 					files,
 					didHitLimit,
-					this.rooIgnoreController,
+					this.KodelyIgnoreController,
 					showRooIgnoredFiles,
 				)
 				details += result

@@ -25,14 +25,14 @@ has_asdf_plugin() {
 }
 
 build_extension() {
-  echo "🔨 Building the Kilo Code extension..."
+  echo "🔨 Building the Kodely extension..."
   cd ..
   mkdir -p bin
   npm run install-extension -- --silent --no-audit || exit 1
   npm run install-webview -- --silent --no-audit || exit 1
   npm run install-e2e -- --silent --no-audit || exit 1
-  npx vsce package --out bin/kilo-code-latest.vsix || exit 1
-  code --install-extension bin/kilo-code-latest.vsix || exit 1
+  npx vsce package --out bin/kodely-latest.vsix || exit 1
+  code --install-extension bin/kodely-latest.vsix || exit 1
   cd evals
 }
 
@@ -292,7 +292,7 @@ code --install-extension dbaeumer.vscode-eslint&>/dev/null || exit 1
 code --install-extension redhat.java &>/dev/null || exit 1
 code --install-extension ms-python.python&>/dev/null || exit 1
 code --install-extension rust-lang.rust-analyzer &>/dev/null || exit 1
-code --install-extension kilocode.Kilo-Code &>/dev/null || exit 1
+code --install-extension kodely.Kodely &>/dev/null || exit 1
 
 if [[ ! -d "../../evals" ]]; then
   if gh auth status &>/dev/null; then
@@ -312,7 +312,7 @@ if [[ ! -s .env ]]; then
   cp .env.sample .env || exit 1
 fi
 
-echo "🗄️ Syncing Kilo Code evals database..."
+echo "🗄️ Syncing Kodely evals database..."
 pnpm --filter @evals/db db:push &>/dev/null || exit 1
 pnpm --filter @evals/db db:enable-wal &>/dev/null || exit 1
 
@@ -323,10 +323,10 @@ if ! grep -q "OPENROUTER_API_KEY" .env; then
   echo "OPENROUTER_API_KEY=$openrouter_api_key" >> .env || exit 1
 fi
 
-if [[ ! -s "../bin/kilo-code-latest.vsix" ]]; then
+if [[ ! -s "../bin/kodely-latest.vsix" ]]; then
   build_extension
 else
-  read -p "💻 Do you want to build a new version of the Kilo Code extension? (y/N): " build_extension
+  read -p "💻 Do you want to build a new version of the Kodely extension? (y/N): " build_extension
 
   if [[ "$build_extension" =~ ^[Yy]$ ]]; then
     build_extension

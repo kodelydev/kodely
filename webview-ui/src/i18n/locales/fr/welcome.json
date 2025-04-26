@@ -1,6 +1,6 @@
 {
-	"greeting": "Salut, je suis Kilo Code !",
-	"introduction": "<strong>Kilo Code est l'agent de codage autonome de premier plan.</strong> Prépare-toi à architecturer, coder, déboguer et à augmenter ta productivité comme jamais auparavant. Pour continuer, Kilo Code nécessite une clé API.",
+	"greeting": "Salut, je suis Kodely !",
+	"introduction": "<strong>Kodely est l'agent de codage autonome de premier plan.</strong> Prépare-toi à architecturer, coder, déboguer et à augmenter ta productivité comme jamais auparavant. Pour continuer, Kodely nécessite une clé API.",
 	"notice": "Pour commencer, cette extension a besoin d'un fournisseur d'API.",
 	"start": "C'est parti !",
 	"chooseProvider": "Choisis un fournisseur d'API pour commencer :",

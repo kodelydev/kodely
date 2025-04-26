@@ -1,3 +1,3 @@
-export function getKiloCodeBackendAuthUrl(uriScheme: string = "vscode") {
-	return `https://kilocode.ai/auth/signin?source=${uriScheme}`
+export function getKodelyBackendAuthUrl(uriScheme: string = "vscode") {
+	return `https://kodely.dev/auth/signin?source=${uriScheme}`
 }

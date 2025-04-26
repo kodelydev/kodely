@@ -12,7 +12,7 @@ declare global {
 }
 
 export async function run() {
-	const extension = vscode.extensions.getExtension<RooCodeAPI>("kilocode.Kilo-Code")
+	const extension = vscode.extensions.getExtension<RooCodeAPI>("kodely.Kodely")
 
 	if (!extension) {
 		throw new Error("Extension not found")
@@ -35,7 +35,7 @@ export async function run() {
 		},
 	})
 
-	await vscode.commands.executeCommand("kilo-code.SidebarProvider.focus")
+	await vscode.commands.executeCommand("kodely.SidebarProvider.focus")
 	await waitFor(() => api.isReady())
 
 	// Expose the API to the tests.

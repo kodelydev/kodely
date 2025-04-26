@@ -385,7 +385,7 @@ describe("ClineProvider", () => {
 			taskHistory: [],
 			shouldShowAnnouncement: false,
 			apiConfiguration: {
-				apiProvider: "kilocode",
+				apiProvider: "kodely",
 			},
 			customInstructions: undefined,
 			alwaysAllowReadOnly: false,
@@ -415,7 +415,7 @@ describe("ClineProvider", () => {
 			showRooIgnoredFiles: true,
 			renderContext: "sidebar",
 			maxReadFileLine: 500,
-			showAutoApproveMenu: false, // kilocode_change
+			showAutoApproveMenu: false, // kodely_change
 		}
 
 		const message: ExtensionMessage = {
@@ -2019,8 +2019,8 @@ describe("Project MCP Settings", () => {
 
 		// Verify directory was created
 		expect(fs.mkdir).toHaveBeenCalledWith(
-			// kilocode_change
-			expect.stringContaining(".kilocode"),
+			// kodely_change
+			expect.stringContaining(".kodely"),
 			expect.objectContaining({ recursive: true }),
 		)
 
@@ -2063,8 +2063,8 @@ describe("Project MCP Settings", () => {
 
 		// Verify error message was shown
 		expect(vscode.window.showErrorMessage).toHaveBeenCalledWith(
-			// kilocode_change
-			expect.stringContaining("Failed to create or open .kilocode/mcp.json"),
+			// kodely_change
+			expect.stringContaining("Failed to create or open .kodely/mcp.json"),
 		)
 	})
 })

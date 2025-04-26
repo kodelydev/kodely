@@ -1,5 +1,5 @@
 {
-	"extension.displayName": "Kilo Code",
+	"extension.displayName": "Kodely",
 	"extension.description": "Ein komplettes KI-Agenten-Entwicklungsteam in deinem Editor.",
 	"command.newTask.title": "Neue Aufgabe",
 	"command.explainCode.title": "Code Erklären",
@@ -15,19 +15,19 @@
 	"command.terminal.fixCommandInCurrentTask.title": "Diesen Befehl Reparieren (Aktuelle Aufgabe)",
 	"command.terminal.explainCommandInCurrentTask.title": "Diesen Befehl Erklären (Aktuelle Aufgabe)",
 	"command.acceptInput.title": "Eingabe/Vorschlag Akzeptieren",
-	"views.activitybar.title": "Kilo Code",
-	"views.contextMenu.label": "Kilo Code",
-	"views.terminalMenu.label": "Kilo Code",
+	"views.activitybar.title": "Kodely",
+	"views.contextMenu.label": "Kodely",
+	"views.terminalMenu.label": "Kodely",
 	"command.mcpServers.title": "MCP Server",
 	"command.prompts.title": "Prompts",
 	"command.history.title": "Verlauf",
 	"command.openInEditor.title": "Im Editor Öffnen",
 	"command.settings.title": "Einstellungen",
 	"command.documentation.title": "Dokumentation",
-	"configuration.title": "Kilo Code",
+	"configuration.title": "Kodely",
 	"commands.allowedCommands.description": "Befehle, die automatisch ausgeführt werden können, wenn 'Ausführungsoperationen immer genehmigen' aktiviert ist",
 	"settings.vsCodeLmModelSelector.description": "Einstellungen für die VSCode-Sprachmodell-API",
 	"settings.vsCodeLmModelSelector.vendor.description": "Der Anbieter des Sprachmodells (z.B. copilot)",
 	"settings.vsCodeLmModelSelector.family.description": "Die Familie des Sprachmodells (z.B. gpt-4)",
-	"settings.customStoragePath.description": "Benutzerdefinierter Speicherpfad. Leer lassen, um den Standardspeicherort zu verwenden. Unterstützt absolute Pfade (z.B. 'D:\\KiloCodeStorage')"
+	"settings.customStoragePath.description": "Benutzerdefinierter Speicherpfad. Leer lassen, um den Standardspeicherort zu verwenden. Unterstützt absolute Pfade (z.B. 'D:\\KodelyStorage')"
 }

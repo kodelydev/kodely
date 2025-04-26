@@ -1,4 +1,4 @@
-// kilocode_change: imported from Cline and adjusted with our own changes
+// kodely_change: imported from Cline and adjusted with our own changes
 
 import {
 	VSCodeButton,
@@ -12,10 +12,10 @@ import {
 } from "@vscode/webview-ui-toolkit/react"
 import { useEffect, useState } from "react"
 import styled from "styled-components"
-import { DEFAULT_MCP_TIMEOUT_SECONDS } from "../../../../src/shared/kilocode/mcp"
+import { DEFAULT_MCP_TIMEOUT_SECONDS } from "../../../../src/shared/kodely/mcp"
 import type { McpServer } from "../../../../src/shared/mcp"
 import { useExtensionState } from "../../context/ExtensionStateContext"
-import { getMcpServerDisplayName } from "../../utils/kilocode/mcp"
+import { getMcpServerDisplayName } from "../../utils/kodely/mcp"
 import { vscode } from "../../utils/vscode"
 import McpMarketplaceView from "./marketplace/McpMarketplaceView"
 import McpResourceRow from "./McpResourceRow"

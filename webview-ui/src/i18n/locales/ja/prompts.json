@@ -6,8 +6,8 @@
 		"createNewMode": "新しいモードを作成",
 		"editModesConfig": "モード設定を編集",
 		"editGlobalModes": "グローバルモードを編集",
-		"editProjectModes": "プロジェクトモードを編集 (.kilocodemodes)",
-		"createModeHelpText": "+ をクリックして新しいカスタムモードを作成するか、チャットで Kilo Code に作成を依頼してください！"
+		"editProjectModes": "プロジェクトモードを編集 (.kodelymodes)",
+		"createModeHelpText": "+ をクリックして新しいカスタムモードを作成するか、チャットで Kodely に作成を依頼してください！"
 	},
 	"apiConfiguration": {
 		"title": "API設定",
@@ -30,18 +30,18 @@
 	"roleDefinition": {
 		"title": "役割の定義",
 		"resetToDefault": "デフォルトにリセット",
-		"description": "このモードのKilo Codeの専門知識と個性を定義します。この説明は、Kilo Codeが自身をどのように表現し、タスクにどのように取り組むかを形作ります。"
+		"description": "このモードのKodelyの専門知識と個性を定義します。この説明は、Kodelyが自身をどのように表現し、タスクにどのように取り組むかを形作ります。"
 	},
 	"customInstructions": {
 		"title": "モード固有のカスタム指示（オプション）",
 		"resetToDefault": "デフォルトにリセット",
 		"description": "{{modeName}}モードに特化した行動ガイドラインを追加します。",
-		"loadFromFile": "{{mode}}モード固有のカスタム指示は、ワークスペースの<span>.kilocode/rules/</span>フォルダからも読み込めます（.kilocoderules-{{slug}}は非推奨であり、まもなく機能しなくなります）。"
+		"loadFromFile": "{{mode}}モード固有のカスタム指示は、ワークスペースの<span>.kodely/rules/</span>フォルダからも読み込めます（.kodelyrules-{{slug}}は非推奨であり、まもなく機能しなくなります）。"
 	},
 	"globalCustomInstructions": {
 		"title": "すべてのモードのカスタム指示",
-		"description": "これらの指示はすべてのモードに適用されます。モード固有の指示で強化できる基本的な動作セットを提供します。\nKilo Codeにエディタの表示言語({{language}})とは異なる言語で考えたり話したりさせたい場合は、ここで指定できます。",
-		"loadFromFile": "指示はワークスペースの<span>.kilocode/rules/</span>フォルダからも読み込めます（.kilocoderules は非推奨であり、まもなく機能しなくなります）。"
+		"description": "これらの指示はすべてのモードに適用されます。モード固有の指示で強化できる基本的な動作セットを提供します。\nKodelyにエディタの表示言語({{language}})とは異なる言語で考えたり話したりさせたい場合は、ここで指定できます。",
+		"loadFromFile": "指示はワークスペースの<span>.kodely/rules/</span>フォルダからも読み込めます（.kodelyrules は非推奨であり、まもなく機能しなくなります）。"
 	},
 	"systemPrompt": {
 		"preview": "システムプロンプトのプレビュー",
@@ -62,7 +62,7 @@
 		"types": {
 			"ENHANCE": {
 				"label": "プロンプトを強化",
-				"description": "プロンプト強化を使用して、入力に合わせたカスタマイズされた提案や改善を得ることができます。これにより、Kilo Codeがあなたの意図を理解し、最適な回答を提供できます。チャットの✨アイコンから利用できます。"
+				"description": "プロンプト強化を使用して、入力に合わせたカスタマイズされた提案や改善を得ることができます。これにより、Kodelyがあなたの意図を理解し、最適な回答を提供できます。チャットの✨アイコンから利用できます。"
 			},
 			"EXPLAIN": {
 				"label": "コードを説明",
@@ -100,7 +100,7 @@
 	},
 	"advancedSystemPrompt": {
 		"title": "詳細設定：システムプロンプトの上書き",
-		"description": "ワークスペースの<span>.kilocode/system-prompt-{{slug}}</span>にファイルを作成することで、このモードのシステムプロンプト（役割定義とカスタム指示以外）を完全に置き換えることができます。これは組み込みの安全対策と一貫性チェック（特にツールの使用に関して）をバイパスする非常に高度な機能なので、注意して使用してください！"
+		"description": "ワークスペースの<span>.kodely/system-prompt-{{slug}}</span>にファイルを作成することで、このモードのシステムプロンプト（役割定義とカスタム指示以外）を完全に置き換えることができます。これは組み込みの安全対策と一貫性チェック（特にツールの使用に関して）をバイパスする非常に高度な機能なので、注意して使用してください！"
 	},
 	"createModeDialog": {
 		"title": "新しいモードを作成",
@@ -121,13 +121,13 @@
 				"description": "すべてのワークスペースで利用可能"
 			},
 			"project": {
-				"label": "プロジェクト固有 (.kilocodemodes)",
+				"label": "プロジェクト固有 (.kodelymodes)",
 				"description": "このワークスペースでのみ使用可能、グローバルよりも優先"
 			}
 		},
 		"roleDefinition": {
 			"label": "役割の定義",
-			"description": "このモードのKilo Codeの専門知識と個性を定義します。"
+			"description": "このモードのKodelyの専門知識と個性を定義します。"
 		},
 		"tools": {
 			"label": "利用可能なツール",

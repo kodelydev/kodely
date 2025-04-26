@@ -6,8 +6,8 @@
 		"createNewMode": "Créer un nouveau mode",
 		"editModesConfig": "Modifier la configuration des modes",
 		"editGlobalModes": "Modifier les modes globaux",
-		"editProjectModes": "Modifier les modes du projet (.kilocodemodes)",
-		"createModeHelpText": "Cliquez sur + pour créer un nouveau mode personnalisé, ou demandez simplement à Kilo Code dans le chat de vous en créer un !"
+		"editProjectModes": "Modifier les modes du projet (.kodelymodes)",
+		"createModeHelpText": "Cliquez sur + pour créer un nouveau mode personnalisé, ou demandez simplement à Kodely dans le chat de vous en créer un !"
 	},
 	"apiConfiguration": {
 		"title": "Configuration API",
@@ -30,18 +30,18 @@
 	"roleDefinition": {
 		"title": "Définition du rôle",
 		"resetToDefault": "Réinitialiser aux valeurs par défaut",
-		"description": "Définissez l'expertise et la personnalité de Kilo Code pour ce mode. Cette description façonne la manière dont Kilo Code se présente et aborde les tâches."
+		"description": "Définissez l'expertise et la personnalité de Kodely pour ce mode. Cette description façonne la manière dont Kodely se présente et aborde les tâches."
 	},
 	"customInstructions": {
 		"title": "Instructions personnalisées spécifiques au mode (optionnel)",
 		"resetToDefault": "Réinitialiser aux valeurs par défaut",
 		"description": "Ajoutez des directives comportementales spécifiques au mode {{modeName}}.",
-		"loadFromFile": "Les instructions personnalisées spécifiques au mode {{mode}} peuvent également être chargées depuis le dossier <span>.kilocode/rules/</span> dans votre espace de travail (.kilocoderules-{{slug}} est obsolète et cessera de fonctionner bientôt)."
+		"loadFromFile": "Les instructions personnalisées spécifiques au mode {{mode}} peuvent également être chargées depuis le dossier <span>.kodely/rules/</span> dans votre espace de travail (.kodelyrules-{{slug}} est obsolète et cessera de fonctionner bientôt)."
 	},
 	"globalCustomInstructions": {
 		"title": "Instructions personnalisées pour tous les modes",
-		"description": "Ces instructions s'appliquent à tous les modes. Elles fournissent un ensemble de comportements de base qui peuvent être améliorés par des instructions spécifiques au mode ci-dessous.\nSi vous souhaitez que Kilo Code pense et parle dans une langue différente de celle de votre éditeur ({{language}}), vous pouvez le spécifier ici.",
-		"loadFromFile": "Les instructions peuvent également être chargées depuis le dossier <span>.kilocode/rules/</span> dans votre espace de travail (.kilocoderules est obsolète et cessera de fonctionner bientôt)."
+		"description": "Ces instructions s'appliquent à tous les modes. Elles fournissent un ensemble de comportements de base qui peuvent être améliorés par des instructions spécifiques au mode ci-dessous.\nSi vous souhaitez que Kodely pense et parle dans une langue différente de celle de votre éditeur ({{language}}), vous pouvez le spécifier ici.",
+		"loadFromFile": "Les instructions peuvent également être chargées depuis le dossier <span>.kodely/rules/</span> dans votre espace de travail (.kodelyrules est obsolète et cessera de fonctionner bientôt)."
 	},
 	"systemPrompt": {
 		"preview": "Aperçu du prompt système",
@@ -62,7 +62,7 @@
 		"types": {
 			"ENHANCE": {
 				"label": "Améliorer le prompt",
-				"description": "Utilisez l'amélioration de prompt pour obtenir des suggestions ou des améliorations personnalisées pour vos entrées. Cela garantit que Kilo Code comprend votre intention et fournit les meilleures réponses possibles. Disponible via l'icône ✨ dans le chat."
+				"description": "Utilisez l'amélioration de prompt pour obtenir des suggestions ou des améliorations personnalisées pour vos entrées. Cela garantit que Kodely comprend votre intention et fournit les meilleures réponses possibles. Disponible via l'icône ✨ dans le chat."
 			},
 			"EXPLAIN": {
 				"label": "Expliquer le code",
@@ -100,7 +100,7 @@
 	},
 	"advancedSystemPrompt": {
 		"title": "Avancé : Remplacer le prompt système",
-		"description": "Vous pouvez complètement remplacer le prompt système pour ce mode (en dehors de la définition du rôle et des instructions personnalisées) en créant un fichier à <span>.kilocode/system-prompt-{{slug}}</span> dans votre espace de travail. Il s'agit d'une fonctionnalité très avancée qui contourne les garanties intégrées et les vérifications de cohérence (notamment concernant l'utilisation des outils), alors soyez prudent !"
+		"description": "Vous pouvez complètement remplacer le prompt système pour ce mode (en dehors de la définition du rôle et des instructions personnalisées) en créant un fichier à <span>.kodely/system-prompt-{{slug}}</span> dans votre espace de travail. Il s'agit d'une fonctionnalité très avancée qui contourne les garanties intégrées et les vérifications de cohérence (notamment concernant l'utilisation des outils), alors soyez prudent !"
 	},
 	"createModeDialog": {
 		"title": "Créer un nouveau mode",
@@ -121,13 +121,13 @@
 				"description": "Disponible dans tous les espaces de travail"
 			},
 			"project": {
-				"label": "Spécifique au projet (.kilocodemodes)",
+				"label": "Spécifique au projet (.kodelymodes)",
 				"description": "Disponible uniquement dans cet espace de travail, a priorité sur le global"
 			}
 		},
 		"roleDefinition": {
 			"label": "Définition du rôle",
-			"description": "Définissez l'expertise et la personnalité de Kilo Code pour ce mode."
+			"description": "Définissez l'expertise et la personnalité de Kodely pour ce mode."
 		},
 		"tools": {
 			"label": "Outils disponibles",

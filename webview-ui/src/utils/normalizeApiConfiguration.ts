@@ -28,14 +28,14 @@ import {
 	xaiModels,
 	vscodeLlmModels,
 	vscodeLlmDefaultModelId,
-	fireworksDefaultModelId, // kilocode_change
-	fireworksModels, // kilocode_change
+	fireworksDefaultModelId, // kodely_change
+	fireworksModels, // kodely_change
 } from "@roo/shared/api"
 
-import { kilocodeOpenrouterModels } from "@roo/shared/kilocode/api"
+import { kodelyOpenrouterModels } from "@roo/shared/kodely/api"
 
 export function normalizeApiConfiguration(apiConfiguration?: ApiConfiguration) {
-	const provider = apiConfiguration?.apiProvider || "kilocode"
+	const provider = apiConfiguration?.apiProvider || "kodely"
 	const modelId = apiConfiguration?.apiModelId
 
 	const getProviderData = (models: Record<string, ModelInfo>, defaultId: string) => {
@@ -140,11 +140,11 @@ export function normalizeApiConfiguration(apiConfiguration?: ApiConfiguration) {
 				selectedModelInfo: modelInfo,
 			}
 
-		// kilocode_change begin
+		// kodely_change begin
 		case "fireworks":
 			return getProviderData(fireworksModels, fireworksDefaultModelId)
-		case "kilocode":
-			// TODO: in line with kilocode-openrouter provider use hardcoded for now but info needs to be fetched later
+		case "kodely":
+			// TODO: in line with kodely-openrouter provider use hardcoded for now but info needs to be fetched later
 			const displayModelId = {
 				gemini25: "Gemini 2.5 Pro",
 				gemini25flashpreview: "Gemini 2.5 Flash Preview",
@@ -153,18 +153,18 @@ export function normalizeApiConfiguration(apiConfiguration?: ApiConfiguration) {
 			}
 
 			const displayConfigs = {
-				gemini25: kilocodeOpenrouterModels["google/gemini-2.5-pro-preview-03-25"],
-				gemini25flashpreview: kilocodeOpenrouterModels["google/gemini-2.5-flash-preview"],
+				gemini25: kodelyOpenrouterModels["google/gemini-2.5-pro-preview-03-25"],
+				gemini25flashpreview: kodelyOpenrouterModels["google/gemini-2.5-flash-preview"],
 				claude37: anthropicModels["claude-3-7-sonnet-20250219"],
-				gpt41: kilocodeOpenrouterModels["openai/gpt-4.1"],
+				gpt41: kodelyOpenrouterModels["openai/gpt-4.1"],
 			}
 			return {
 				selectedProvider: provider,
-				selectedModelId: displayModelId[apiConfiguration?.kilocodeModel ?? "claude37"],
-				selectedModelInfo: displayConfigs[apiConfiguration?.kilocodeModel ?? "claude37"],
+				selectedModelId: displayModelId[apiConfiguration?.kodelyModel ?? "claude37"],
+				selectedModelInfo: displayConfigs[apiConfiguration?.kodelyModel ?? "claude37"],
 			}
 
-		// kilocode_change end
+		// kodely_change end
 		default:
 			return getProviderData(anthropicModels, anthropicDefaultModelId)
 	}

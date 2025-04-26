@@ -1,6 +1,6 @@
-// npx jest src/core/ignore/__tests__/RooIgnoreController.test.ts
+// npx jest src/core/ignore/__tests__/KodelyIgnoreController.test.ts
 
-import { RooIgnoreController, LOCK_TEXT_SYMBOL } from "../RooIgnoreController"
+import { KodelyIgnoreController, LOCK_TEXT_SYMBOL } from "../KodelyIgnoreController"
 import * as vscode from "vscode"
 import * as path from "path"
 import * as fs from "fs/promises"
@@ -38,9 +38,9 @@ jest.mock("vscode", () => {
 	}
 })
 
-describe("RooIgnoreController", () => {
+describe("KodelyIgnoreController", () => {
 	const TEST_CWD = "/test/path"
-	let controller: RooIgnoreController
+	let controller: KodelyIgnoreController
 	let mockFileExists: jest.MockedFunction<typeof fileExistsAtPath>
 	let mockReadFile: jest.MockedFunction<typeof fs.readFile>
 	let mockWatcher: any
@@ -65,15 +65,15 @@ describe("RooIgnoreController", () => {
 		mockReadFile = fs.readFile as jest.MockedFunction<typeof fs.readFile>
 
 		// Create controller
-		controller = new RooIgnoreController(TEST_CWD)
+		controller = new KodelyIgnoreController(TEST_CWD)
 	})
 
 	describe("initialization", () => {
 		/**
-		 * Tests the controller initialization when .kilocodeignore exists
+		 * Tests the controller initialization when .kodelyignore exists
 		 */
-		it("should load .kilocodeignore patterns on initialization when file exists", async () => {
-			// Setup mocks to simulate existing .kilocodeignore file
+		it("should load .kodelyignore patterns on initialization when file exists", async () => {
+			// Setup mocks to simulate existing .kodelyignore file
 			mockFileExists.mockResolvedValue(true)
 			mockReadFile.mockResolvedValue("node_modules\n.git\nsecrets.json")
 
@@ -81,11 +81,11 @@ describe("RooIgnoreController", () => {
 			await controller.initialize()
 
 			// Verify file was checked and read
-			expect(mockFileExists).toHaveBeenCalledWith(path.join(TEST_CWD, ".kilocodeignore"))
-			expect(mockReadFile).toHaveBeenCalledWith(path.join(TEST_CWD, ".kilocodeignore"), "utf8")
+			expect(mockFileExists).toHaveBeenCalledWith(path.join(TEST_CWD, ".kodelyignore"))
+			expect(mockReadFile).toHaveBeenCalledWith(path.join(TEST_CWD, ".kodelyignore"), "utf8")
 
 			// Verify content was stored
-			expect(controller.rooIgnoreContent).toBe("node_modules\n.git\nsecrets.json")
+			expect(controller.KodelyIgnoreContent).toBe("node_modules\n.git\nsecrets.json")
 
 			// Test that ignore patterns were applied
 			expect(controller.validateAccess("node_modules/package.json")).toBe(false)
@@ -95,17 +95,17 @@ describe("RooIgnoreController", () => {
 		})
 
 		/**
-		 * Tests the controller behavior when .kilocodeignore doesn't exist
+		 * Tests the controller behavior when .kodelyignore doesn't exist
 		 */
-		it("should allow all access when .kilocodeignore doesn't exist", async () => {
-			// Setup mocks to simulate missing .kilocodeignore file
+		it("should allow all access when .kodelyignore doesn't exist", async () => {
+			// Setup mocks to simulate missing .kodelyignore file
 			mockFileExists.mockResolvedValue(false)
 
 			// Initialize controller
 			await controller.initialize()
 
 			// Verify no content was stored
-			expect(controller.rooIgnoreContent).toBeUndefined()
+			expect(controller.KodelyIgnoreContent).toBeUndefined()
 
 			// All files should be accessible
 			expect(controller.validateAccess("node_modules/package.json")).toBe(true)
@@ -115,12 +115,12 @@ describe("RooIgnoreController", () => {
 		/**
 		 * Tests the file watcher setup
 		 */
-		it("should set up file watcher for .kilocodeignore changes", async () => {
+		it("should set up file watcher for .kodelyignore changes", async () => {
 			// Check that watcher was created with correct pattern
 			expect(vscode.workspace.createFileSystemWatcher).toHaveBeenCalledWith(
 				expect.objectContaining({
 					base: TEST_CWD,
-					pattern: ".kilocodeignore",
+					pattern: ".kodelyignore",
 				}),
 			)
 
@@ -133,7 +133,7 @@ describe("RooIgnoreController", () => {
 		/**
 		 * Tests error handling during initialization
 		 */
-		it("should handle errors when loading .kilocodeignore", async () => {
+		it("should handle errors when loading .kodelyignore", async () => {
 			// Setup mocks to simulate error
 			mockFileExists.mockResolvedValue(true)
 			mockReadFile.mockRejectedValue(new Error("Test file read error"))
@@ -145,7 +145,7 @@ describe("RooIgnoreController", () => {
 			await controller.initialize()
 
 			// Verify error was logged
-			expect(consoleSpy).toHaveBeenCalledWith("Unexpected error loading .kilocodeignore:", expect.any(Error))
+			expect(consoleSpy).toHaveBeenCalledWith("Unexpected error loading .kodelyignore:", expect.any(Error))
 
 			// Cleanup
 			consoleSpy.mockRestore()
@@ -154,7 +154,7 @@ describe("RooIgnoreController", () => {
 
 	describe("validateAccess", () => {
 		beforeEach(async () => {
-			// Setup .kilocodeignore content
+			// Setup .kodelyignore content
 			mockFileExists.mockResolvedValue(true)
 			mockReadFile.mockResolvedValue("node_modules\n.git\nsecrets/**\n*.log")
 			await controller.initialize()
@@ -202,12 +202,12 @@ describe("RooIgnoreController", () => {
 		})
 
 		/**
-		 * Tests the default behavior when no .kilocodeignore exists
+		 * Tests the default behavior when no .kodelyignore exists
 		 */
-		it("should allow all access when no .kilocodeignore content", async () => {
-			// Create a new controller with no .kilocodeignore
+		it("should allow all access when no .kodelyignore content", async () => {
+			// Create a new controller with no .kodelyignore
 			mockFileExists.mockResolvedValue(false)
-			const emptyController = new RooIgnoreController(TEST_CWD)
+			const emptyController = new KodelyIgnoreController(TEST_CWD)
 			await emptyController.initialize()
 
 			// All paths should be allowed
@@ -219,7 +219,7 @@ describe("RooIgnoreController", () => {
 
 	describe("validateCommand", () => {
 		beforeEach(async () => {
-			// Setup .kilocodeignore content
+			// Setup .kodelyignore content
 			mockFileExists.mockResolvedValue(true)
 			mockReadFile.mockResolvedValue("node_modules\n.git\nsecrets/**\n*.log")
 			await controller.initialize()
@@ -274,12 +274,12 @@ describe("RooIgnoreController", () => {
 		})
 
 		/**
-		 * Tests behavior when no .kilocodeignore exists
+		 * Tests behavior when no .kodelyignore exists
 		 */
-		it("should allow all commands when no .kilocodeignore exists", async () => {
-			// Create a new controller with no .kilocodeignore
+		it("should allow all commands when no .kodelyignore exists", async () => {
+			// Create a new controller with no .kodelyignore
 			mockFileExists.mockResolvedValue(false)
-			const emptyController = new RooIgnoreController(TEST_CWD)
+			const emptyController = new KodelyIgnoreController(TEST_CWD)
 			await emptyController.initialize()
 
 			// All commands should be allowed
@@ -290,7 +290,7 @@ describe("RooIgnoreController", () => {
 
 	describe("filterPaths", () => {
 		beforeEach(async () => {
-			// Setup .kilocodeignore content
+			// Setup .kodelyignore content
 			mockFileExists.mockResolvedValue(true)
 			mockReadFile.mockResolvedValue("node_modules\n.git\nsecrets/**\n*.log")
 			await controller.initialize()
@@ -353,10 +353,10 @@ describe("RooIgnoreController", () => {
 
 	describe("getInstructions", () => {
 		/**
-		 * Tests instructions generation with .kilocodeignore
+		 * Tests instructions generation with .kodelyignore
 		 */
-		it("should generate formatted instructions when .kilocodeignore exists", async () => {
-			// Setup .kilocodeignore content
+		it("should generate formatted instructions when .kodelyignore exists", async () => {
+			// Setup .kodelyignore content
 			mockFileExists.mockResolvedValue(true)
 			mockReadFile.mockResolvedValue("node_modules\n.git\nsecrets/**")
 			await controller.initialize()
@@ -364,7 +364,7 @@ describe("RooIgnoreController", () => {
 			const instructions = controller.getInstructions()
 
 			// Verify instruction format
-			expect(instructions).toContain("# .kilocodeignore")
+			expect(instructions).toContain("# .kodelyignore")
 			expect(instructions).toContain(LOCK_TEXT_SYMBOL)
 			expect(instructions).toContain("node_modules")
 			expect(instructions).toContain(".git")
@@ -372,10 +372,10 @@ describe("RooIgnoreController", () => {
 		})
 
 		/**
-		 * Tests behavior when no .kilocodeignore exists
+		 * Tests behavior when no .kodelyignore exists
 		 */
-		it("should return undefined when no .kilocodeignore exists", async () => {
-			// Setup no .kilocodeignore
+		it("should return undefined when no .kodelyignore exists", async () => {
+			// Setup no .kodelyignore
 			mockFileExists.mockResolvedValue(false)
 			await controller.initialize()
 
@@ -408,26 +408,26 @@ describe("RooIgnoreController", () => {
 
 	describe("file watcher", () => {
 		/**
-		 * Tests behavior when .kilocodeignore is created
+		 * Tests behavior when .kodelyignore is created
 		 */
-		it("should reload .kilocodeignore when file is created", async () => {
-			// Setup initial state without .kilocodeignore
+		it("should reload .kodelyignore when file is created", async () => {
+			// Setup initial state without .kodelyignore
 			mockFileExists.mockResolvedValue(false)
 			await controller.initialize()
 
 			// Verify initial state
-			expect(controller.rooIgnoreContent).toBeUndefined()
+			expect(controller.KodelyIgnoreContent).toBeUndefined()
 			expect(controller.validateAccess("node_modules/package.json")).toBe(true)
 
 			// Setup for the test
 			mockFileExists.mockResolvedValue(false) // Initially no file exists
 
-			// Create and initialize controller with no .kilocodeignore
-			controller = new RooIgnoreController(TEST_CWD)
+			// Create and initialize controller with no .kodelyignore
+			controller = new KodelyIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Initial state check
-			expect(controller.rooIgnoreContent).toBeUndefined()
+			expect(controller.KodelyIgnoreContent).toBeUndefined()
 
 			// Now simulate file creation
 			mockFileExists.mockResolvedValue(true)
@@ -436,21 +436,21 @@ describe("RooIgnoreController", () => {
 			// Find and trigger the onCreate handler
 			const onCreateHandler = mockWatcher.onDidCreate.mock.calls[0][0]
 
-			// Force reload of .kilocodeignore content manually
+			// Force reload of .kodelyignore content manually
 			await controller.initialize()
 
 			// Now verify content was updated
-			expect(controller.rooIgnoreContent).toBe("node_modules")
+			expect(controller.KodelyIgnoreContent).toBe("node_modules")
 
 			// Verify access validation changed
 			expect(controller.validateAccess("node_modules/package.json")).toBe(false)
 		})
 
 		/**
-		 * Tests behavior when .kilocodeignore is changed
+		 * Tests behavior when .kodelyignore is changed
 		 */
-		it("should reload .kilocodeignore when file is changed", async () => {
-			// Setup initial state with .kilocodeignore
+		it("should reload .kodelyignore when file is changed", async () => {
+			// Setup initial state with .kodelyignore
 			mockFileExists.mockResolvedValue(true)
 			mockReadFile.mockResolvedValue("node_modules")
 			await controller.initialize()
@@ -467,7 +467,7 @@ describe("RooIgnoreController", () => {
 			await controller.initialize()
 
 			// Verify content was updated
-			expect(controller.rooIgnoreContent).toBe("node_modules\n.git")
+			expect(controller.KodelyIgnoreContent).toBe("node_modules\n.git")
 
 			// Verify access validation changed
 			expect(controller.validateAccess("node_modules/package.json")).toBe(false)
@@ -475,10 +475,10 @@ describe("RooIgnoreController", () => {
 		})
 
 		/**
-		 * Tests behavior when .kilocodeignore is deleted
+		 * Tests behavior when .kodelyignore is deleted
 		 */
-		it("should reset when .kilocodeignore is deleted", async () => {
-			// Setup initial state with .kilocodeignore
+		it("should reset when .kodelyignore is deleted", async () => {
+			// Setup initial state with .kodelyignore
 			mockFileExists.mockResolvedValue(true)
 			mockReadFile.mockResolvedValue("node_modules")
 			await controller.initialize()
@@ -494,7 +494,7 @@ describe("RooIgnoreController", () => {
 			await onDeleteHandler()
 
 			// Verify content was reset
-			expect(controller.rooIgnoreContent).toBeUndefined()
+			expect(controller.KodelyIgnoreContent).toBeUndefined()
 
 			// Verify access validation changed
 			expect(controller.validateAccess("node_modules/package.json")).toBe(true)

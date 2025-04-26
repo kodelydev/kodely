@@ -1,18 +1,18 @@
 import * as assert from "assert"
 import * as vscode from "vscode"
 
-suite("Kilo Code Extension", () => {
+suite("Kodely Extension", () => {
 	test("Commands should be registered", async () => {
 		const expectedCommands = [
-			"kilo-code.plusButtonClicked",
-			"kilo-code.mcpButtonClicked",
-			"kilo-code.historyButtonClicked",
-			"kilo-code.popoutButtonClicked",
-			"kilo-code.settingsButtonClicked",
-			"kilo-code.openInNewTab",
-			"kilo-code.explainCode",
-			"kilo-code.fixCode",
-			"kilo-code.improveCode",
+			"kodely.plusButtonClicked",
+			"kodely.mcpButtonClicked",
+			"kodely.historyButtonClicked",
+			"kodely.popoutButtonClicked",
+			"kodely.settingsButtonClicked",
+			"kodely.openInNewTab",
+			"kodely.explainCode",
+			"kodely.fixCode",
+			"kodely.improveCode",
 		]
 
 		const commands = await vscode.commands.getCommands(true)

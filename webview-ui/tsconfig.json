@@ -19,7 +19,8 @@
 		"paths": {
 			"@/*": ["./src/*"],
 			"@src/*": ["./src/*"],
-			"@roo/*": ["../src/*"]
+			"@roo/*": ["../src/*"],
+			"@kodely/*": ["../src/*"]
 		}
 	},
 	"include": ["src", "../src/shared"]

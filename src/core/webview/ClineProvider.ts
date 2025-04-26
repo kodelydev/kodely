@@ -54,8 +54,8 @@ import { getWorkspacePath } from "../../utils/path"
 import { webviewMessageHandler } from "./webviewMessageHandler"
 import { WebviewMessage } from "../../shared/WebviewMessage"
 
-import { McpDownloadResponse, McpMarketplaceCatalog } from "../../shared/kilocode/mcp" //kilocode_change
-import { McpServer } from "../../shared/mcp" // kilocode_change
+import { McpDownloadResponse, McpMarketplaceCatalog } from "../../shared/kodely/mcp" //kodely_change
+import { McpServer } from "../../shared/mcp" // kodely_change
 
 /**
  * https://github.com/microsoft/vscode-webview-ui-toolkit-samples/blob/main/default/weather-webview/src/providers/WeatherViewProvider.ts
@@ -67,8 +67,8 @@ export type ClineProviderEvents = {
 }
 
 export class ClineProvider extends EventEmitter<ClineProviderEvents> implements vscode.WebviewViewProvider {
-	public static readonly sideBarId = "kilo-code.SidebarProvider" // used in package.json as the view's id. This value cannot be changed due to how vscode caches views based on their id, and updating the id would break existing instances of the extension.
-	public static readonly tabPanelId = "kilo-code.TabPanelProvider"
+	public static readonly sideBarId = "kodely.SidebarProvider" // used in package.json as the view's id. This value cannot be changed due to how vscode caches views based on their id, and updating the id would break existing instances of the extension.
+	public static readonly tabPanelId = "kodely.TabPanelProvider"
 	private static activeInstances: Set<ClineProvider> = new Set()
 	private disposables: vscode.Disposable[] = []
 	private view?: vscode.WebviewView | vscode.WebviewPanel
@@ -235,7 +235,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 
 		// If no visible provider, try to show the sidebar view
 		if (!visibleProvider) {
-			await vscode.commands.executeCommand("kilo-code.SidebarProvider.focus")
+			await vscode.commands.executeCommand("kodely.SidebarProvider.focus")
 			// Wait briefly for the view to become visible
 			await delay(100)
 			visibleProvider = ClineProvider.getVisibleInstance()
@@ -641,7 +641,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			"default-src 'none'",
 			`font-src ${webview.cspSource}`,
 			`style-src ${webview.cspSource} 'unsafe-inline' https://* http://${localServerUrl} http://0.0.0.0:${localPort}`,
-			`img-src ${webview.cspSource} data: https://*.googleapis.com`, // kilocode_change: add https://*.googleapis.com
+			`img-src ${webview.cspSource} data: https://*.googleapis.com`, // kodely_change: add https://*.googleapis.com
 			`script-src 'unsafe-eval' ${webview.cspSource} https://* https://*.posthog.com http://${localServerUrl} http://0.0.0.0:${localPort} 'nonce-${nonce}'`,
 			`connect-src https://* https://*.posthog.com ws://${localServerUrl} ws://0.0.0.0:${localPort} http://${localServerUrl} http://0.0.0.0:${localPort}`,
 		]
@@ -659,7 +659,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 						window.IMAGES_BASE_URI = "${imagesUri}"
 						window.MATERIAL_ICONS_BASE_URI = "${materialIconsUri}"
 					</script>
-					<title>Kilo Code</title>
+					<title>Kodely</title>
 				</head>
 				<body>
 					<div id="root"></div>
@@ -746,7 +746,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
             <meta name="theme-color" content="#000000">
-			<!-- kilocode_change: add https://*.googleapis.com to img-src -->
+			<!-- kodely_change: add https://*.googleapis.com to img-src -->
             <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src ${webview.cspSource}; style-src ${webview.cspSource} 'unsafe-inline'; img-src ${webview.cspSource} data: https://*.googleapis.com; script-src 'nonce-${nonce}' https://us-assets.i.posthog.com; connect-src https://openrouter.ai https://api.requesty.ai https://us.i.posthog.com https://us-assets.i.posthog.com;">
             <link rel="stylesheet" type="text/css" href="${stylesUri}">
 			<link href="${codiconsUri}" rel="stylesheet" />
@@ -754,7 +754,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 				window.IMAGES_BASE_URI = "${imagesUri}"
 				window.MATERIAL_ICONS_BASE_URI = "${materialIconsUri}"
 			</script>
-            <title>Kilo Code</title>
+            <title>Kodely</title>
           </head>
           <body>
             <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -906,21 +906,21 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 		// Get platform-specific application data directory
 		let mcpServersDir: string
 		if (process.platform === "win32") {
-			// Windows: %APPDATA%\Kilo-Code\MCP
-			mcpServersDir = path.join(os.homedir(), "AppData", "Roaming", "Kilo-Code", "MCP")
+			// Windows: %APPDATA%\Kodely\MCP
+			mcpServersDir = path.join(os.homedir(), "AppData", "Roaming", "Kodely", "MCP")
 		} else if (process.platform === "darwin") {
-			// macOS: ~/Documents/Kilo-Code/MCP
-			mcpServersDir = path.join(os.homedir(), "Documents", "Kilo-Code", "MCP")
+			// macOS: ~/Documents/Kodely/MCP
+			mcpServersDir = path.join(os.homedir(), "Documents", "Kodely", "MCP")
 		} else {
-			// Linux: ~/.local/share/Kilo-Code/MCP
-			mcpServersDir = path.join(os.homedir(), ".local", "share", "Kilo-Code", "MCP")
+			// Linux: ~/.local/share/Kodely/MCP
+			mcpServersDir = path.join(os.homedir(), ".local", "share", "Kodely", "MCP")
 		}
 
 		try {
 			await fs.mkdir(mcpServersDir, { recursive: true })
 		} catch (error) {
 			// Fallback to a relative path if directory creation fails
-			return path.join(os.homedir(), ".kilocode", "mcp")
+			return path.join(os.homedir(), ".kodely", "mcp")
 		}
 		return mcpServersDir
 	}
@@ -1057,23 +1057,23 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 		}
 	}
 
-	// kilocode_change:
-	async handleKiloCodeCallback(token: string) {
-		const kilocode: ApiProvider = "kilocode"
+	// kodely_change:
+	async handleKodelyCallback(token: string) {
+		const kodely: ApiProvider = "kodely"
 		let { apiConfiguration, currentApiConfigName } = await this.getState()
 
 		await this.upsertApiConfiguration(currentApiConfigName, {
 			...apiConfiguration,
-			apiProvider: "kilocode",
-			kilocodeToken: token,
+			apiProvider: "kodely",
+			kodelyToken: token,
 		})
 
-		vscode.window.showInformationMessage("Kilo Code successfully configured!")
+		vscode.window.showInformationMessage("Kodely successfully configured!")
 
 		if (this.getCurrentCline()) {
 			this.getCurrentCline()!.api = buildApiHandler({
-				apiProvider: kilocode,
-				kilocodeToken: token,
+				apiProvider: kodely,
+				kodelyToken: token,
 			})
 		}
 	}
@@ -1254,13 +1254,13 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			browserToolEnabled,
 			showRooIgnoredFiles,
 			language,
-			showAutoApproveMenu, // kilocode_change
+			showAutoApproveMenu, // kodely_change
 			maxReadFileLine,
 			terminalCompressProgressBar,
 		} = await this.getState()
 
 		const machineId = vscode.env.machineId
-		const allowedCommands = vscode.workspace.getConfiguration("kilo-code").get<string[]>("allowedCommands") || []
+		const allowedCommands = vscode.workspace.getConfiguration("kodely").get<string[]>("allowedCommands") || []
 		const cwd = this.cwd
 
 		// Check if there's a system prompt override for the current mode
@@ -1271,7 +1271,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			version: this.context.extension?.packageJSON?.version ?? "",
 			apiConfiguration,
 			customInstructions,
-			// kilocode_change: default values set to true
+			// kodely_change: default values set to true
 			alwaysAllowReadOnly: alwaysAllowReadOnly ?? true,
 			alwaysAllowReadOnlyOutsideWorkspace: alwaysAllowReadOnlyOutsideWorkspace ?? true,
 			alwaysAllowWrite: alwaysAllowWrite ?? true,
@@ -1333,8 +1333,8 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			browserToolEnabled: browserToolEnabled ?? true,
 			machineId,
 			showRooIgnoredFiles: showRooIgnoredFiles ?? true,
-			showAutoApproveMenu: showAutoApproveMenu ?? false, // kilocode_change
-			language, // kilocode_change
+			showAutoApproveMenu: showAutoApproveMenu ?? false, // kodely_change
+			language, // kodely_change
 			renderContext: this.renderContext,
 			maxReadFileLine: maxReadFileLine ?? 500,
 			settingsImportedAt: this.settingsImportedAt,
@@ -1355,7 +1355,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 		const customModes = await this.customModesManager.getCustomModes()
 
 		// Determine apiProvider with the same logic as before.
-		const apiProvider: ApiProvider = stateValues.apiProvider ? stateValues.apiProvider : "kilocode" // kilocode_change: fall back to kilocode
+		const apiProvider: ApiProvider = stateValues.apiProvider ? stateValues.apiProvider : "kodely" // kodely_change: fall back to kodely
 
 		// Build the apiConfiguration object combining state values and secrets.
 		const providerSettings = this.contextProxy.getProviderSettings()
@@ -1426,7 +1426,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			openRouterUseMiddleOutTransform: stateValues.openRouterUseMiddleOutTransform ?? true,
 			browserToolEnabled: stateValues.browserToolEnabled ?? true,
 			showRooIgnoredFiles: stateValues.showRooIgnoredFiles ?? true,
-			showAutoApproveMenu: stateValues.showAutoApproveMenu ?? false, // kilocode_change
+			showAutoApproveMenu: stateValues.showAutoApproveMenu ?? false, // kodely_change
 			maxReadFileLine: stateValues.maxReadFileLine ?? 500,
 		}
 	}
@@ -1522,7 +1522,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 		return this.mcpHub
 	}
 
-	// kilocode_change:
+	// kodely_change:
 	// MCP Marketplace
 
 	private async fetchMcpMarketplaceFromApi(silent: boolean = false): Promise<McpMarketplaceCatalog | undefined> {
@@ -1691,5 +1691,5 @@ Here is the project's README to help you get started:\n\n${mcpDetails.readmeCont
 			})
 		}
 	}
-	// end kilocode_change
+	// end kodely_change
 }

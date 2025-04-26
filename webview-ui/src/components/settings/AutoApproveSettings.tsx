@@ -25,7 +25,7 @@ type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
 	alwaysAllowSubtasks?: boolean
 	alwaysAllowExecute?: boolean
 	allowedCommands?: string[]
-	showAutoApproveMenu?: boolean // kilocode_change
+	showAutoApproveMenu?: boolean // kodely_change
 	setCachedStateField: SetCachedStateField<
 		| "alwaysAllowReadOnly"
 		| "alwaysAllowReadOnlyOutsideWorkspace"
@@ -40,7 +40,7 @@ type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
 		| "alwaysAllowSubtasks"
 		| "alwaysAllowExecute"
 		| "allowedCommands"
-		| "showAutoApproveMenu" // kilocode_change
+		| "showAutoApproveMenu" // kodely_change
 	>
 }
 
@@ -58,7 +58,7 @@ export const AutoApproveSettings = ({
 	alwaysAllowSubtasks,
 	alwaysAllowExecute,
 	allowedCommands,
-	showAutoApproveMenu, // kilocode_change
+	showAutoApproveMenu, // kodely_change
 	setCachedStateField,
 	className,
 	...props
@@ -86,7 +86,7 @@ export const AutoApproveSettings = ({
 				</div>
 			</SectionHeader>
 
-			{/* kilocode_change start */}
+			{/* kodely_change start */}
 			<Section>
 				<div>
 					<VSCodeCheckbox
@@ -100,7 +100,7 @@ export const AutoApproveSettings = ({
 					</div>
 				</div>
 			</Section>
-			{/* kilocode_change end */}
+			{/* kodely_change end */}
 
 			<Section>
 				<AutoApproveToggle

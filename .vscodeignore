@@ -1,4 +1,6 @@
 # Default
+.git
+.git/**
 .changeset/**
 .github/**
 .husky/**
@@ -16,6 +18,8 @@ jest.*
 **/*.map
 **/*.ts
 **/.gitignore
+out/**
+bin/**
 
 # Custom
 .env.sample
@@ -26,7 +30,7 @@ jest.*
 .vite-port
 .nvmrc
 .clinerules*
-.kilocodemodes
+.kodelymodes
 cline_docs/**
 coverage/**
 locales/**

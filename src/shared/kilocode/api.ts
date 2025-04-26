@@ -1,6 +1,6 @@
 import { ModelInfo } from "../api"
 
-export const kilocodeOpenrouterModels = {
+export const kodelyOpenrouterModels = {
 	"google/gemini-2.5-pro-preview-03-25": {
 		maxTokens: 65_536,
 		contextWindow: 1_000_000,

@@ -37,8 +37,8 @@ const addLineNumbersSpy = jest.requireMock("../../integrations/misc/extract-text
 let mockInputContent = ""
 jest.mock("../../services/tree-sitter")
 jest.mock("isbinaryfile")
-jest.mock("../ignore/RooIgnoreController", () => ({
-	RooIgnoreController: class {
+jest.mock("../ignore/KodelyIgnoreController", () => ({
+	KodelyIgnoreController: class {
 		initialize() {
 			return Promise.resolve()
 		}
@@ -110,7 +110,7 @@ describe("read_file tool XML output structure", () => {
 		mockCline.cwd = "/"
 		mockCline.task = "Test"
 		mockCline.providerRef = mockProvider
-		mockCline.rooIgnoreController = {
+		mockCline.KodelyIgnoreController = {
 			validateAccess: jest.fn().mockReturnValue(true),
 		}
 		mockCline.say = jest.fn().mockResolvedValue(undefined)
@@ -150,7 +150,7 @@ describe("read_file tool XML output structure", () => {
 		mockProvider.getState.mockResolvedValue({ maxReadFileLine })
 		mockedCountFileLines.mockResolvedValue(totalLines)
 		mockedIsBinaryFile.mockResolvedValue(isBinary)
-		mockCline.rooIgnoreController.validateAccess = jest.fn().mockReturnValue(validateAccess)
+		mockCline.KodelyIgnoreController.validateAccess = jest.fn().mockReturnValue(validateAccess)
 
 		// Create a tool use object
 		const toolUse: ReadFileToolUse = {

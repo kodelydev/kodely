@@ -99,8 +99,8 @@ describe("OpenAiHandler", () => {
 				baseURL: expect.any(String),
 				apiKey: expect.any(String),
 				defaultHeaders: {
-					"HTTP-Referer": "https://kilocode.ai",
-					"X-Title": "Kilo Code",
+					"HTTP-Referer": "https://kodely.dev",
+					"X-Title": "Kodely",
 				},
 			})
 		})

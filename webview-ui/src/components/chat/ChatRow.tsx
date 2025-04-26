@@ -814,8 +814,8 @@ export const ChatRowContent = ({
 								<div style={{ display: "flex", alignItems: "center", gap: "10px", flexGrow: 1 }}>
 									{icon}
 									{title}
-									{/* kilocode_change */}
-									{apiConfiguration?.apiProvider !== "kilocode" && (
+									{/* kodely_change */}
+									{apiConfiguration?.apiProvider !== "kodely" && (
 										<VSCodeBadge
 											style={{
 												opacity: cost !== null && cost !== undefined && cost > 0 ? 1 : 0,
@@ -972,7 +972,7 @@ export const ChatRowContent = ({
 									you're using a supported shell: zsh, bash, fish, or PowerShell (
 									<code>CMD/CTRL + Shift + P</code> → "Terminal: Select Default Profile").
 									<a
-										href="http://kilocode.ai/docs/troubleshooting/shell-integration/"
+										href="http://kodely.dev/docs/troubleshooting/shell-integration/"
 										style={{ color: "inherit", textDecoration: "underline", display: "none" }}>
 										{t("chat:shellIntegration.troubleshooting")}
 									</a>

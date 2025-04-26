@@ -162,7 +162,7 @@ export class TerminalRegistry {
 
 		const terminal = vscode.window.createTerminal({
 			cwd,
-			name: "Kilo Code",
+			name: "Kodely",
 			iconPath: new vscode.ThemeIcon("rocket"),
 			env,
 		})

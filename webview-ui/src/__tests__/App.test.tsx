@@ -44,7 +44,7 @@ jest.mock("@src/components/history/HistoryView", () => ({
 		)
 	},
 }))
-jest.mock("@src/components/kilocodeMcp/McpView", () => ({
+jest.mock("@src/components/kodelyMcp/McpView", () => ({
 	__esModule: true,
 	default: function McpView({ onDone }: { onDone: () => void }) {
 		return (
@@ -55,7 +55,7 @@ jest.mock("@src/components/kilocodeMcp/McpView", () => ({
 	},
 }))
 
-jest.mock("../components/kilocodeMcp/marketplace/McpMarketplaceView", () => ({
+jest.mock("../components/kodelyMcp/marketplace/McpMarketplaceView", () => ({
 	__esModule: true,
 	default: function McpMarketplaceView() {
 		return <div data-testid="mcp-marketplace-view">MCP Marketplace View</div>

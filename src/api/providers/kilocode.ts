@@ -6,34 +6,34 @@ import { ApiStream } from "../transform/stream"
 import { BaseProvider } from "./base-provider"
 import { ANTHROPIC_DEFAULT_MAX_TOKENS } from "./constants"
 import { SingleCompletionHandler } from "../index"
-import { KilocodeOpenrouterHandler } from "./kilocode-openrouter"
+import { KodelyOpenrouterHandler } from "./kodely-openrouter"
 import { getModelParams } from "../getModelParams"
 
-export class KiloCodeHandler extends BaseProvider implements SingleCompletionHandler {
+export class KodelyHandler extends BaseProvider implements SingleCompletionHandler {
 	private handler: BaseProvider & SingleCompletionHandler
 	private options: ApiHandlerOptions
 
 	constructor(options: ApiHandlerOptions) {
 		super()
 		this.options = options
-		const modelType = options.kilocodeModel || "claude37"
+		const modelType = options.kodelyModel || "claude37"
 
 		const openrouterModels = ["gemini25", "gpt41", "gemini25flashpreview"]
 
 		if (modelType === "claude37") {
-			this.handler = new KiloCodeAnthropicHandler(options)
+			this.handler = new KodelyAnthropicHandler(options)
 		} else if (openrouterModels.includes(modelType)) {
-			// Determine the correct OpenRouter model ID based on the selected KiloCode model type
-			const baseUri = getKiloBaseUri(options)
+			// Determine the correct OpenRouter model ID based on the selected Kodely model type
+			const baseUri = getKodelyBaseUri(options)
 			const openrouterOptions = {
 				...options,
 				openRouterBaseUrl: `${baseUri}/api/openrouter/`,
-				openRouterApiKey: options.kilocodeToken,
+				openRouterApiKey: options.kodelyToken,
 			}
 
-			this.handler = new KilocodeOpenrouterHandler(openrouterOptions)
+			this.handler = new KodelyOpenrouterHandler(openrouterOptions)
 		} else {
-			throw new Error("Invalid KiloCode provider")
+			throw new Error("Invalid Kodely provider")
 		}
 	}
 
@@ -59,18 +59,18 @@ export class KiloCodeHandler extends BaseProvider implements SingleCompletionHan
 	}
 }
 
-export class KiloCodeAnthropicHandler extends BaseProvider implements SingleCompletionHandler {
+export class KodelyAnthropicHandler extends BaseProvider implements SingleCompletionHandler {
 	private options: ApiHandlerOptions
 	private client: Anthropic
 
 	constructor(options: ApiHandlerOptions) {
 		super()
 		this.options = options
-		const baseUri = getKiloBaseUri(options)
+		const baseUri = getKodelyBaseUri(options)
 		this.client = new Anthropic({
-			authToken: this.options.kilocodeToken,
+			authToken: this.options.kodelyToken,
 			baseURL: `${baseUri}/api/claude/`,
-			apiKey: null, //ignore anthropic apiKey, even if set in env vars - it's not valid for KiloCode anyhow
+			apiKey: null, //ignore anthropic apiKey, even if set in env vars - it's not valid for Kodely anyhow
 		})
 	}
 
@@ -216,23 +216,23 @@ export class KiloCodeAnthropicHandler extends BaseProvider implements SingleComp
 				yield {
 					type: "text",
 					text:
-						"ERROR: Not logged in to Kilo Code.\n\n" +
-						"Please log in to Kilo Code from the extension settings.\n" +
-						"Kilo Code has a free tier with $20 worth of Claude 3.7 Sonnet tokens.\n" +
+						"ERROR: Not logged in to Kodely.\n\n" +
+						"Please log in to Kodely from the extension settings.\n" +
+						"Kodely has a free tier with $20 worth of Claude 3.7 Sonnet tokens.\n" +
 						"We'll give out more free tokens if you leave useful feedback.",
 				}
 			}
 			if (error.status === 402) {
 				yield {
 					type: "text",
-					text: "Go to https://kilocode.ai/profile to purchase more credits.",
+					text: "Go to https://kodely.dev/profile to purchase more credits.",
 				}
 			} else {
 				yield {
 					type: "text",
 					text:
-						`ERROR: ${error.message || "Failed to communicate with Kilo Code API"}\n\n` +
-						"If you need any help please check https://kilocode.ai to reach out to us",
+						`ERROR: ${error.message || "Failed to communicate with Kodely API"}\n\n` +
+						"If you need any help please check https://kodely.dev to reach out to us",
 				}
 			}
 
@@ -242,7 +242,7 @@ export class KiloCodeAnthropicHandler extends BaseProvider implements SingleComp
 	}
 
 	getModel() {
-		// This handler is specifically for the 'claude37' KiloCode model type,
+		// This handler is specifically for the 'claude37' Kodely model type,
 		// which maps to the standard Anthropic default model.
 		const id = anthropicDefaultModelId // Currently 'claude-3-7-sonnet-20250219'
 		const info: ModelInfo = anthropicModels[id]
@@ -306,15 +306,15 @@ export class KiloCodeAnthropicHandler extends BaseProvider implements SingleComp
 	}
 }
 
-function getKiloBaseUri(options: ApiHandlerOptions) {
+function getKodelyBaseUri(options: ApiHandlerOptions) {
 	try {
-		const token = options.kilocodeToken as string
+		const token = options.kodelyToken as string
 		const payload_string = token.split(".")[1]
 		const payload = JSON.parse(Buffer.from(payload_string, "base64").toString())
 		//note: this is UNTRUSTED, so we need to make sure we're OK with this being manipulated by an attacker; e.g. we should not read uri's from the JWT directly.
 		if (payload.env === "development") return "http://localhost:3000"
 	} catch (_error) {
-		console.warn("Failed to get base URL from Kilo Code token")
+		console.warn("Failed to get base URL from Kodely token")
 	}
-	return "https://kilocode.ai"
+	return "https://kodely.dev"
 }

@@ -1,5 +1,5 @@
 {
-	"extension.displayName": "Kilo Code",
+	"extension.displayName": "Kodely",
 	"extension.description": "Uma equipe completa de desenvolvimento de agentes de IA no seu editor.",
 	"command.newTask.title": "Nova Tarefa",
 	"command.explainCode.title": "Explicar Código",
@@ -15,19 +15,19 @@
 	"command.terminal.fixCommandInCurrentTask.title": "Corrigir Este Comando (Tarefa Atual)",
 	"command.terminal.explainCommandInCurrentTask.title": "Explicar Este Comando (Tarefa Atual)",
 	"command.acceptInput.title": "Aceitar Entrada/Sugestão",
-	"views.activitybar.title": "Kilo Code",
-	"views.contextMenu.label": "Kilo Code",
-	"views.terminalMenu.label": "Kilo Code",
+	"views.activitybar.title": "Kodely",
+	"views.contextMenu.label": "Kodely",
+	"views.terminalMenu.label": "Kodely",
 	"command.mcpServers.title": "Servidores MCP",
 	"command.prompts.title": "Prompts",
 	"command.history.title": "Histórico",
 	"command.openInEditor.title": "Abrir no Editor",
 	"command.settings.title": "Configurações",
 	"command.documentation.title": "Documentação",
-	"configuration.title": "Kilo Code",
+	"configuration.title": "Kodely",
 	"commands.allowedCommands.description": "Comandos que podem ser executados automaticamente quando 'Sempre aprovar operações de execução' está ativado",
 	"settings.vsCodeLmModelSelector.description": "Configurações para a API do modelo de linguagem do VSCode",
 	"settings.vsCodeLmModelSelector.vendor.description": "O fornecedor do modelo de linguagem (ex: copilot)",
 	"settings.vsCodeLmModelSelector.family.description": "A família do modelo de linguagem (ex: gpt-4)",
-	"settings.customStoragePath.description": "Caminho de armazenamento personalizado. Deixe vazio para usar o local padrão. Suporta caminhos absolutos (ex: 'D:\\KiloCodeStorage')"
+	"settings.customStoragePath.description": "Caminho de armazenamento personalizado. Deixe vazio para usar o local padrão. Suporta caminhos absolutos (ex: 'D:\\KodelyStorage')"
 }

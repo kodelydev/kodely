@@ -129,14 +129,14 @@ export interface WebviewMessage {
 		| "language"
 		| "maxReadFileLine"
 		| "searchFiles"
-		| "showFeedbackOptions" // kilocode_change
+		| "showFeedbackOptions" // kodely_change
 		| "toggleApiConfigPin"
-		| "fetchMcpMarketplace" // kilocode_change
-		| "silentlyRefreshMcpMarketplace" // kilocode_change
-		| "fetchLatestMcpServersFromHub" // kilocode_change
-		| "downloadMcp" // kilocode_change
-		| "showSystemNotification" // kilocode_change
-		| "showAutoApproveMenu" // kilocode_change
+		| "fetchMcpMarketplace" // kodely_change
+		| "silentlyRefreshMcpMarketplace" // kodely_change
+		| "fetchLatestMcpServersFromHub" // kodely_change
+		| "downloadMcp" // kodely_change
+		| "showSystemNotification" // kodely_change
+		| "showAutoApproveMenu" // kodely_change
 	text?: string
 	disabled?: boolean
 	askResponse?: ClineAskResponse
@@ -146,7 +146,7 @@ export interface WebviewMessage {
 	value?: number
 	commands?: string[]
 	audioType?: AudioType
-	// kilocode_change begin
+	// kodely_change begin
 	notificationOptions?: {
 		title?: string
 		subtitle?: string
@@ -156,7 +156,7 @@ export interface WebviewMessage {
 	toolNames?: string[]
 	url?: string
 	autoApprove?: boolean
-	// kilocode_change end
+	// kodely_change end
 	serverName?: string
 	toolName?: string
 	alwaysAllow?: boolean

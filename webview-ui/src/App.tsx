@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { useEvent } from "react-use"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
-import { ExtensionMessage } from "@roo/shared/ExtensionMessage"
+import { ExtensionMessage } from "@kodely/shared/ExtensionMessage"
 import TranslationProvider from "./i18n/TranslationContext"
 
 import { vscode } from "./utils/vscode"
@@ -10,8 +10,8 @@ import { ExtensionStateContextProvider, useExtensionState } from "./context/Exte
 import ChatView, { ChatViewRef } from "./components/chat/ChatView"
 import HistoryView from "./components/history/HistoryView"
 import SettingsView, { SettingsViewRef } from "./components/settings/SettingsView"
-import WelcomeView from "./components/kilocode/Welcome/WelcomeView" // kilocode_change
-import McpView from "./components/kilocodeMcp/McpView"
+import WelcomeView from "./components/welcome/WelcomeView" // kodely_change
+import McpView from "./components/mcp/McpView"
 import PromptsView from "./components/prompts/PromptsView"
 import { HumanRelayDialog } from "./components/human-relay/HumanRelayDialog"
 import BottomControls from "./components/chat/BottomControls"
@@ -43,7 +43,7 @@ const App = () => {
 	})
 
 	const settingsRef = useRef<SettingsViewRef>(null)
-	const chatViewRef = useRef<ChatViewRef & { focusInput: () => void }>(null) // kilocode_change
+	const chatViewRef = useRef<ChatViewRef & { focusInput: () => void }>(null) // kodely_change
 
 	const switchTab = useCallback((newTab: Tab) => {
 		setCurrentSection(undefined)
@@ -62,7 +62,7 @@ const App = () => {
 			const message: ExtensionMessage = e.data
 
 			if (message.type === "action" && message.action) {
-				// kilocode_change begin
+				// kodely_change begin
 				if (message.action === "focusChatInput") {
 					if (tab !== "chat") {
 						switchTab("chat")
@@ -70,7 +70,7 @@ const App = () => {
 					chatViewRef.current?.focusInput()
 					return
 				}
-				// kilocode_change end
+				// kodely_change end
 
 				const newTab = tabsByMessageAction[message.action]
 				const section = message.values?.section as string | undefined
@@ -90,7 +90,7 @@ const App = () => {
 				chatViewRef.current?.acceptInput()
 			}
 		},
-		// kilocode_change: add tab
+		// kodely_change: add tab
 		[tab, switchTab],
 	)
 
@@ -125,7 +125,7 @@ const App = () => {
 					onDone={() => switchTab("chat")}
 					onOpenMcp={() => switchTab("mcp")}
 					targetSection={currentSection}
-				/> // kilocode_change
+				/> // kodely_change
 			)}
 			<ChatView
 				ref={chatViewRef}
@@ -142,7 +142,7 @@ const App = () => {
 				onSubmit={(requestId, text) => vscode.postMessage({ type: "humanRelayResponse", requestId, text })}
 				onCancel={(requestId) => vscode.postMessage({ type: "humanRelayCancel", requestId })}
 			/>
-			{/* kilocode_change */}
+			{/* kodely_change */}
 			{/* Chat view and prompts view contain their own bottom controls */}
 			{!["chat", "prompts"].includes(tab) && (
 				<div className="fixed inset-0 top-auto">

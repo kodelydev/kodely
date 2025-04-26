@@ -35,7 +35,7 @@ beforeEach(() => {
 			return
 		}
 
-		const ignoredFileAttemptedToAccess = cline.rooIgnoreController?.validateCommand(block.params.command)
+		const ignoredFileAttemptedToAccess = cline.KodelyIgnoreController?.validateCommand(block.params.command)
 		if (ignoredFileAttemptedToAccess) {
 			await cline.say("rooignore_error", ignoredFileAttemptedToAccess)
 			// Call the mocked formatResponse functions with the correct arguments
@@ -90,7 +90,7 @@ describe("executeCommandTool", () => {
 			sayAndCreateMissingParamError: jest.fn().mockResolvedValue("Missing parameter error"),
 			consecutiveMistakeCount: 0,
 			didRejectTool: false,
-			rooIgnoreController: {
+			KodelyIgnoreController: {
 				// @ts-expect-error - Jest mock function type issues
 				validateCommand: jest.fn().mockReturnValue(null),
 			},
@@ -242,7 +242,7 @@ describe("executeCommandTool", () => {
 			mockToolUse.params.command = "cat .env"
 			// Override the validateCommand mock to return a filename
 			const validateCommandMock = jest.fn().mockReturnValue(".env")
-			mockCline.rooIgnoreController = {
+			mockCline.KodelyIgnoreController = {
 				// @ts-expect-error - Jest mock function type issues
 				validateCommand: validateCommandMock,
 			}

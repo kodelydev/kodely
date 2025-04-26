@@ -42,16 +42,16 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should read and trim file content", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .kodely/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockResolvedValue("  content with spaces  ")
 		const result = await loadRuleFiles("/fake/path")
 		expect(readFileMock).toHaveBeenCalled()
-		expect(result).toBe("\n# Rules from .kilocoderules:\ncontent with spaces\n")
+		expect(result).toBe("\n# Rules from .kodelyrules:\ncontent with spaces\n")
 	})
 
 	it("should handle ENOENT error", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .kodely/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockRejectedValue({ code: "ENOENT" })
 		const result = await loadRuleFiles("/fake/path")
@@ -59,7 +59,7 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should handle EISDIR error", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .kodely/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockRejectedValue({ code: "EISDIR" })
 		const result = await loadRuleFiles("/fake/path")
@@ -67,7 +67,7 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should throw on unexpected errors", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .kodely/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		const error = new Error("Permission denied") as NodeJS.ErrnoException
 		error.code = "EPERM"
@@ -79,10 +79,10 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should not combine content from multiple rule files when they exist", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .kodely/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString().endsWith(".kilocoderules")) {
+			if (filePath.toString().endsWith(".kodelyrules")) {
 				return Promise.resolve("roo rules content")
 			}
 			if (filePath.toString().endsWith(".clinerules")) {
@@ -92,11 +92,11 @@ describe("loadRuleFiles", () => {
 		})
 
 		const result = await loadRuleFiles("/fake/path")
-		expect(result).toBe("\n# Rules from .kilocoderules:\nroo rules content\n")
+		expect(result).toBe("\n# Rules from .kodelyrules:\nroo rules content\n")
 	})
 
 	it("should handle when no rule files exist", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .kodely/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockRejectedValue({ code: "ENOENT" })
 
@@ -105,10 +105,10 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should skip directories with same name as rule files", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .kodely/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString().endsWith(".kilocoderules")) {
+			if (filePath.toString().endsWith(".kodelyrules")) {
 				return Promise.reject({ code: "EISDIR" })
 			}
 			if (filePath.toString().endsWith(".clinerules")) {
@@ -121,8 +121,8 @@ describe("loadRuleFiles", () => {
 		expect(result).toBe("")
 	})
 
-	it("should use .kilocode/rules/ directory when it exists and has files", async () => {
-		// Simulate .kilocode/rules directory exists
+	it("should use .kodely/rules/ directory when it exists and has files", async () => {
+		// Simulate .kodely/rules directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: jest.fn().mockReturnValue(true),
 		} as any)
@@ -133,13 +133,13 @@ describe("loadRuleFiles", () => {
 				name: "file1.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
-				parentPath: "/fake/path/.kilocode/rules",
+				parentPath: "/fake/path/.kodely/rules",
 			},
 			{
 				name: "file2.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
-				parentPath: "/fake/path/.kilocode/rules",
+				parentPath: "/fake/path/.kodely/rules",
 			},
 		] as any)
 
@@ -151,31 +151,31 @@ describe("loadRuleFiles", () => {
 		)
 
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString() === "/fake/path/.kilocode/rules/file1.txt") {
+			if (filePath.toString() === "/fake/path/.kodely/rules/file1.txt") {
 				return Promise.resolve("content of file1")
 			}
-			if (filePath.toString() === "/fake/path/.kilocode/rules/file2.txt") {
+			if (filePath.toString() === "/fake/path/.kodely/rules/file2.txt") {
 				return Promise.resolve("content of file2")
 			}
 			return Promise.reject({ code: "ENOENT" })
 		})
 
 		const result = await loadRuleFiles("/fake/path")
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules/file1.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules/file1.txt:")
 		expect(result).toContain("content of file1")
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules/file2.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules/file2.txt:")
 		expect(result).toContain("content of file2")
 
 		// We expect both checks because our new implementation checks the files again for validation
-		expect(statMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules")
-		expect(statMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/file1.txt")
-		expect(statMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/file2.txt")
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/file1.txt", "utf-8")
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/file2.txt", "utf-8")
+		expect(statMock).toHaveBeenCalledWith("/fake/path/.kodely/rules")
+		expect(statMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/file1.txt")
+		expect(statMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/file2.txt")
+		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/file1.txt", "utf-8")
+		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/file2.txt", "utf-8")
 	})
 
-	it("should fall back to .kilocoderules when .kilocode/rules/ is empty", async () => {
-		// Simulate .kilocode/rules directory exists
+	it("should fall back to .kodelyrules when .kodely/rules/ is empty", async () => {
+		// Simulate .kodely/rules directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: jest.fn().mockReturnValue(true),
 		} as any)
@@ -183,20 +183,20 @@ describe("loadRuleFiles", () => {
 		// Simulate empty directory
 		readdirMock.mockResolvedValueOnce([])
 
-		// Simulate .kilocoderules exists
+		// Simulate .kodelyrules exists
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString().endsWith(".kilocoderules")) {
+			if (filePath.toString().endsWith(".kodelyrules")) {
 				return Promise.resolve("roo rules content")
 			}
 			return Promise.reject({ code: "ENOENT" })
 		})
 
 		const result = await loadRuleFiles("/fake/path")
-		expect(result).toBe("\n# Rules from .kilocoderules:\nroo rules content\n")
+		expect(result).toBe("\n# Rules from .kodelyrules:\nroo rules content\n")
 	})
 
 	it("should handle errors when reading directory", async () => {
-		// Simulate .kilocode/rules directory exists
+		// Simulate .kodely/rules directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: jest.fn().mockReturnValue(true),
 		} as any)
@@ -204,20 +204,20 @@ describe("loadRuleFiles", () => {
 		// Simulate error reading directory
 		readdirMock.mockRejectedValueOnce(new Error("Failed to read directory"))
 
-		// Simulate .kilocoderules exists
+		// Simulate .kodelyrules exists
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString().endsWith(".kilocoderules")) {
+			if (filePath.toString().endsWith(".kodelyrules")) {
 				return Promise.resolve("roo rules content")
 			}
 			return Promise.reject({ code: "ENOENT" })
 		})
 
 		const result = await loadRuleFiles("/fake/path")
-		expect(result).toBe("\n# Rules from .kilocoderules:\nroo rules content\n")
+		expect(result).toBe("\n# Rules from .kodelyrules:\nroo rules content\n")
 	})
 
-	it("should read files from nested subdirectories in .kilocode/rules/", async () => {
-		// Simulate .kilocode/rules directory exists
+	it("should read files from nested subdirectories in .kodely/rules/", async () => {
+		// Simulate .kodely/rules directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: jest.fn().mockReturnValue(true),
 		} as any)
@@ -229,28 +229,28 @@ describe("loadRuleFiles", () => {
 				isFile: () => false,
 				isSymbolicLink: () => false,
 				isDirectory: () => true,
-				parentPath: "/fake/path/.kilocode/rules",
+				parentPath: "/fake/path/.kodely/rules",
 			},
 			{
 				name: "root.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
 				isDirectory: () => false,
-				parentPath: "/fake/path/.kilocode/rules",
+				parentPath: "/fake/path/.kodely/rules",
 			},
 			{
 				name: "nested1.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
 				isDirectory: () => false,
-				parentPath: "/fake/path/.kilocode/rules/subdir",
+				parentPath: "/fake/path/.kodely/rules/subdir",
 			},
 			{
 				name: "nested2.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
 				isDirectory: () => false,
-				parentPath: "/fake/path/.kilocode/rules/subdir/subdir2",
+				parentPath: "/fake/path/.kodely/rules/subdir/subdir2",
 			},
 		] as any)
 
@@ -269,13 +269,13 @@ describe("loadRuleFiles", () => {
 
 		readFileMock.mockImplementation((filePath: PathLike) => {
 			const path = filePath.toString()
-			if (path === "/fake/path/.kilocode/rules/root.txt") {
+			if (path === "/fake/path/.kodely/rules/root.txt") {
 				return Promise.resolve("root file content")
 			}
-			if (path === "/fake/path/.kilocode/rules/subdir/nested1.txt") {
+			if (path === "/fake/path/.kodely/rules/subdir/nested1.txt") {
 				return Promise.resolve("nested file 1 content")
 			}
-			if (path === "/fake/path/.kilocode/rules/subdir/subdir2/nested2.txt") {
+			if (path === "/fake/path/.kodely/rules/subdir/subdir2/nested2.txt") {
 				return Promise.resolve("nested file 2 content")
 			}
 			return Promise.reject({ code: "ENOENT" })
@@ -284,24 +284,24 @@ describe("loadRuleFiles", () => {
 		const result = await loadRuleFiles("/fake/path")
 
 		// Check root file content
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules/root.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules/root.txt:")
 		expect(result).toContain("root file content")
 
 		// Check nested files content
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules/subdir/nested1.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules/subdir/nested1.txt:")
 		expect(result).toContain("nested file 1 content")
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules/subdir/subdir2/nested2.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules/subdir/subdir2/nested2.txt:")
 		expect(result).toContain("nested file 2 content")
 
 		// Verify correct paths were checked
-		expect(statMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/root.txt")
-		expect(statMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/subdir/nested1.txt")
-		expect(statMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/subdir/subdir2/nested2.txt")
+		expect(statMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/root.txt")
+		expect(statMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/subdir/nested1.txt")
+		expect(statMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/subdir/subdir2/nested2.txt")
 
 		// Verify files were read with correct paths
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/root.txt", "utf-8")
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/subdir/nested1.txt", "utf-8")
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/subdir/subdir2/nested2.txt", "utf-8")
+		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/root.txt", "utf-8")
+		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/subdir/nested1.txt", "utf-8")
+		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/subdir/subdir2/nested2.txt", "utf-8")
 	})
 })
 
@@ -311,7 +311,7 @@ describe("addCustomInstructions", () => {
 	})
 
 	it("should combine all instruction types when provided", async () => {
-		// Simulate no .kilocode/rules-test-mode directory
+		// Simulate no .kodely/rules-test-mode directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
 		readFileMock.mockResolvedValue("mode specific rules")
@@ -329,11 +329,11 @@ describe("addCustomInstructions", () => {
 		expect(result).toContain("(es)") // Check for language code in parentheses
 		expect(result).toContain("Global Instructions:\nglobal instructions")
 		expect(result).toContain("Mode-specific Instructions:\nmode instructions")
-		expect(result).toContain("Rules from .kilocoderules-test-mode:\nmode specific rules")
+		expect(result).toContain("Rules from .kodelyrules-test-mode:\nmode specific rules")
 	})
 
 	it("should return empty string when no instructions provided", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .kodely/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
 		readFileMock.mockRejectedValue({ code: "ENOENT" })
@@ -343,7 +343,7 @@ describe("addCustomInstructions", () => {
 	})
 
 	it("should handle missing mode-specific rules file", async () => {
-		// Simulate no .kilocode/rules-test-mode directory
+		// Simulate no .kodely/rules-test-mode directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
 		readFileMock.mockRejectedValue({ code: "ENOENT" })
@@ -361,7 +361,7 @@ describe("addCustomInstructions", () => {
 	})
 
 	it("should handle unknown language codes properly", async () => {
-		// Simulate no .kilocode/rules-test-mode directory
+		// Simulate no .kodely/rules-test-mode directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
 		readFileMock.mockRejectedValue({ code: "ENOENT" })
@@ -380,7 +380,7 @@ describe("addCustomInstructions", () => {
 	})
 
 	it("should throw on unexpected errors", async () => {
-		// Simulate no .kilocode/rules-test-mode directory
+		// Simulate no .kodely/rules-test-mode directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
 		const error = new Error("Permission denied") as NodeJS.ErrnoException
@@ -393,7 +393,7 @@ describe("addCustomInstructions", () => {
 	})
 
 	it("should skip mode-specific rule files that are directories", async () => {
-		// Simulate no .kilocode/rules-test-mode directory
+		// Simulate no .kodely/rules-test-mode directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
 		readFileMock.mockImplementation((filePath: PathLike) => {
@@ -415,8 +415,8 @@ describe("addCustomInstructions", () => {
 		expect(result).not.toContain("Rules from .clinerules-test-mode")
 	})
 
-	it("should use .kilocode/rules-test-mode/ directory when it exists and has files", async () => {
-		// Simulate .kilocode/rules-test-mode directory exists
+	it("should use .kodely/rules-test-mode/ directory when it exists and has files", async () => {
+		// Simulate .kodely/rules-test-mode directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: jest.fn().mockReturnValue(true),
 		} as any)
@@ -427,13 +427,13 @@ describe("addCustomInstructions", () => {
 				name: "rule1.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
-				parentPath: "/fake/path/.kilocode/rules-test-mode",
+				parentPath: "/fake/path/.kodely/rules-test-mode",
 			},
 			{
 				name: "rule2.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
-				parentPath: "/fake/path/.kilocode/rules-test-mode",
+				parentPath: "/fake/path/.kodely/rules-test-mode",
 			},
 		] as any)
 
@@ -445,10 +445,10 @@ describe("addCustomInstructions", () => {
 		)
 
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString() === "/fake/path/.kilocode/rules-test-mode/rule1.txt") {
+			if (filePath.toString() === "/fake/path/.kodely/rules-test-mode/rule1.txt") {
 				return Promise.resolve("mode specific rule 1")
 			}
-			if (filePath.toString() === "/fake/path/.kilocode/rules-test-mode/rule2.txt") {
+			if (filePath.toString() === "/fake/path/.kodely/rules-test-mode/rule2.txt") {
 				return Promise.resolve("mode specific rule 2")
 			}
 			return Promise.reject({ code: "ENOENT" })
@@ -462,26 +462,26 @@ describe("addCustomInstructions", () => {
 			{ language: "es" },
 		)
 
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules-test-mode")
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules-test-mode/rule1.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules-test-mode")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules-test-mode/rule1.txt:")
 		expect(result).toContain("mode specific rule 1")
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules-test-mode/rule2.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules-test-mode/rule2.txt:")
 		expect(result).toContain("mode specific rule 2")
 
-		expect(statMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules-test-mode")
-		expect(statMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules-test-mode/rule1.txt")
-		expect(statMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules-test-mode/rule2.txt")
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules-test-mode/rule1.txt", "utf-8")
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules-test-mode/rule2.txt", "utf-8")
+		expect(statMock).toHaveBeenCalledWith("/fake/path/.kodely/rules-test-mode")
+		expect(statMock).toHaveBeenCalledWith("/fake/path/.kodely/rules-test-mode/rule1.txt")
+		expect(statMock).toHaveBeenCalledWith("/fake/path/.kodely/rules-test-mode/rule2.txt")
+		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kodely/rules-test-mode/rule1.txt", "utf-8")
+		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kodely/rules-test-mode/rule2.txt", "utf-8")
 	})
 
-	it("should fall back to .kilocoderules-test-mode when .kilocode/rules-test-mode/ does not exist", async () => {
-		// Simulate .kilocode/rules-test-mode directory does not exist
+	it("should fall back to .kodelyrules-test-mode when .kodely/rules-test-mode/ does not exist", async () => {
+		// Simulate .kodely/rules-test-mode directory does not exist
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
-		// Simulate .kilocoderules-test-mode exists
+		// Simulate .kodelyrules-test-mode exists
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString().includes(".kilocoderules-test-mode")) {
+			if (filePath.toString().includes(".kodelyrules-test-mode")) {
 				return Promise.resolve("mode specific rules from file")
 			}
 			return Promise.reject({ code: "ENOENT" })
@@ -494,15 +494,15 @@ describe("addCustomInstructions", () => {
 			"test-mode",
 		)
 
-		expect(result).toContain("Rules from .kilocoderules-test-mode:\nmode specific rules from file")
+		expect(result).toContain("Rules from .kodelyrules-test-mode:\nmode specific rules from file")
 	})
 
-	it("should correctly format content from directories when using .kilocode/rules-test-mode/", async () => {
+	it("should correctly format content from directories when using .kodely/rules-test-mode/", async () => {
 		// Need to reset mockImplementation first to avoid interference from previous tests
 		statMock.mockReset()
 		readFileMock.mockReset()
 
-		// Simulate .kilocode/rules-test-mode directory exists
+		// Simulate .kodely/rules-test-mode directory exists
 		statMock.mockImplementationOnce(() =>
 			Promise.resolve({
 				isDirectory: jest.fn().mockReturnValue(true),
@@ -511,7 +511,7 @@ describe("addCustomInstructions", () => {
 
 		// Simulate directory has files
 		readdirMock.mockResolvedValueOnce([
-			{ name: "rule1.txt", isFile: () => true, parentPath: "/fake/path/.kilocode/rules-test-mode" },
+			{ name: "rule1.txt", isFile: () => true, parentPath: "/fake/path/.kodely/rules-test-mode" },
 		] as any)
 		readFileMock.mockReset()
 
@@ -519,7 +519,7 @@ describe("addCustomInstructions", () => {
 		let statCallCount = 0
 		statMock.mockImplementation((filePath) => {
 			statCallCount++
-			if (filePath === "/fake/path/.kilocode/rules-test-mode/rule1.txt") {
+			if (filePath === "/fake/path/.kodely/rules-test-mode/rule1.txt") {
 				return Promise.resolve({
 					isFile: jest.fn().mockReturnValue(true),
 					isDirectory: jest.fn().mockReturnValue(false),
@@ -532,7 +532,7 @@ describe("addCustomInstructions", () => {
 		})
 
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString() === "/fake/path/.kilocode/rules-test-mode/rule1.txt") {
+			if (filePath.toString() === "/fake/path/.kodely/rules-test-mode/rule1.txt") {
 				return Promise.resolve("mode specific rule content")
 			}
 			return Promise.reject({ code: "ENOENT" })
@@ -545,8 +545,8 @@ describe("addCustomInstructions", () => {
 			"test-mode",
 		)
 
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules-test-mode")
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules-test-mode/rule1.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules-test-mode")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules-test-mode/rule1.txt:")
 		expect(result).toContain("mode specific rule content")
 
 		expect(statCallCount).toBeGreaterThan(0)
@@ -574,7 +574,7 @@ describe("Directory existence checks", () => {
 		await loadRuleFiles("/fake/path")
 
 		// Verify stat was called to check directory existence
-		expect(statMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules")
+		expect(statMock).toHaveBeenCalledWith("/fake/path/.kodely/rules")
 	})
 
 	it("should handle when directory does not exist", async () => {
@@ -587,14 +587,14 @@ describe("Directory existence checks", () => {
 		const result = await loadRuleFiles("/fake/path")
 
 		// Verify it fell back to reading rule files directly
-		expect(result).toBe("\n# Rules from .kilocoderules:\nfallback content\n")
+		expect(result).toBe("\n# Rules from .kodelyrules:\nfallback content\n")
 	})
 })
 
 // Indirectly test readTextFilesFromDirectory and formatDirectoryContent through loadRuleFiles
 describe("Rules directory reading", () => {
 	it("should follow symbolic links in the rules directory", async () => {
-		// Simulate .kilocode/rules directory exists
+		// Simulate .kodely/rules directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: jest.fn().mockReturnValue(true),
 		} as any)
@@ -606,32 +606,32 @@ describe("Rules directory reading", () => {
 					name: "regular.txt",
 					isFile: () => true,
 					isSymbolicLink: () => false,
-					parentPath: "/fake/path/.kilocode/rules",
+					parentPath: "/fake/path/.kodely/rules",
 				},
 				{
 					name: "link.txt",
 					isFile: () => false,
 					isSymbolicLink: () => true,
-					parentPath: "/fake/path/.kilocode/rules",
+					parentPath: "/fake/path/.kodely/rules",
 				},
 				{
 					name: "link_dir",
 					isFile: () => false,
 					isSymbolicLink: () => true,
-					parentPath: "/fake/path/.kilocode/rules",
+					parentPath: "/fake/path/.kodely/rules",
 				},
 				{
 					name: "nested_link.txt",
 					isFile: () => false,
 					isSymbolicLink: () => true,
-					parentPath: "/fake/path/.kilocode/rules",
+					parentPath: "/fake/path/.kodely/rules",
 				},
 			] as any)
 			.mockResolvedValueOnce([
 				{
 					name: "subdir_link.txt",
 					isFile: () => true,
-					parentPath: "/fake/path/.kilocode/rules/symlink-target-dir",
+					parentPath: "/fake/path/.kodely/rules/symlink-target-dir",
 				},
 			] as any)
 
@@ -646,7 +646,7 @@ describe("Rules directory reading", () => {
 		statMock.mockReset()
 		statMock.mockImplementation((path: string) => {
 			// For directory check
-			if (path === "/fake/path/.kilocode/rules" || path.endsWith("dir")) {
+			if (path === "/fake/path/.kodely/rules" || path.endsWith("dir")) {
 				return Promise.resolve({
 					isDirectory: jest.fn().mockReturnValue(true),
 					isFile: jest.fn().mockReturnValue(false),
@@ -671,16 +671,16 @@ describe("Rules directory reading", () => {
 
 		// Simulate file content reading
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString() === "/fake/path/.kilocode/rules/regular.txt") {
+			if (filePath.toString() === "/fake/path/.kodely/rules/regular.txt") {
 				return Promise.resolve("regular file content")
 			}
-			if (filePath.toString() === "/fake/path/.kilocode/rules/../symlink-target.txt") {
+			if (filePath.toString() === "/fake/path/.kodely/rules/../symlink-target.txt") {
 				return Promise.resolve("symlink target content")
 			}
-			if (filePath.toString() === "/fake/path/.kilocode/rules/symlink-target-dir/subdir_link.txt") {
+			if (filePath.toString() === "/fake/path/.kodely/rules/symlink-target-dir/subdir_link.txt") {
 				return Promise.resolve("regular file content under symlink target dir")
 			}
-			if (filePath.toString() === "/fake/path/.kilocode/rules/../nested-symlink-target.txt") {
+			if (filePath.toString() === "/fake/path/.kodely/rules/../nested-symlink-target.txt") {
 				return Promise.resolve("nested symlink target content")
 			}
 			return Promise.reject({ code: "ENOENT" })
@@ -689,50 +689,50 @@ describe("Rules directory reading", () => {
 		const result = await loadRuleFiles("/fake/path")
 
 		// Verify both regular file and symlink target content are included
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules/regular.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules/regular.txt:")
 		expect(result).toContain("regular file content")
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules/../symlink-target.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules/../symlink-target.txt:")
 		expect(result).toContain("symlink target content")
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules/symlink-target-dir/subdir_link.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules/symlink-target-dir/subdir_link.txt:")
 		expect(result).toContain("regular file content under symlink target dir")
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules/../nested-symlink-target.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules/../nested-symlink-target.txt:")
 		expect(result).toContain("nested symlink target content")
 
 		// Verify readlink was called with the symlink path
-		expect(readlinkMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/link.txt")
-		expect(readlinkMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/link_dir")
+		expect(readlinkMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/link.txt")
+		expect(readlinkMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/link_dir")
 
 		// Verify both files were read
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/regular.txt", "utf-8")
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/../symlink-target.txt", "utf-8")
+		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/regular.txt", "utf-8")
+		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/../symlink-target.txt", "utf-8")
 		expect(readFileMock).toHaveBeenCalledWith(
-			"/fake/path/.kilocode/rules/symlink-target-dir/subdir_link.txt",
+			"/fake/path/.kodely/rules/symlink-target-dir/subdir_link.txt",
 			"utf-8",
 		)
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/../nested-symlink-target.txt", "utf-8")
+		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kodely/rules/../nested-symlink-target.txt", "utf-8")
 	})
 	beforeEach(() => {
 		jest.clearAllMocks()
 	})
 
 	it("should correctly format multiple files from directory", async () => {
-		// Simulate .kilocode/rules directory exists
+		// Simulate .kodely/rules directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: jest.fn().mockReturnValue(true),
 		} as any)
 
 		// Simulate listing files
 		readdirMock.mockResolvedValueOnce([
-			{ name: "file1.txt", isFile: () => true, parentPath: "/fake/path/.kilocode/rules" },
-			{ name: "file2.txt", isFile: () => true, parentPath: "/fake/path/.kilocode/rules" },
-			{ name: "file3.txt", isFile: () => true, parentPath: "/fake/path/.kilocode/rules" },
+			{ name: "file1.txt", isFile: () => true, parentPath: "/fake/path/.kodely/rules" },
+			{ name: "file2.txt", isFile: () => true, parentPath: "/fake/path/.kodely/rules" },
+			{ name: "file3.txt", isFile: () => true, parentPath: "/fake/path/.kodely/rules" },
 		] as any)
 
 		statMock.mockImplementation((path) => {
 			expect([
-				"/fake/path/.kilocode/rules/file1.txt",
-				"/fake/path/.kilocode/rules/file2.txt",
-				"/fake/path/.kilocode/rules/file3.txt",
+				"/fake/path/.kodely/rules/file1.txt",
+				"/fake/path/.kodely/rules/file2.txt",
+				"/fake/path/.kodely/rules/file3.txt",
 			]).toContain(path)
 
 			return Promise.resolve({
@@ -741,13 +741,13 @@ describe("Rules directory reading", () => {
 		})
 
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString() === "/fake/path/.kilocode/rules/file1.txt") {
+			if (filePath.toString() === "/fake/path/.kodely/rules/file1.txt") {
 				return Promise.resolve("content of file1")
 			}
-			if (filePath.toString() === "/fake/path/.kilocode/rules/file2.txt") {
+			if (filePath.toString() === "/fake/path/.kodely/rules/file2.txt") {
 				return Promise.resolve("content of file2")
 			}
-			if (filePath.toString() === "/fake/path/.kilocode/rules/file3.txt") {
+			if (filePath.toString() === "/fake/path/.kodely/rules/file3.txt") {
 				return Promise.resolve("content of file3")
 			}
 			return Promise.reject({ code: "ENOENT" })
@@ -755,16 +755,16 @@ describe("Rules directory reading", () => {
 
 		const result = await loadRuleFiles("/fake/path")
 
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules/file1.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules/file1.txt:")
 		expect(result).toContain("content of file1")
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules/file2.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules/file2.txt:")
 		expect(result).toContain("content of file2")
-		expect(result).toContain("# Rules from /fake/path/.kilocode/rules/file3.txt:")
+		expect(result).toContain("# Rules from /fake/path/.kodely/rules/file3.txt:")
 		expect(result).toContain("content of file3")
 	})
 
 	it("should handle empty file list gracefully", async () => {
-		// Simulate .kilocode/rules directory exists
+		// Simulate .kodely/rules directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: jest.fn().mockReturnValue(true),
 		} as any)
@@ -775,6 +775,6 @@ describe("Rules directory reading", () => {
 		readFileMock.mockResolvedValueOnce("fallback content")
 
 		const result = await loadRuleFiles("/fake/path")
-		expect(result).toBe("\n# Rules from .kilocoderules:\nfallback content\n")
+		expect(result).toBe("\n# Rules from .kodelyrules:\nfallback content\n")
 	})
 })

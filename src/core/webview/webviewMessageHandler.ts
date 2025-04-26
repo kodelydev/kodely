@@ -2,6 +2,7 @@ import * as path from "path"
 import fs from "fs/promises"
 import pWaitFor from "p-wait-for"
 import * as vscode from "vscode"
+import axios from "axios"
 
 import { ClineProvider } from "./ClineProvider"
 import { Language, ApiConfigMeta } from "../../schemas"
@@ -22,7 +23,7 @@ import { searchWorkspaceFiles } from "../../services/search/file-search"
 import { fileExistsAtPath } from "../../utils/fs"
 import { playSound, setSoundEnabled, setSoundVolume } from "../../utils/sound"
 import { playTts, setTtsEnabled, setTtsSpeed, stopTts } from "../../utils/tts"
-import { showSystemNotification } from "../../integrations/notifications" // kilocode_change
+import { showSystemNotification } from "../../integrations/notifications" // kodely_change
 import { singleCompletionHandler } from "../../utils/single-completion-handler"
 import { searchCommits } from "../../utils/git"
 import { exportSettings, importSettings } from "../config/importExport"
@@ -66,6 +67,114 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 					type: "mcpServers",
 					mcpServers: mcpHub.getAllServers(),
 				})
+
+				// Also fetch and send the MCP marketplace catalog
+				try {
+					console.log("Fetching initial MCP marketplace catalog...")
+					// Use the correct API endpoint for the MCP marketplace
+					const response = await axios.get('https://api.cline.bot/v1/mcp/marketplace')
+					console.log("Initial MCP marketplace response status:", response.status)
+
+					// Check if response.data is an object
+					if (typeof response.data !== 'object' || response.data === null) {
+						console.error("Invalid initial response data type:", typeof response.data)
+						provider.postMessageToWebview({
+							type: "mcpMarketplaceCatalog",
+							mcpMarketplaceCatalog: { items: [] }
+						})
+						return
+					}
+
+					// If the response is an array, use it directly as items
+					if (Array.isArray(response.data)) {
+						console.log("Initial response data is an array with length:", response.data.length)
+
+						// Validate that the array items match the expected format
+						const validItems = response.data.filter(item =>
+							item &&
+							typeof item === 'object' &&
+							'mcpId' in item &&
+							'name' in item &&
+							'description' in item
+						)
+
+						console.log("Valid initial items count:", validItems.length)
+
+						// This is the correct format - the API returns an array directly
+						provider.postMessageToWebview({
+							type: "mcpMarketplaceCatalog",
+							mcpMarketplaceCatalog: { items: validItems }
+						})
+						return
+					}
+
+					// If response.data has an items property
+					if (response.data.hasOwnProperty('items') && Array.isArray(response.data.items)) {
+						console.log("Initial response has items array with length:", response.data.items.length)
+						provider.postMessageToWebview({
+							type: "mcpMarketplaceCatalog",
+							mcpMarketplaceCatalog: response.data
+						})
+						return
+					}
+
+					// If response.data has a data property that might contain items
+					if (response.data.hasOwnProperty('data')) {
+						if (Array.isArray(response.data.data)) {
+							console.log("Found items in initial response.data.data array with length:", response.data.data.length)
+							provider.postMessageToWebview({
+								type: "mcpMarketplaceCatalog",
+								mcpMarketplaceCatalog: { items: response.data.data }
+							})
+							return
+						}
+
+						if (response.data.data &&
+							typeof response.data.data === 'object' &&
+							response.data.data.hasOwnProperty('items') &&
+							Array.isArray(response.data.data.items)) {
+							console.log("Found items in initial response.data.data.items with length:", response.data.data.items.length)
+							provider.postMessageToWebview({
+								type: "mcpMarketplaceCatalog",
+								mcpMarketplaceCatalog: { items: response.data.data.items }
+							})
+							return
+						}
+					}
+
+					// If we couldn't find a valid items array, log the response structure and return an empty array
+					console.error("Could not find valid items array in initial response:",
+						Object.keys(response.data).length > 20
+							? "Response too large to log"
+							: JSON.stringify(response.data, null, 2)
+					)
+
+					// Send an empty catalog to prevent infinite loading
+					provider.postMessageToWebview({
+						type: "mcpMarketplaceCatalog",
+						mcpMarketplaceCatalog: { items: [] }
+					})
+				} catch (error) {
+					console.error("Failed to fetch initial MCP marketplace catalog:", error)
+					if (axios.isAxiosError(error)) {
+						console.error("Initial Axios error details:", {
+							status: error.response?.status,
+							statusText: error.response?.statusText,
+							data: error.response?.data,
+							headers: error.response?.headers,
+							config: {
+								url: error.config?.url,
+								method: error.config?.method,
+								headers: error.config?.headers
+							}
+						})
+					}
+					// Send an empty catalog to prevent infinite loading
+					provider.postMessageToWebview({
+						type: "mcpMarketplaceCatalog",
+						mcpMarketplaceCatalog: { items: [] }
+					})
+				}
 			}
 
 			// Post last cached models in case the call to endpoint fails.
@@ -472,13 +581,135 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 			await provider.context.globalState.update("allowedCommands", message.commands)
 			// Also update workspace settings
 			await vscode.workspace
-				.getConfiguration("kilo-code")
+				.getConfiguration("kodely")
 				.update("allowedCommands", message.commands, vscode.ConfigurationTarget.Global)
 			break
 		case "openMcpSettings": {
 			const mcpSettingsFilePath = await provider.getMcpHub()?.getMcpSettingsFilePath()
 			if (mcpSettingsFilePath) {
 				openFile(mcpSettingsFilePath)
+			}
+			break
+		}
+		case "fetchMcpMarketplace": {
+			try {
+				console.log("Fetching MCP marketplace catalog...")
+				// Use the correct API endpoint for the MCP marketplace
+				const response = await axios.get('https://api.cline.bot/v1/mcp/marketplace')
+				console.log("MCP marketplace response status:", response.status)
+				console.log("MCP marketplace response data type:", typeof response.data)
+				console.log("MCP marketplace response is array:", Array.isArray(response.data))
+
+				// Check if response.data is an object
+				if (typeof response.data !== 'object' || response.data === null) {
+					console.error("Invalid response data type:", typeof response.data)
+					provider.postMessageToWebview({
+						type: "mcpMarketplaceCatalog",
+						mcpMarketplaceCatalog: { items: [] },
+						error: `Invalid response data type: ${typeof response.data}`
+					})
+					break
+				}
+
+				// If the response is an array, use it directly as items (this is the expected format)
+				if (Array.isArray(response.data)) {
+					console.log("Response data is an array with length:", response.data.length)
+
+					// Validate that the array items match the expected format
+					const validItems = response.data.filter(item =>
+						item &&
+						typeof item === 'object' &&
+						'mcpId' in item &&
+						'name' in item &&
+						'description' in item
+					)
+
+					console.log("Valid items count:", validItems.length)
+
+					if (validItems.length === 0) {
+						console.error("No valid items found in response array")
+						provider.postMessageToWebview({
+							type: "mcpMarketplaceCatalog",
+							mcpMarketplaceCatalog: { items: [] },
+							error: "No valid MCP servers found in the marketplace"
+						})
+						break
+					}
+
+					// This is the correct format - the API returns an array directly
+					provider.postMessageToWebview({
+						type: "mcpMarketplaceCatalog",
+						mcpMarketplaceCatalog: { items: validItems }
+					})
+					break
+				}
+
+				// If response.data has an items property
+				if (response.data.hasOwnProperty('items') && Array.isArray(response.data.items)) {
+					console.log("Response has items array with length:", response.data.items.length)
+					provider.postMessageToWebview({
+						type: "mcpMarketplaceCatalog",
+						mcpMarketplaceCatalog: response.data
+					})
+					break
+				}
+
+				// If response.data has a data property that might contain items
+				if (response.data.hasOwnProperty('data')) {
+					if (Array.isArray(response.data.data)) {
+						console.log("Found items in response.data.data array with length:", response.data.data.length)
+						provider.postMessageToWebview({
+							type: "mcpMarketplaceCatalog",
+							mcpMarketplaceCatalog: { items: response.data.data }
+						})
+						break
+					}
+
+					if (response.data.data &&
+						typeof response.data.data === 'object' &&
+						response.data.data.hasOwnProperty('items') &&
+						Array.isArray(response.data.data.items)) {
+						console.log("Found items in response.data.data.items with length:", response.data.data.items.length)
+						provider.postMessageToWebview({
+							type: "mcpMarketplaceCatalog",
+							mcpMarketplaceCatalog: { items: response.data.data.items }
+						})
+						break
+					}
+				}
+
+				// If we couldn't find a valid items array, log the response structure and return an empty array
+				console.error("Could not find valid items array in response:",
+					Object.keys(response.data).length > 20
+						? "Response too large to log"
+						: JSON.stringify(response.data, null, 2)
+				)
+
+				provider.postMessageToWebview({
+					type: "mcpMarketplaceCatalog",
+					mcpMarketplaceCatalog: { items: [] },
+					error: "Could not find valid items array in response"
+				})
+			} catch (error) {
+				console.error("Failed to fetch MCP marketplace catalog:", error)
+				if (axios.isAxiosError(error)) {
+					console.error("Axios error details:", {
+						status: error.response?.status,
+						statusText: error.response?.statusText,
+						data: error.response?.data,
+						headers: error.response?.headers,
+						config: {
+							url: error.config?.url,
+							method: error.config?.method,
+							headers: error.config?.headers
+						}
+					})
+				}
+				provider.postMessageToWebview({
+					type: "mcpMarketplaceCatalog",
+					mcpMarketplaceCatalog: { items: [] },
+					error: `Failed to fetch marketplace: ${error instanceof Error ? error.message : String(error)}`
+				})
 			}
 			break
 		}
@@ -489,7 +720,7 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 			}
 
 			const workspaceFolder = vscode.workspace.workspaceFolders[0]
-			const rooDir = path.join(workspaceFolder.uri.fsPath, ".kilocode")
+			const rooDir = path.join(workspaceFolder.uri.fsPath, ".kodely")
 			const mcpPath = path.join(rooDir, "mcp.json")
 
 			try {
@@ -585,13 +816,13 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 				playSound(soundPath)
 			}
 			break
-		// kilocode_change begin
+		// kodely_change begin
 		case "showSystemNotification":
 			if (message.notificationOptions) {
 				showSystemNotification(message.notificationOptions)
 			}
 			break
-		// kilocode_change end
+		// kodely_change end
 		case "soundEnabled":
 			const soundEnabled = message.bool ?? true
 			await updateGlobalState("soundEnabled", soundEnabled)
@@ -951,12 +1182,12 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 			await updateGlobalState("maxReadFileLine", message.value)
 			await provider.postStateToWebview()
 			break
-		// kilocode_change start
+		// kodely_change start
 		case "showAutoApproveMenu":
 			await updateGlobalState("showAutoApproveMenu", message.bool ?? true)
 			await provider.postStateToWebview()
 			break
-		// kilocode_change end
+		// kodely_change end
 		case "toggleApiConfigPin":
 			if (message.text) {
 				const currentPinned = getGlobalState("pinnedApiConfigs") ?? {}
@@ -1071,7 +1302,7 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 			}
 			break
 		}
-		// kilocode_change start
+		// kodely_change start
 		case "showFeedbackOptions": {
 			const githubIssuesText = t("common:feedback.githubIssues")
 			const githubDiscussionsText = t("common:feedback.githubDiscussions")
@@ -1086,15 +1317,15 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 			)
 
 			if (answer === githubIssuesText) {
-				await vscode.env.openExternal(vscode.Uri.parse("https://github.com/Kilo-Org/kilocode/issues"))
+				await vscode.env.openExternal(vscode.Uri.parse("https://github.com/KodelyDev/KodelyApp/issues"))
 			} else if (answer === githubDiscussionsText) {
-				await vscode.env.openExternal(vscode.Uri.parse("https://github.com/Kilo-Org/kilocode/discussions"))
+				await vscode.env.openExternal(vscode.Uri.parse("https://github.com/KodelyDev/KodelyApp/discussions"))
 			} else if (answer === discordText) {
 				await vscode.env.openExternal(vscode.Uri.parse("https://discord.gg/fxrhCFGhkP"))
 			}
 			break
 		}
-		// kilocode_change end
+		// kodely_change end
 		case "searchFiles": {
 			const workspacePath = getWorkspacePath()
 
@@ -1349,7 +1580,7 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 			break
 		case "humanRelayResponse":
 			if (message.requestId && message.text) {
-				vscode.commands.executeCommand("kilo-code.handleHumanRelayResponse", {
+				vscode.commands.executeCommand("kodely.handleHumanRelayResponse", {
 					requestId: message.requestId,
 					text: message.text,
 					cancelled: false,
@@ -1359,14 +1590,14 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 
 		case "humanRelayCancel":
 			if (message.requestId) {
-				vscode.commands.executeCommand("kilo-code.handleHumanRelayResponse", {
+				vscode.commands.executeCommand("kodely.handleHumanRelayResponse", {
 					requestId: message.requestId,
 					cancelled: true,
 				})
 			}
 			break
 
-		// kilocode_change_start
+		// kodely_change_start
 		case "fetchMcpMarketplace": {
 			await provider.fetchMcpMarketplace(message.bool)
 			break
@@ -1383,7 +1614,7 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 			await provider.silentlyRefreshMcpMarketplace()
 			break
 		}
-		// end kilocode_change
+		// end kodely_change
 	}
 }
 
@@ -1409,7 +1640,7 @@ const generateSystemPrompt = async (provider: ClineProvider, message: WebviewMes
 	const mode = message.mode ?? defaultModeSlug
 	const customModes = await provider.customModesManager.getCustomModes()
 
-	const rooIgnoreInstructions = provider.getCurrentCline()?.rooIgnoreController?.getInstructions()
+	const rooIgnoreInstructions = provider.getCurrentCline()?.KodelyIgnoreController?.getInstructions()
 
 	// Determine if browser tools can be used based on model support, mode, and user settings
 	let modelSupportsComputerUse = false

@@ -1,9 +1,9 @@
 {
-	"extension.displayName": "Kilo Code",
+	"extension.displayName": "Kodely",
 	"extension.description": "A whole dev team of AI agents in your editor.",
-	"views.contextMenu.label": "Kilo Code",
-	"views.terminalMenu.label": "Kilo Code",
-	"views.activitybar.title": "Kilo Code (⇧⌘A)",
+	"views.contextMenu.label": "Kodely",
+	"views.terminalMenu.label": "Kodely",
+	"views.activitybar.title": "Kodely (⇧⌘A)",
 	"command.newTask.title": "New Task",
 	"command.mcpServers.title": "MCP Servers",
 	"command.prompts.title": "Prompts",
@@ -24,10 +24,10 @@
 	"command.terminal.fixCommandInCurrentTask.title": "Fix This Command (Current Task)",
 	"command.terminal.explainCommandInCurrentTask.title": "Explain This Command (Current Task)",
 	"command.acceptInput.title": "Accept Input/Suggestion",
-	"configuration.title": "Kilo Code",
+	"configuration.title": "Kodely",
 	"commands.allowedCommands.description": "Commands that can be auto-executed when 'Always approve execute operations' is enabled",
 	"settings.vsCodeLmModelSelector.description": "Settings for VSCode Language Model API",
 	"settings.vsCodeLmModelSelector.vendor.description": "The vendor of the language model (e.g. copilot)",
 	"settings.vsCodeLmModelSelector.family.description": "The family of the language model (e.g. gpt-4)",
-	"settings.customStoragePath.description": "Custom storage path. Leave empty to use the default location. Supports absolute paths (e.g. 'D:\\KiloCodeStorage')"
+	"settings.customStoragePath.description": "Custom storage path. Leave empty to use the default location. Supports absolute paths (e.g. 'D:\\KodelyStorage')"
 }

@@ -1,4 +1,4 @@
-// kilocode_change: never displayed
+// kodely_change: never displayed
 import { VSCodeButton, VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 import { memo } from "react"
 import { useAppTranslation } from "@/i18n/TranslationContext"

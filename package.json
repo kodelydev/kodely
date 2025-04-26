@@ -1,10 +1,10 @@
 {
-	"name": "kilo-code",
-	"displayName": "%extension.displayName%",
-	"description": "%extension.description%",
-	"publisher": "kilocode",
-	"version": "4.18.0",
-	"icon": "assets/icons/logo-outline-black.png",
+	"name": "kodely",
+	"displayName": "Kodely",
+	"description": "The open-source VSCode AI agent that supercharges your coding productivity",
+	"publisher": "kodely",
+	"version": "1.1.0",
+	"icon": "assets/icons/kodely.png",
 	"galleryBanner": {
 		"color": "#FFFFFF",
 		"theme": "light"
@@ -14,13 +14,13 @@
 		"node": "20.18.1"
 	},
 	"author": {
-		"name": "Kilo Code"
+		"name": "Kodely"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Kilo-Org/kilocode"
+		"url": "https://github.com/KodelyDev/kodely"
 	},
-	"homepage": "https://kilocode.ai",
+	"homepage": "https://kodely.dev",
 	"categories": [
 		"AI",
 		"Chat",
@@ -42,9 +42,7 @@
 		"sonnet",
 		"ai",
 		"llama",
-		"Kilo Code",
-		"kilocode",
-		"roocode"
+		"Kodely"
 	],
 	"activationEvents": [
 		"onLanguage",
@@ -54,14 +52,14 @@
 	"contributes": {
 		"walkthroughs": [
 			{
-				"id": "kiloCodeWalkthrough",
-				"title": "5 ways Kilo Code helps you code",
+				"id": "kodelyWalkthrough",
+				"title": "5 ways Kodely helps you code",
 				"description": "You now have a personal AI coding assistant.",
 				"steps": [
 					{
 						"id": "welcome",
 						"title": "Write code for you",
-						"description": "Describe what you want to build. Kilo Code will write it from scratch, generate the files, and run them for you.",
+						"description": "Describe what you want to build. Kodely will write it from scratch, generate the files, and run them for you.",
 						"media": {
 							"markdown": "walkthrough/step1.md"
 						}
@@ -69,7 +67,7 @@
 					{
 						"id": "getting-started",
 						"title": "Understand your codebase",
-						"description": "Need clarity on how something works? Ask Kilo Code about any part of your files and get a clear explanation.",
+						"description": "Need clarity on how something works? Ask Kodely about any part of your files and get a clear explanation.",
 						"media": {
 							"markdown": "walkthrough/step2.md"
 						},
@@ -80,7 +78,7 @@
 					{
 						"id": "modes",
 						"title": "Get things working again",
-						"description": "Stuck on an error? Kilo Code can find the issue, fix it, and get your code running.",
+						"description": "Stuck on an error? Kodely can find the issue, fix it, and get your code running.",
 						"media": {
 							"markdown": "walkthrough/step3.md"
 						}
@@ -106,159 +104,159 @@
 		],
 		"submenus": [
 			{
-				"id": "kilo-code.contextMenu",
+				"id": "kodely.contextMenu",
 				"label": "%views.contextMenu.label%"
 			},
 			{
-				"id": "kilo-code.terminalMenu",
+				"id": "kodely.terminalMenu",
 				"label": "%views.terminalMenu.label%"
 			}
 		],
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "kilo-code-ActivityBar",
+					"id": "kodely-ActivityBar",
 					"title": "%views.activitybar.title%",
-					"icon": "assets/icons/kilo.png",
+					"icon": "assets/icons/kodely.png",
 					"when": "isMac"
 				}
 			]
 		},
 		"views": {
-			"kilo-code-ActivityBar": [
+			"kodely-ActivityBar": [
 				{
 					"type": "webview",
-					"id": "kilo-code.SidebarProvider",
+					"id": "kodely.SidebarProvider",
 					"name": ""
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "kilo-code.plusButtonClicked",
+				"command": "kodely.plusButtonClicked",
 				"title": "%command.newTask.title%",
 				"icon": "$(add)"
 			},
 			{
-				"command": "kilo-code.importSettings",
+				"command": "kodely.importSettings",
 				"title": "Import Settings",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "kilo-code.exportSettings",
+				"command": "kodely.exportSettings",
 				"title": "Export Settings",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "kilo-code.mcpButtonClicked",
+				"command": "kodely.mcpButtonClicked",
 				"title": "%command.mcpServers.title%",
 				"icon": "$(server)"
 			},
 			{
-				"command": "kilo-code.promptsButtonClicked",
+				"command": "kodely.promptsButtonClicked",
 				"title": "%command.prompts.title%",
 				"icon": "$(notebook)"
 			},
 			{
-				"command": "kilo-code.historyButtonClicked",
+				"command": "kodely.historyButtonClicked",
 				"title": "%command.history.title%",
 				"icon": "$(history)"
 			},
 			{
-				"command": "kilo-code.popoutButtonClicked",
+				"command": "kodely.popoutButtonClicked",
 				"title": "%command.openInEditor.title%",
 				"icon": "$(link-external)"
 			},
 			{
-				"command": "kilo-code.settingsButtonClicked",
+				"command": "kodely.settingsButtonClicked",
 				"title": "%command.settings.title%",
 				"icon": "$(settings-gear)"
 			},
 			{
-				"command": "kilo-code.helpButtonClicked",
+				"command": "kodely.helpButtonClicked",
 				"title": "%command.documentation.title%",
 				"icon": "$(question)"
 			},
 			{
-				"command": "kilo-code.openInNewTab",
+				"command": "kodely.openInNewTab",
 				"title": "%command.openInNewTab.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "kilo-code.explainCode",
+				"command": "kodely.explainCode",
 				"title": "%command.explainCode.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "kilo-code.fixCode",
+				"command": "kodely.fixCode",
 				"title": "%command.fixCode.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "kilo-code.improveCode",
+				"command": "kodely.improveCode",
 				"title": "%command.improveCode.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "kilo-code.addToContext",
+				"command": "kodely.addToContext",
 				"title": "%command.addToContext.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "kilo-code.newTask",
+				"command": "kodely.newTask",
 				"title": "%command.newTask.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "kilo-code.terminalAddToContext",
+				"command": "kodely.terminalAddToContext",
 				"title": "%command.terminal.addToContext.title%",
 				"category": "%extension.displayName%"
 			},
 			{
-				"command": "kilo-code.terminalFixCommand",
+				"command": "kodely.terminalFixCommand",
 				"title": "%command.terminal.fixCommand.title%",
 				"category": "%extension.displayName%"
 			},
 			{
-				"command": "kilo-code.terminalExplainCommand",
+				"command": "kodely.terminalExplainCommand",
 				"title": "%command.terminal.explainCommand.title%",
 				"category": "%extension.displayName%"
 			},
 			{
-				"command": "kilo-code.terminalFixCommandInCurrentTask",
+				"command": "kodely.terminalFixCommandInCurrentTask",
 				"title": "%command.terminal.fixCommandInCurrentTask.title%",
 				"category": "%extension.displayName%"
 			},
 			{
-				"command": "kilo-code.terminalExplainCommandInCurrentTask",
+				"command": "kodely.terminalExplainCommandInCurrentTask",
 				"title": "%command.terminal.explainCommandInCurrentTask.title%",
 				"category": "%extension.displayName%"
 			},
 			{
-				"command": "kilo-code.setCustomStoragePath",
+				"command": "kodely.setCustomStoragePath",
 				"title": "%command.setCustomStoragePath.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "kilo-code.focusChatInput",
+				"command": "kodely.focusChatInput",
 				"title": "%command.focusInput.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "kilo-code.acceptInput",
+				"command": "kodely.acceptInput",
 				"title": "%command.acceptInput.title%",
 				"category": "%configuration.title%"
 			}
 		],
 		"keybindings": [
 			{
-				"command": "kilo-code.focusChatInput",
+				"command": "kodely.focusChatInput",
 				"key": "ctrl+shift+a",
 				"mac": "cmd+shift+a",
 				"when": "true"
 			},
 			{
-				"command": "kilo-code.directFocusChatInput",
+				"command": "kodely.directFocusChatInput",
 				"key": "ctrl+shift+k",
 				"mac": "cmd+shift+k",
 				"when": "true"
@@ -267,125 +265,125 @@
 		"menus": {
 			"editor/context": [
 				{
-					"submenu": "kilo-code.contextMenu",
+					"submenu": "kodely.contextMenu",
 					"group": "navigation"
 				}
 			],
-			"kilo-code.contextMenu": [
+			"kodely.contextMenu": [
 				{
-					"command": "kilo-code.explainCode",
+					"command": "kodely.explainCode",
 					"group": "1_actions@1"
 				},
 				{
-					"command": "kilo-code.fixCode",
+					"command": "kodely.fixCode",
 					"group": "1_actions@2"
 				},
 				{
-					"command": "kilo-code.improveCode",
+					"command": "kodely.improveCode",
 					"group": "1_actions@3"
 				},
 				{
-					"command": "kilo-code.addToContext",
+					"command": "kodely.addToContext",
 					"group": "1_actions@4"
 				}
 			],
 			"terminal/context": [
 				{
-					"submenu": "kilo-code.terminalMenu",
+					"submenu": "kodely.terminalMenu",
 					"group": "navigation"
 				}
 			],
-			"kilo-code.terminalMenu": [
+			"kodely.terminalMenu": [
 				{
-					"command": "kilo-code.terminalAddToContext",
+					"command": "kodely.terminalAddToContext",
 					"group": "1_actions@1"
 				},
 				{
-					"command": "kilo-code.terminalFixCommand",
+					"command": "kodely.terminalFixCommand",
 					"group": "1_actions@2"
 				},
 				{
-					"command": "kilo-code.terminalExplainCommand",
+					"command": "kodely.terminalExplainCommand",
 					"group": "1_actions@3"
 				},
 				{
-					"command": "kilo-code.terminalFixCommandInCurrentTask",
+					"command": "kodely.terminalFixCommandInCurrentTask",
 					"group": "1_actions@5"
 				},
 				{
-					"command": "kilo-code.terminalExplainCommandInCurrentTask",
+					"command": "kodely.terminalExplainCommandInCurrentTask",
 					"group": "1_actions@6"
 				}
 			],
 			"view/title": [
 				{
-					"command": "kilo-code.plusButtonClicked",
+					"command": "kodely.plusButtonClicked",
 					"group": "navigation@1",
-					"when": "view == kilo-code.SidebarProvider"
+					"when": "view == kodely.SidebarProvider"
 				},
 				{
-					"command": "kilo-code.historyButtonClicked",
+					"command": "kodely.historyButtonClicked",
 					"group": "navigation@2",
-					"when": "view == kilo-code.SidebarProvider"
+					"when": "view == kodely.SidebarProvider"
 				},
 				{
-					"command": "kilo-code.mcpButtonClicked",
+					"command": "kodely.mcpButtonClicked",
 					"group": "navigation@3",
-					"when": "view == kilo-code.SidebarProvider"
+					"when": "view == kodely.SidebarProvider"
 				},
 				{
-					"command": "kilo-code.settingsButtonClicked",
+					"command": "kodely.settingsButtonClicked",
 					"group": "navigation@4",
-					"when": "view == kilo-code.SidebarProvider"
+					"when": "view == kodely.SidebarProvider"
 				},
 				{
-					"command": "kilo-code.popoutButtonClicked",
+					"command": "kodely.popoutButtonClicked",
 					"group": "navigation@5",
-					"when": "view == kilo-code.SidebarProvider"
+					"when": "view == kodely.SidebarProvider"
 				},
 				{
-					"command": "kilo-code.helpButtonClicked",
+					"command": "kodely.helpButtonClicked",
 					"group": "navigation@6",
-					"when": "false && view == kilo-code.SidebarProvider"
+					"when": "false && view == kodely.SidebarProvider"
 				}
 			],
 			"editor/title": [
 				{
-					"command": "kilo-code.plusButtonClicked",
+					"command": "kodely.plusButtonClicked",
 					"group": "navigation@1",
-					"when": "activeWebviewPanelId == kilo-code.TabPanelProvider"
+					"when": "activeWebviewPanelId == kodely.TabPanelProvider"
 				},
 				{
-					"command": "kilo-code.promptsButtonClicked",
+					"command": "kodely.promptsButtonClicked",
 					"group": "navigation@2",
-					"when": "activeWebviewPanelId == kilo-code.TabPanelProvider"
+					"when": "activeWebviewPanelId == kodely.TabPanelProvider"
 				},
 				{
-					"command": "kilo-code.historyButtonClicked",
+					"command": "kodely.historyButtonClicked",
 					"group": "navigation@3",
-					"when": "activeWebviewPanelId == kilo-code.TabPanelProvider"
+					"when": "activeWebviewPanelId == kodely.TabPanelProvider"
 				},
 				{
-					"command": "kilo-code.popoutButtonClicked",
+					"command": "kodely.popoutButtonClicked",
 					"group": "navigation@4",
-					"when": "activeWebviewPanelId == kilo-code.TabPanelProvider"
+					"when": "activeWebviewPanelId == kodely.TabPanelProvider"
 				},
 				{
-					"command": "kilo-code.settingsButtonClicked",
+					"command": "kodely.settingsButtonClicked",
 					"group": "navigation@5",
-					"when": "activeWebviewPanelId == kilo-code.TabPanelProvider"
+					"when": "activeWebviewPanelId == kodely.TabPanelProvider"
 				},
 				{
-					"command": "kilo-code.helpButtonClicked",
+					"command": "kodely.helpButtonClicked",
 					"group": "navigation@6",
-					"when": "activeWebviewPanelId == kilo-code.TabPanelProvider"
+					"when": "activeWebviewPanelId == kodely.TabPanelProvider"
 				}
 			]
 		},
 		"configuration": {
 			"title": "%configuration.title%",
 			"properties": {
-				"kilo-code.allowedCommands": {
+				"kodely.allowedCommands": {
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -400,7 +398,7 @@
 					],
 					"description": "%commands.allowedCommands.description%"
 				},
-				"kilo-code.vsCodeLmModelSelector": {
+				"kodely.vsCodeLmModelSelector": {
 					"type": "object",
 					"properties": {
 						"vendor": {
@@ -414,7 +412,7 @@
 					},
 					"description": "%settings.vsCodeLmModelSelector.description%"
 				},
-				"kilo-code.customStoragePath": {
+				"kodely.customStoragePath": {
 					"type": "string",
 					"default": "",
 					"description": "%settings.customStoragePath.description%"
@@ -522,6 +520,7 @@
 		"tmp": "^0.2.3",
 		"tree-sitter-wasms": "^0.1.11",
 		"turndown": "^7.2.0",
+		"vsce": "^2.15.0",
 		"vscode-material-icons": "^0.1.1",
 		"web-tree-sitter": "^0.22.6",
 		"zod": "^3.23.8"

@@ -41,21 +41,21 @@ let extensionContext: vscode.ExtensionContext
 // Your extension is activated the very first time the command is executed.
 export async function activate(context: vscode.ExtensionContext) {
 	extensionContext = context
-	outputChannel = vscode.window.createOutputChannel("Kilo-Code")
+	outputChannel = vscode.window.createOutputChannel("Kodely")
 	context.subscriptions.push(outputChannel)
-	outputChannel.appendLine("Kilo Code extension activated")
+	outputChannel.appendLine("Kodely extension activated")
 
 	// Migrate old settings to new
 	await migrateSettings(context, outputChannel)
 
 	// Initialize i18n for internationalization support
-	initializeI18n(context.globalState.get("language") ?? "en-US") // kilocode_change
+	initializeI18n(context.globalState.get("language") ?? "en-US") // kodely_change
 
 	// Initialize terminal shell execution handlers.
 	TerminalRegistry.initialize()
 
 	// Get default commands from configuration.
-	const defaultCommands = vscode.workspace.getConfiguration("kilo-code").get<string[]>("allowedCommands") || []
+	const defaultCommands = vscode.workspace.getConfiguration("kodely").get<string[]>("allowedCommands") || []
 
 	// Initialize global state if not already set.
 	if (!context.globalState.get("allowedCommands")) {
@@ -71,14 +71,14 @@ export async function activate(context: vscode.ExtensionContext) {
 	)
 
 	if (!context.globalState.get("firstInstallCompleted")) {
-		outputChannel.appendLine("First installation detected, opening Kilo Code sidebar!")
+		outputChannel.appendLine("First installation detected, opening Kodely sidebar!")
 		try {
-			await vscode.commands.executeCommand("kilo-code.SidebarProvider.focus")
+			await vscode.commands.executeCommand("kodely.SidebarProvider.focus")
 
-			outputChannel.appendLine("Opening Kilo Code walkthrough")
+			outputChannel.appendLine("Opening Kodely walkthrough")
 			await vscode.commands.executeCommand(
 				"workbench.action.openWalkthrough",
-				"kilocode.kilo-code#kiloCodeWalkthrough",
+				"kodely.kodely#kodelyWalkthrough",
 				false,
 			)
 
@@ -129,7 +129,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	registerTerminalActions(context)
 
 	// Allows other extensions to activate once Roo is ready.
-	vscode.commands.executeCommand("kilo-code.activationCompleted")
+	vscode.commands.executeCommand("kodely.activationCompleted")
 
 	// Implements the `RooCodeAPI` interface.
 	const socketPath = process.env.ROO_CODE_IPC_SOCKET_PATH
@@ -139,7 +139,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 // This method is called when your extension is deactivated
 export async function deactivate() {
-	outputChannel.appendLine("Kilo Code extension deactivated")
+	outputChannel.appendLine("Kodely extension deactivated")
 	// Clean up MCP server manager
 	await McpServerManager.cleanup(extensionContext)
 
