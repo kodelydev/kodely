@@ -33,7 +33,7 @@ export const About = ({ version, className, ...props }: AboutProps) => {
 					<Trans
 						i18nKey="settings:footer.feedback"
 						components={{
-							githubLink: <VSCodeLink href="https://github.com/KodelyDev/KodelyApp" />,
+							githubLink: <VSCodeLink href="https://github.com/KodelyDev/Kodely" />,
 							redditLink: <VSCodeLink href="https://reddit.com/r/kodely" />,
 							discordLink: <VSCodeLink href="https://kodely.dev/discord" />,
 						}}

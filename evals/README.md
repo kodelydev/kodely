@@ -7,7 +7,7 @@ NOTE: This is MacOS only for now!
 Clone the Kodely repo:
 
 ```sh
-git clone https://github.com/KodelyDev/KodelyApp.git
+git clone https://github.com/KodelyDev/Kodely.git
 cd kodely
 ```
 

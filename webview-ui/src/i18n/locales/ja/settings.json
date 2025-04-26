@@ -431,7 +431,7 @@
 		"useCustomModel": "カスタムを使用: {{modelId}}"
 	},
 	"footer": {
-		"feedback": "質問やフィードバックがある場合は、<githubLink>github.com/KodelyDev/KodelyApp</githubLink>で問題を開くか、<redditLink>reddit.com/r/kodely</redditLink>や<discordLink>kodely.dev/discord</discordLink>に参加してください",
+		"feedback": "質問やフィードバックがある場合は、<githubLink>github.com/KodelyDev/Kodely</githubLink>で問題を開くか、<redditLink>reddit.com/r/kodely</redditLink>や<discordLink>kodely.dev/discord</discordLink>に参加してください",
 		"version": "Kodely v{{version}}",
 		"telemetry": {
 			"label": "匿名のエラーと使用状況レポートを許可",

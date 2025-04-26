@@ -431,7 +431,7 @@
 		"useCustomModel": "Использовать пользовательскую: {{modelId}}"
 	},
 	"footer": {
-		"feedback": "Если у вас есть вопросы или предложения, откройте issue на <githubLink>github.com/KodelyDev/KodelyApp</githubLink> или присоединяйтесь к <redditLink>reddit.com/r/kodely</redditLink> или <discordLink>kodely.dev/discord</discordLink>",
+		"feedback": "Если у вас есть вопросы или предложения, откройте issue на <githubLink>github.com/KodelyDev/Kodely</githubLink> или присоединяйтесь к <redditLink>reddit.com/r/kodely</redditLink> или <discordLink>kodely.dev/discord</discordLink>",
 		"telemetry": {
 			"label": "Разрешить анонимную отправку ошибок и статистики использования",
 			"description": "Помогите улучшить Kodely, отправляя анонимные данные об ошибках и использовании. Код, подсказки и личная информация не отправляются. Подробнее — в политике конфиденциальности."

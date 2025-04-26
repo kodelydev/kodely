@@ -431,7 +431,7 @@
 		"useCustomModel": "使用自定义：{{modelId}}"
 	},
 	"footer": {
-		"feedback": "如果您有任何问题或反馈，请随时在 <githubLink>github.com/KodelyDev/KodelyApp</githubLink> 上提出问题或加入 <redditLink>reddit.com/r/kodely</redditLink> 或 <discordLink>kodely.dev/discord</discordLink>",
+		"feedback": "如果您有任何问题或反馈，请随时在 <githubLink>github.com/KodelyDev/Kodely</githubLink> 上提出问题或加入 <redditLink>reddit.com/r/kodely</redditLink> 或 <discordLink>kodely.dev/discord</discordLink>",
 		"version": "Kodely v{{version}}",
 		"telemetry": {
 			"label": "允许匿名数据收集",

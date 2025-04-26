@@ -1317,9 +1317,9 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 			)
 
 			if (answer === githubIssuesText) {
-				await vscode.env.openExternal(vscode.Uri.parse("https://github.com/KodelyDev/KodelyApp/issues"))
+				await vscode.env.openExternal(vscode.Uri.parse("https://github.com/KodelyDev/Kodely/issues"))
 			} else if (answer === githubDiscussionsText) {
-				await vscode.env.openExternal(vscode.Uri.parse("https://github.com/KodelyDev/KodelyApp/discussions"))
+				await vscode.env.openExternal(vscode.Uri.parse("https://github.com/KodelyDev/Kodely/discussions"))
 			} else if (answer === discordText) {
 				await vscode.env.openExternal(vscode.Uri.parse("https://discord.gg/fxrhCFGhkP"))
 			}

@@ -13,8 +13,8 @@ export const SettingsFooter = ({ version, className, ...props }: SettingsFooterP
 	<div className={cn("text-vscode-descriptionForeground p-5", className)} {...props}>
 		<p style={{ wordWrap: "break-word", margin: 0, padding: 0 }}>
 			If you have any questions or feedback, feel free to open an issue at{" "}
-			<VSCodeLink href="https://github.com/KodelyDev/KodelyApp" style={{ display: "inline" }}>
-				github.com/KodelyDev/KodelyApp
+			<VSCodeLink href="https://github.com/KodelyDev/Kodely" style={{ display: "inline" }}>
+				github.com/KodelyDev/Kodely
 			</VSCodeLink>{" "}
 			or join{" "}
 			<VSCodeLink href="https://www.reddit.com/r/Kodely/" style={{ display: "inline" }}>
