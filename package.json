@@ -3,7 +3,7 @@
 	"displayName": "%extension.displayName%",
 	"description": "%extension.description%",
 	"publisher": "kodely",
-	"version": "1.1.0",
+	"version": "1.1.2",
 	"icon": "assets/icons/kodely.png",
 	"galleryBanner": {
 		"color": "#FFFFFF",
@@ -42,7 +42,16 @@
 		"sonnet",
 		"ai",
 		"llama",
-		"Kodely"
+		"Kodely",
+		"gemini",
+		"openai",
+		"anthropic",
+		"roo",
+		"roo code",
+		"tabnine",
+		"windsurf",
+		"cursor",
+		"cody"
 	],
 	"activationEvents": [
 		"onLanguage",
