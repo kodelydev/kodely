@@ -32,4 +32,4 @@ A "How To Test" section can look something like this:
 
 ## Get in Touch
 
-<!-- We'd love to have a way to chat with you about your changes if necessary. If you're in the [Kilo Code Discord](https://kilocode.ai/discord), please share your handle here. -->
+<!-- We'd love to have a way to chat with you about your changes if necessary. If you're in the [Kodely Discord](https://discord.gg/C2g3XjU56S), please share your handle here. -->

@@ -15,7 +15,7 @@ body:
           label: Which API Provider are you using?
           multiple: false
           options:
-              - Kilo Code
+              - Kodely
               - OpenRouter
               - Anthropic
               - Fireworks
