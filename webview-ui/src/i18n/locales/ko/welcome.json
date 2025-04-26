@@ -1,0 +1,19 @@
+{
+	"greeting": "안녕하세요, 저는 Kodely입니다!",
+	"introduction": "<strong>Kodely는 최고의 자율적 코딩 에이전트입니다.</strong> 아키텍처 설계, 코딩, 디버깅, 그리고 전례 없는 생산성 향상을 경험할 준비를 하세요. 계속하려면 Kodely에 API 키가 필요합니다.",
+	"notice": "시작하려면 이 확장 프로그램에 API 공급자가 필요합니다.",
+	"start": "시작해 봅시다!",
+	"chooseProvider": "시작하려면 API 공급자를 선택하세요:",
+	"routers": {
+		"requesty": {
+			"description": "최적화된 LLM 라우터",
+			"incentive": "$1 무료 크레딧"
+		},
+		"openrouter": {
+			"description": "LLM을 위한 통합 인터페이스"
+		}
+	},
+	"startRouter": "라우터를 통한 빠른 설정",
+	"startCustom": "직접 API 키 사용하기",
+	"or": "또는"
+}

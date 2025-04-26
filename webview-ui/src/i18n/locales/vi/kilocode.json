@@ -1,0 +1,8 @@
+{
+	"welcome": {
+		"greeting": "Kodely có thể làm gì cho bạn?",
+		"introText": "Tôi đã được đào tạo trên các mô hình AI nhanh nhất hiện có và sẵn sàng tạo mã cho bạn với tốc độ cực nhanh!",
+		"ctaButton": "Dùng thử Kodely miễn phí",
+		"manualModeButton": "Sử dụng khóa API của riêng bạn"
+	}
+}

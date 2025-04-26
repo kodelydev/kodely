@@ -1,0 +1,39 @@
+.pnpm-store
+dist
+out
+out-*
+node_modules
+coverage/
+
+.idea
+
+.DS_Store
+
+# Builds
+bin/
+*.vsix
+
+# Local prompts and rules
+/local-prompts
+
+# Test environment
+.test_env
+.vscode-test/
+
+# Docs
+docs/_site/
+
+# Dotenv
+.env
+.env.*
+!.env.*.sample
+
+
+#Local lint config
+.eslintrc.local.json
+
+#Logging
+logs
+
+# Vite development
+.vite-port

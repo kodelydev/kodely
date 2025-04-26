@@ -1,0 +1,17 @@
+{
+	"number_format": {
+		"thousand_suffix": "k",
+		"million_suffix": "m",
+		"billion_suffix": "b"
+	},
+	"feedback": {
+		"title": "反馈",
+		"description": "我们很乐意听取您的反馈或帮助您解决遇到的任何问题。",
+		"githubIssues": "在GitHub上报告问题",
+		"githubDiscussions": "加入GitHub讨论",
+		"discord": "加入我们的Discord社区"
+	},
+	"ui": {
+		"search_placeholder": "搜索..."
+	}
+}

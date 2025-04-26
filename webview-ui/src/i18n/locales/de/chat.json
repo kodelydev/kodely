@@ -1,0 +1,224 @@
+{
+	"greeting": "Was kann Kodely für dich tun?",
+	"task": {
+		"title": "Aufgabe",
+		"seeMore": "Mehr anzeigen",
+		"seeLess": "Weniger anzeigen",
+		"tokens": "Tokens:",
+		"cache": "Cache:",
+		"apiCost": "API-Kosten:",
+		"contextWindow": "Kontextfenster:",
+		"closeAndStart": "Aufgabe schließen und neue starten",
+		"export": "Aufgabenverlauf exportieren",
+		"delete": "Aufgabe löschen (Shift + Klick zum Überspringen der Bestätigung)"
+	},
+	"history": {
+		"title": "Verlauf"
+	},
+	"unpin": "Lösen von oben",
+	"pin": "Anheften",
+	"tokenProgress": {
+		"availableSpace": "Verfügbarer Speicher: {{amount}} Tokens",
+		"tokensUsed": "Verwendete Tokens: {{used}} von {{total}}",
+		"reservedForResponse": "Reserviert für Modellantwort: {{amount}} Tokens"
+	},
+	"retry": {
+		"title": "Wiederholen",
+		"tooltip": "Versuch erneut starten"
+	},
+	"startNewTask": {
+		"title": "Neue Aufgabe starten",
+		"tooltip": "Beginne eine neue Aufgabe"
+	},
+	"proceedAnyways": {
+		"title": "Trotzdem fortfahren",
+		"tooltip": "Während der Befehlsausführung fortfahren"
+	},
+	"save": {
+		"title": "Speichern",
+		"tooltip": "Dateiänderungen speichern"
+	},
+	"reject": {
+		"title": "Ablehnen",
+		"tooltip": "Diese Aktion ablehnen"
+	},
+	"completeSubtaskAndReturn": "Teilaufgabe abschließen und zurückkehren",
+	"approve": {
+		"title": "Genehmigen",
+		"tooltip": "Diese Aktion genehmigen"
+	},
+	"runCommand": {
+		"title": "Befehl ausführen",
+		"tooltip": "Diesen Befehl ausführen"
+	},
+	"proceedWhileRunning": {
+		"title": "Während Ausführung fortfahren",
+		"tooltip": "Trotz Warnungen fortfahren"
+	},
+	"resumeTask": {
+		"title": "Aufgabe fortsetzen",
+		"tooltip": "Aktuelle Aufgabe fortsetzen"
+	},
+	"terminate": {
+		"title": "Beenden",
+		"tooltip": "Aktuelle Aufgabe beenden"
+	},
+	"cancel": {
+		"title": "Abbrechen",
+		"tooltip": "Aktuelle Operation abbrechen"
+	},
+	"scrollToBottom": "Zum Chat-Ende scrollen",
+	"onboarding": "<strong>Deine Aufgabenliste in diesem Arbeitsbereich ist leer.</strong> Beginne mit der Eingabe einer Aufgabe unten. Du bist dir nicht sicher, wie du anfangen sollst? Lies mehr darüber, was Kodely für dich tun kann, in <DocsLink>den Dokumenten</DocsLink>.",
+	"selectMode": "Interaktionsmodus auswählen",
+	"selectApiConfig": "API-Konfiguration auswählen",
+	"enhancePrompt": "Prompt mit zusätzlichem Kontext verbessern",
+	"addImages": "Bilder zur Nachricht hinzufügen",
+	"sendMessage": "Nachricht senden",
+	"typeMessage": "Nachricht eingeben...",
+	"typeTask": "Erstellen, finden, etwas fragen",
+	"addContext": "@ für Kontext, / zum Moduswechsel",
+	"dragFiles": "Shift halten, um Dateien einzufügen",
+	"dragFilesImages": "Shift halten, um Dateien/Bilder einzufügen",
+	"enhancePromptDescription": "Die Schaltfläche 'Prompt verbessern' hilft, deine Anfrage durch zusätzlichen Kontext, Klarstellungen oder Umformulierungen zu verbessern. Versuche, hier eine Anfrage einzugeben und klicke erneut auf die Schaltfläche, um zu sehen, wie es funktioniert.",
+	"errorReadingFile": "Fehler beim Lesen der Datei:",
+	"noValidImages": "Keine gültigen Bilder wurden verarbeitet",
+	"separator": "Trennlinie",
+	"edit": "Bearbeiten...",
+	"forNextMode": "für nächsten Modus",
+	"error": "Fehler",
+	"diffError": {
+		"title": "Bearbeitung fehlgeschlagen"
+	},
+	"troubleMessage": "Kodely hat Probleme...",
+	"apiRequest": {
+		"title": "API-Anfrage",
+		"failed": "API-Anfrage fehlgeschlagen",
+		"streaming": "API-Anfrage...",
+		"cancelled": "API-Anfrage abgebrochen",
+		"streamingFailed": "API-Streaming fehlgeschlagen"
+	},
+	"checkpoint": {
+		"initial": "Initialer Checkpoint",
+		"regular": "Checkpoint",
+		"initializingWarning": "Checkpoint wird noch initialisiert... Falls dies zu lange dauert, kannst du Checkpoints in den <settingsLink>Einstellungen</settingsLink> deaktivieren und deine Aufgabe neu starten.",
+		"menu": {
+			"viewDiff": "Unterschiede anzeigen",
+			"restore": "Checkpoint wiederherstellen",
+			"restoreFiles": "Dateien wiederherstellen",
+			"restoreFilesDescription": "Stellt die Dateien deines Projekts auf einen Snapshot zurück, der an diesem Punkt erstellt wurde.",
+			"restoreFilesAndTask": "Dateien & Aufgabe wiederherstellen",
+			"confirm": "Bestätigen",
+			"cancel": "Abbrechen",
+			"cannotUndo": "Diese Aktion kann nicht rückgängig gemacht werden.",
+			"restoreFilesAndTaskDescription": "Stellt die Dateien deines Projekts auf einen Snapshot zurück, der an diesem Punkt erstellt wurde, und löscht alle Nachrichten nach diesem Punkt."
+		},
+		"current": "Aktuell"
+	},
+	"instructions": {
+		"wantsToFetch": "Kodely möchte detaillierte Anweisungen abrufen, um bei der aktuellen Aufgabe zu helfen"
+	},
+	"fileOperations": {
+		"wantsToRead": "Kodely möchte diese Datei lesen:",
+		"wantsToReadOutsideWorkspace": "Kodely möchte diese Datei außerhalb des Arbeitsbereichs lesen:",
+		"didRead": "Kodely hat diese Datei gelesen:",
+		"wantsToEdit": "Kodely möchte diese Datei bearbeiten:",
+		"wantsToEditOutsideWorkspace": "Kodely möchte diese Datei außerhalb des Arbeitsbereichs bearbeiten:",
+		"wantsToCreate": "Kodely möchte eine neue Datei erstellen:",
+		"wantsToSearchReplace": "Kodely möchte in dieser Datei suchen und ersetzen:",
+		"didSearchReplace": "Kodely hat Suchen und Ersetzen in dieser Datei durchgeführt:",
+		"wantsToInsert": "Kodely möchte Inhalte in diese Datei einfügen:",
+		"wantsToInsertWithLineNumber": "Kodely möchte Inhalte in diese Datei in Zeile {{lineNumber}} einfügen:",
+		"wantsToInsertAtEnd": "Kodely möchte Inhalte am Ende dieser Datei anhängen:"
+	},
+	"directoryOperations": {
+		"wantsToViewTopLevel": "Kodely möchte die Dateien auf oberster Ebene in diesem Verzeichnis anzeigen:",
+		"didViewTopLevel": "Kodely hat die Dateien auf oberster Ebene in diesem Verzeichnis angezeigt:",
+		"wantsToViewRecursive": "Kodely möchte rekursiv alle Dateien in diesem Verzeichnis anzeigen:",
+		"didViewRecursive": "Kodely hat rekursiv alle Dateien in diesem Verzeichnis angezeigt:",
+		"wantsToViewDefinitions": "Kodely möchte Quellcode-Definitionsnamen in diesem Verzeichnis anzeigen:",
+		"didViewDefinitions": "Kodely hat Quellcode-Definitionsnamen in diesem Verzeichnis angezeigt:",
+		"wantsToSearch": "Kodely möchte dieses Verzeichnis nach <code>{{regex}}</code> durchsuchen:",
+		"didSearch": "Kodely hat dieses Verzeichnis nach <code>{{regex}}</code> durchsucht:"
+	},
+	"commandOutput": "Befehlsausgabe",
+	"response": "Antwort",
+	"arguments": "Argumente",
+	"mcp": {
+		"wantsToUseTool": "Kodely möchte ein Tool auf dem {{serverName}} MCP-Server verwenden:",
+		"wantsToAccessResource": "Kodely möchte auf eine Ressource auf dem {{serverName}} MCP-Server zugreifen:"
+	},
+	"modes": {
+		"wantsToSwitch": "Kodely möchte zum <code>{{mode}}</code>-Modus wechseln",
+		"wantsToSwitchWithReason": "Kodely möchte zum <code>{{mode}}</code>-Modus wechseln, weil: {{reason}}",
+		"didSwitch": "Kodely hat zum <code>{{mode}}</code>-Modus gewechselt",
+		"didSwitchWithReason": "Kodely hat zum <code>{{mode}}</code>-Modus gewechselt, weil: {{reason}}"
+	},
+	"subtasks": {
+		"wantsToCreate": "Kodely möchte eine neue Teilaufgabe im <code>{{mode}}</code>-Modus erstellen:",
+		"wantsToFinish": "Kodely möchte diese Teilaufgabe abschließen",
+		"newTaskContent": "Teilaufgabenanweisungen",
+		"completionContent": "Teilaufgabe abgeschlossen",
+		"resultContent": "Teilaufgabenergebnisse",
+		"defaultResult": "Bitte fahre mit der nächsten Aufgabe fort.",
+		"completionInstructions": "Teilaufgabe abgeschlossen! Du kannst die Ergebnisse überprüfen und Korrekturen oder nächste Schritte vorschlagen. Wenn alles gut aussieht, bestätige, um das Ergebnis an die übergeordnete Aufgabe zurückzugeben."
+	},
+	"questions": {
+		"hasQuestion": "Kodely hat eine Frage:"
+	},
+	"taskCompleted": "Aufgabe abgeschlossen",
+	"shellIntegration": {
+		"unavailable": "Shell-Integration nicht verfügbar",
+		"troubleshooting": "Immer noch Probleme? Klicke hier für die Shell-Integrationsdokumentation.",
+		"checkSettings": "Überprüfe die Terminal-Workarounds in den Einstellungen",
+		"updateVSCode": "VSCode aktualisieren",
+		"supportedShell": "Stelle sicher, dass du eine unterstützte Shell verwendest: zsh, bash, fish oder PowerShell"
+	},
+	"powershell": {
+		"issues": "Es scheint, dass du Probleme mit Windows PowerShell hast, bitte sieh dir dies an"
+	},
+	"autoApprove": {
+		"title": "Automatische Genehmigung:",
+		"none": "Keine",
+		"description": "Automatische Genehmigung erlaubt Kodely, Aktionen ohne Nachfrage auszuführen. Aktiviere dies nur für Aktionen, denen du vollständig vertraust. Detailliertere Konfiguration verfügbar in den <settingsLink>Einstellungen</settingsLink>."
+	},
+	"reasoning": {
+		"thinking": "Denke nach",
+		"seconds": "{{count}}s"
+	},
+	"followUpSuggest": {
+		"copyToInput": "In Eingabefeld kopieren (oder Shift + Klick)"
+	},
+	"announcement": {
+		"title": "🎉 Roo Code 3.14 veröffentlicht",
+		"description": "Roo Code 3.14 bringt neue Funktionen und Verbesserungen basierend auf deinem Feedback.",
+		"whatsNew": "Was ist neu",
+		"feature1": "<bold>Verbesserte Bearbeitungswerkzeuge</bold>: Die <code>search_and_replace</code> und <code>insert_content</code> Tools wurden verbessert und sind nicht mehr experimentell",
+		"feature2": "<bold>Diff Apply Fixes</bold>: Wir arbeiten weiterhin an der Verbesserung des <code>apply_diff</code> Tools",
+		"feature3": "<bold>Zahlreiche andere Verbesserungen</bold>: Viele Fehlerbehebungen und Optimierungen in der gesamten Erweiterung",
+		"hideButton": "Ankündigung ausblenden",
+		"detailsDiscussLinks": "Erhalte mehr Details und diskutiere auf <discordLink>Discord</discordLink> und <redditLink>Reddit</redditLink> 🚀"
+	},
+	"browser": {
+		"rooWantsToUse": "Kodely möchte den Browser verwenden:",
+		"consoleLogs": "Konsolenprotokolle",
+		"noNewLogs": "(Keine neuen Protokolle)",
+		"screenshot": "Browser-Screenshot",
+		"cursor": "Cursor",
+		"navigation": {
+			"step": "Schritt {{current}} von {{total}}",
+			"previous": "Zurück",
+			"next": "Weiter"
+		},
+		"sessionStarted": "Browser-Sitzung gestartet",
+		"actions": {
+			"title": "Browser-Aktion: ",
+			"launch": "Browser starten auf {{url}}",
+			"click": "Klicken ({{coordinate}})",
+			"type": "Eingeben \"{{text}}\"",
+			"scrollDown": "Nach unten scrollen",
+			"scrollUp": "Nach oben scrollen",
+			"close": "Browser schließen"
+		}
+	},
+	"systemPromptWarning": "WARNUNG: Benutzerdefinierte Systemaufforderung aktiv. Dies kann die Funktionalität erheblich beeinträchtigen und zu unvorhersehbarem Verhalten führen."
+}

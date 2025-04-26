@@ -1,0 +1,19 @@
+{
+	"greeting": "Olá, eu sou o Kodely!",
+	"introduction": "<strong>Kodely é o principal agente de codificação autônomo.</strong> Prepare-se para arquitetar, codificar, depurar e aumentar sua produtividade como nunca antes. Para continuar, o Kodely necessita de uma chave API.",
+	"notice": "Para começar, esta extensão precisa de um provedor de API.",
+	"start": "Vamos lá!",
+	"chooseProvider": "Escolha um provedor de API para começar:",
+	"routers": {
+		"requesty": {
+			"description": "Seu roteador LLM otimizado",
+			"incentive": "$1 de crédito grátis"
+		},
+		"openrouter": {
+			"description": "Uma interface unificada para LLMs"
+		}
+	},
+	"startRouter": "Configuração rápida através de um roteador",
+	"startCustom": "Use sua própria chave API",
+	"or": "ou"
+}

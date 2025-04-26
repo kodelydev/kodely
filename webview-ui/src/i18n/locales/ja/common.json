@@ -1,0 +1,17 @@
+{
+	"number_format": {
+		"thousand_suffix": "k",
+		"million_suffix": "m",
+		"billion_suffix": "b"
+	},
+	"feedback": {
+		"title": "フィードバック",
+		"description": "あなたのフィードバックをお聞かせいただくか、あなたが経験している問題についてお手伝いします。",
+		"githubIssues": "GitHubで問題を報告する",
+		"githubDiscussions": "GitHubのディスカッションに参加する",
+		"discord": "Discordコミュニティに参加する"
+	},
+	"ui": {
+		"search_placeholder": "検索..."
+	}
+}

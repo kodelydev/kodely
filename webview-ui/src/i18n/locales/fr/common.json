@@ -1,0 +1,17 @@
+{
+	"number_format": {
+		"thousand_suffix": "k",
+		"million_suffix": "m",
+		"billion_suffix": "b"
+	},
+	"feedback": {
+		"title": "Retour d'information",
+		"description": "Nous aimerions recevoir vos commentaires ou vous aider avec tout problème que vous rencontrez.",
+		"githubIssues": "Signaler un problème sur GitHub",
+		"githubDiscussions": "Rejoindre les discussions GitHub",
+		"discord": "Rejoindre notre communauté Discord"
+	},
+	"ui": {
+		"search_placeholder": "Rechercher..."
+	}
+}

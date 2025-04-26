@@ -1,0 +1,19 @@
+{
+	"greeting": "Salut, je suis Kodely !",
+	"introduction": "<strong>Kodely est l'agent de codage autonome de premier plan.</strong> Prépare-toi à architecturer, coder, déboguer et à augmenter ta productivité comme jamais auparavant. Pour continuer, Kodely nécessite une clé API.",
+	"notice": "Pour commencer, cette extension a besoin d'un fournisseur d'API.",
+	"start": "C'est parti !",
+	"chooseProvider": "Choisis un fournisseur d'API pour commencer :",
+	"routers": {
+		"requesty": {
+			"description": "Ton routeur LLM optimisé",
+			"incentive": "1$ de crédit gratuit"
+		},
+		"openrouter": {
+			"description": "Une interface unifiée pour les LLMs"
+		}
+	},
+	"startRouter": "Configuration rapide via un routeur",
+	"startCustom": "Utiliser ta propre clé API",
+	"or": "ou"
+}
