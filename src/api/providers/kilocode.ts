@@ -218,8 +218,8 @@ export class KodelyAnthropicHandler extends BaseProvider implements SingleComple
 					text:
 						"ERROR: Not logged in to Kodely.\n\n" +
 						"Please log in to Kodely from the extension settings.\n" +
-						"Kodely has a free tier with $20 worth of Claude 3.7 Sonnet tokens.\n" +
-						"We'll give out more free tokens if you leave useful feedback.",
+						"Note: Kodely is currently unavailable at this time.\n" +
+						"Kodely LLM API provider services are planned for a future release. Stay tuned for updates.",
 				}
 			}
 			if (error.status === 402) {

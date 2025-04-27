@@ -25,9 +25,9 @@ export const MODELS_BY_PROVIDER: Partial<Record<ApiProvider, Record<string, Mode
 	vertex: vertexModels,
 	xai: xaiModels,
 }
-
+//** Update when Kodely LLM API is available **//
 export const PROVIDERS = [
-	{ value: "kodely", label: "Kodely" },
+	{ value: "kodely", label: "Kodely - Currently Unavailable" },
 	{ value: "openrouter", label: "OpenRouter" },
 	{ value: "anthropic", label: "Anthropic" },
 	{ value: "fireworks", label: "Fireworks" }, // kodely_change

@@ -6,7 +6,6 @@
 </p>
 <p align="center">
   <a href="https://marketplace.visualstudio.com/items?itemName=kodely.Kodely"><img src="https://img.shields.io/visual-studio-marketplace/v/kodely.Kodely.svg?label=VS%20Code%20Marketplace" alt="VS Code Marketplace"></a>
-  <!--<a href="https://marketplace.visualstudio.com/items?itemName=kodely.Kodely"><img src="https://img.shields.io/badge/Get%20$20%20of%20free%20tokens-green?logo=claude&logoColor=white" alt="Get $20 of tokens for free"></a>-->
   <a href="https://x.com/kodelydev"><img src="https://img.shields.io/twitter/follow/kodelydev?style=flat&logo=x&color=555" alt="X (Twitter)"></a>
   <a href="https://kodelydev.substack.com"><img src="https://img.shields.io/badge/Blog-555?style=flat&logo=substack&logoColor=white" alt="Substack Blog"></a>
   <a href="https://discord.gg/C2g3XjU56S"><img src="https://img.shields.io/discord/1349288496988160052?style=flat&logo=discord&logoColor=white" alt="Discord"></a>
