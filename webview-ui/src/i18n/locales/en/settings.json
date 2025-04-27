@@ -78,7 +78,10 @@
 			"description": "Automatically execute allowed terminal commands without requiring approval",
 			"allowedCommands": "Allowed Auto-Execute Commands",
 			"allowedCommandsDescription": "Command prefixes that can be auto-executed when \"Always approve execute operations\" is enabled. Add * to allow all commands (use with caution).",
+			"allowedCommandsExceptions": "Auto-Execute Command Exceptions",
+			"allowedCommandsExceptionsDescription": "Command prefixes that should never be auto-executed, even if they match an allowed command prefix. These exceptions take precedence over allowed commands.",
 			"commandPlaceholder": "Enter command prefix (e.g., 'git ')",
+			"exceptionPlaceholder": "Enter exception prefix (e.g., 'rm -rf')",
 			"addButton": "Add"
 		},
 		"showMenu": {

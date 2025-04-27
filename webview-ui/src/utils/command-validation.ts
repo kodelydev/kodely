@@ -91,9 +91,25 @@ export function parseCommand(command: string): string[] {
 /**
  * Check if a single command is allowed based on prefix matching.
  */
-export function isAllowedSingleCommand(command: string, allowedCommands: string[]): boolean {
+export function isAllowedSingleCommand(
+	command: string,
+	allowedCommands: string[],
+	allowedCommandsExceptions: string[] = []
+): boolean {
 	if (!command || !allowedCommands?.length) return false
 	const trimmedCommand = command.trim().toLowerCase()
+
+	// First check if the command matches any exception pattern
+	if (allowedCommandsExceptions?.length) {
+		const matchesException = allowedCommandsExceptions.some((pattern) =>
+			trimmedCommand.startsWith(pattern.toLowerCase())
+		)
+		if (matchesException) {
+			return false
+		}
+	}
+
+	// Then check if it matches an allowed pattern
 	return allowedCommands.some((prefix) => trimmedCommand.startsWith(prefix.toLowerCase()))
 }
 
@@ -101,11 +117,30 @@ export function isAllowedSingleCommand(command: string, allowedCommands: string[
  * Check if a command string is allowed based on the allowed command prefixes.
  * This version also blocks subshell attempts by checking for `$(` or `` ` ``.
  */
-export function validateCommand(command: string, allowedCommands: string[]): boolean {
+export function validateCommand(
+	command: string,
+	allowedCommands: string[],
+	allowedCommandsExceptions: string[] = []
+): boolean {
 	if (!command?.trim()) return true
 
 	// If '*' is in allowed commands, everything is allowed
-	if (allowedCommands?.includes("*")) return true
+	// But still check exceptions
+	if (allowedCommands?.includes("*")) {
+		// Parse into sub-commands (split by &&, ||, ;, |)
+		const subCommands = parseCommand(command)
+
+		// Check if any sub-command matches an exception
+		const hasException = subCommands.some((cmd) => {
+			const cmdWithoutRedirection = cmd.replace(/\d*>&\d*/, "").trim()
+			const trimmedCmd = cmdWithoutRedirection.trim().toLowerCase()
+			return allowedCommandsExceptions.some((pattern) =>
+				trimmedCmd.startsWith(pattern.toLowerCase())
+			)
+		})
+
+		return !hasException
+	}
 
 	// Block subshell execution attempts
 	if (command.includes("$(") || command.includes("`")) {
@@ -115,10 +150,10 @@ export function validateCommand(command: string, allowedCommands: string[]): boo
 	// Parse into sub-commands (split by &&, ||, ;, |)
 	const subCommands = parseCommand(command)
 
-	// Then ensure every sub-command starts with an allowed prefix
+	// Then ensure every sub-command starts with an allowed prefix and doesn't match any exception
 	return subCommands.every((cmd) => {
 		// Remove simple PowerShell-like redirections (e.g. 2>&1) before checking
 		const cmdWithoutRedirection = cmd.replace(/\d*>&\d*/, "").trim()
-		return isAllowedSingleCommand(cmdWithoutRedirection, allowedCommands)
+		return isAllowedSingleCommand(cmdWithoutRedirection, allowedCommands, allowedCommandsExceptions)
 	})
 }

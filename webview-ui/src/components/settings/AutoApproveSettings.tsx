@@ -25,6 +25,7 @@ type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
 	alwaysAllowSubtasks?: boolean
 	alwaysAllowExecute?: boolean
 	allowedCommands?: string[]
+	allowedCommandsExceptions?: string[]
 	showAutoApproveMenu?: boolean // kodely_change
 	setCachedStateField: SetCachedStateField<
 		| "alwaysAllowReadOnly"
@@ -40,6 +41,7 @@ type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
 		| "alwaysAllowSubtasks"
 		| "alwaysAllowExecute"
 		| "allowedCommands"
+		| "allowedCommandsExceptions"
 		| "showAutoApproveMenu" // kodely_change
 	>
 }
@@ -58,6 +60,7 @@ export const AutoApproveSettings = ({
 	alwaysAllowSubtasks,
 	alwaysAllowExecute,
 	allowedCommands,
+	allowedCommandsExceptions,
 	showAutoApproveMenu, // kodely_change
 	setCachedStateField,
 	className,
@@ -65,6 +68,7 @@ export const AutoApproveSettings = ({
 }: AutoApproveSettingsProps) => {
 	const { t } = useAppTranslation()
 	const [commandInput, setCommandInput] = useState("")
+	const [exceptionInput, setExceptionInput] = useState("")
 
 	const handleAddCommand = () => {
 		const currentCommands = allowedCommands ?? []
@@ -74,6 +78,17 @@ export const AutoApproveSettings = ({
 			setCachedStateField("allowedCommands", newCommands)
 			setCommandInput("")
 			vscode.postMessage({ type: "allowedCommands", commands: newCommands })
+		}
+	}
+
+	const handleAddException = () => {
+		const currentExceptions = allowedCommandsExceptions ?? []
+
+		if (exceptionInput && !currentExceptions.includes(exceptionInput)) {
+			const newExceptions = [...currentExceptions, exceptionInput]
+			setCachedStateField("allowedCommandsExceptions", newExceptions)
+			setExceptionInput("")
+			vscode.postMessage({ type: "allowedCommandsExceptions", commands: newExceptions })
 		}
 	}
 
@@ -251,6 +266,53 @@ export const AutoApproveSettings = ({
 										const newCommands = (allowedCommands ?? []).filter((_, i) => i !== index)
 										setCachedStateField("allowedCommands", newCommands)
 										vscode.postMessage({ type: "allowedCommands", commands: newCommands })
+									}}>
+									<div className="flex flex-row items-center gap-1">
+										<div>{cmd}</div>
+										<X className="text-primary-foreground scale-75" />
+									</div>
+								</Button>
+							))}
+						</div>
+
+						<div className="mt-6">
+							<label className="block font-medium mb-1" data-testid="allowed-commands-exceptions-heading">
+								{t("settings:autoApprove.execute.allowedCommandsExceptions")}
+							</label>
+							<div className="text-vscode-descriptionForeground text-sm mt-1">
+								{t("settings:autoApprove.execute.allowedCommandsExceptionsDescription")}
+							</div>
+						</div>
+
+						<div className="flex gap-2">
+							<VSCodeTextField
+								value={exceptionInput}
+								onInput={(e: any) => setExceptionInput(e.target.value)}
+								onKeyDown={(e: any) => {
+									if (e.key === "Enter") {
+										e.preventDefault()
+										handleAddException()
+									}
+								}}
+								placeholder={t("settings:autoApprove.execute.exceptionPlaceholder")}
+								className="grow"
+								data-testid="exception-input"
+							/>
+							<Button onClick={handleAddException} data-testid="add-exception-button">
+								{t("settings:autoApprove.execute.addButton")}
+							</Button>
+						</div>
+
+						<div className="flex flex-wrap gap-2">
+							{(allowedCommandsExceptions ?? []).map((cmd, index) => (
+								<Button
+									key={index}
+									variant="secondary"
+									data-testid={`remove-exception-${index}`}
+									onClick={() => {
+										const newExceptions = (allowedCommandsExceptions ?? []).filter((_, i) => i !== index)
+										setCachedStateField("allowedCommandsExceptions", newExceptions)
+										vscode.postMessage({ type: "allowedCommandsExceptions", commands: newExceptions })
 									}}>
 									<div className="flex flex-row items-center gap-1">
 										<div>{cmd}</div>

@@ -584,6 +584,13 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 				.getConfiguration("kodely")
 				.update("allowedCommands", message.commands, vscode.ConfigurationTarget.Global)
 			break
+		case "allowedCommandsExceptions":
+			await provider.context.globalState.update("allowedCommandsExceptions", message.commands)
+			// Also update workspace settings
+			await vscode.workspace
+				.getConfiguration("kodely")
+				.update("allowedCommandsExceptions", message.commands, vscode.ConfigurationTarget.Global)
+			break
 		case "openMcpSettings": {
 			const mcpSettingsFilePath = await provider.getMcpHub()?.getMcpSettingsFilePath()
 			if (mcpSettingsFilePath) {

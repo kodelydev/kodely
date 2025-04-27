@@ -407,6 +407,19 @@
 					],
 					"description": "%commands.allowedCommands.description%"
 				},
+				"kodely.allowedCommandsExceptions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [
+						"rm -rf /",
+						"rmdir -p",
+						"rm -rf *",
+						"rm -rf .*"
+					],
+					"description": "%commands.allowedCommandsExceptions.description%"
+				},
 				"kodely.vsCodeLmModelSelector": {
 					"type": "object",
 					"properties": {
