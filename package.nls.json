@@ -26,6 +26,7 @@
 	"command.acceptInput.title": "Accept Input/Suggestion",
 	"configuration.title": "Kodely",
 	"commands.allowedCommands.description": "Commands that can be auto-executed when 'Always approve execute operations' is enabled",
+	//**"commands.allowedCommandsException.description": "Commands that will not be auto-executed when 'Always approve execute operations' is enabled",
 	"settings.vsCodeLmModelSelector.description": "Settings for VSCode Language Model API",
 	"settings.vsCodeLmModelSelector.vendor.description": "The vendor of the language model (e.g. copilot)",
 	"settings.vsCodeLmModelSelector.family.description": "The family of the language model (e.g. gpt-4)",
