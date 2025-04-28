@@ -1578,6 +1578,7 @@ const ApiOptions = ({
 							))}
 						</VSCodeRadioGroup>
 					)}
+
 					<div className="text-sm text-vscode-descriptionForeground">
 						{t("settings:providers.ollama.description")}
 						<span className="text-vscode-errorForeground ml-1">

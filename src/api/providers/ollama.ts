@@ -32,12 +32,14 @@ export class OllamaHandler extends BaseProvider implements SingleCompletionHandl
 			...(useR1Format ? convertToR1Format(messages) : convertToOpenAiMessages(messages)),
 		]
 
-		const stream = await this.client.chat.completions.create({
+		const options: OpenAI.Chat.ChatCompletionCreateParams = {
 			model: this.getModel().id,
 			messages: openAiMessages,
 			temperature: this.options.modelTemperature ?? 0,
 			stream: true,
-		})
+		}
+
+		const stream = await this.client.chat.completions.create(options)
 		const matcher = new XmlMatcher(
 			"think",
 			(chunk) =>
@@ -71,14 +73,17 @@ export class OllamaHandler extends BaseProvider implements SingleCompletionHandl
 		try {
 			const modelId = this.getModel().id
 			const useR1Format = modelId.toLowerCase().includes("deepseek-r1")
-			const response = await this.client.chat.completions.create({
+
+			const options: OpenAI.Chat.ChatCompletionCreateParams = {
 				model: this.getModel().id,
 				messages: useR1Format
 					? convertToR1Format([{ role: "user", content: prompt }])
 					: [{ role: "user", content: prompt }],
 				temperature: this.options.modelTemperature ?? (useR1Format ? DEEP_SEEK_DEFAULT_TEMPERATURE : 0),
 				stream: false,
-			})
+			}
+
+			const response = await this.client.chat.completions.create(options)
 			return response.choices[0]?.message.content || ""
 		} catch (error) {
 			if (error instanceof Error) {
